@@ -16,6 +16,9 @@ import "./Navbar.css";
 import { useState } from "react";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { menuItems } from "../../../router/navigation";
+import { logout } from "../../../firebaseConfig";
+
+
 const drawerWidth = 200;
 
 function Navbar(props) {
@@ -26,7 +29,7 @@ function Navbar(props) {
     setMobileOpen(!mobileOpen);
   };
 
-  const drawer = (
+   const drawer = (
     <div>
       <Toolbar />
 
@@ -47,7 +50,7 @@ function Navbar(props) {
         })}
 
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={logout}>
             <ListItemIcon>
               <LogoutIcon sx={{ color: "whitesmoke" }} />
             </ListItemIcon>

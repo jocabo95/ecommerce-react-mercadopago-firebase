@@ -13,15 +13,37 @@ import {
 } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
+import { onSignIn } from "../../../firebaseConfig";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [userCredentials, setUserCredentials]= useState({
+    email: "",
+    showPassword: ""
+  })
+
   const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
+
+  const handleChange = (e) =>{
+    setUserCredentials({...userCredentials, [e.target.name]: e.target.value})
+  }
+
+  const handleSubmit = async(e)=>{
+    e.preventDefault()
+
+    try {
+      let res = await onSignIn(userCredentials);
+      console.log(res)
+      navigate("/")
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <Box
@@ -35,7 +57,7 @@ const Login = () => {
         // backgroundColor: theme.palette.secondary.main,
       }}
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <Grid
           container
           rowSpacing={2}
@@ -43,7 +65,12 @@ const Login = () => {
           justifyContent={"center"}
         >
           <Grid item xs={10} md={12}>
-            <TextField name="email" label="Email" fullWidth />
+            <TextField
+              name="email"
+              label="Email"
+              onChange={handleChange}
+              fullWidth
+            />
           </Grid>
           <Grid item xs={10} md={12}>
             <FormControl variant="outlined" fullWidth>
@@ -52,6 +79,7 @@ const Login = () => {
               </InputLabel>
               <OutlinedInput
                 name="password"
+                onChange={handleChange}
                 id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
                 endAdornment={
@@ -126,7 +154,7 @@ const Login = () => {
                 <Button
                   variant="contained"
                   fullWidth
-                  onClick={()=>navigate("/register")}
+                  onClick={() => navigate("/register")}
                   type="button"
                   sx={{
                     color: "white",
