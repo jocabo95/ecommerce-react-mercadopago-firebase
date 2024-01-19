@@ -1,5 +1,12 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBaWv5HTItj2P34Gk6fN44pS6e4jF_Z8IM",
@@ -29,8 +36,15 @@ export const onSignIn = async ({ email, password }) => {
 };
 
 // google sign in
-export const googleSignIn = ()=>{
-    
+const googleProvider = new GoogleAuthProvider();
+
+export const googleSignIn = async ()=>{
+    try {
+        let res = await signInWithPopup(auth, googleProvider);
+        return res
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 //sign out
@@ -41,6 +55,14 @@ export const logout = ()=>{
 
 
 // register
+export const register = async ({ email, password}) => {
+  try {
+    let res = await createUserWithEmailAndPassword(auth, email, password);
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
     // email & password
     // forgot password

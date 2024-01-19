@@ -13,10 +13,11 @@ import {
 } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
-import { onSignIn } from "../../../firebaseConfig";
+import { googleSignIn, onSignIn } from "../../../firebaseConfig";
+
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -40,6 +41,15 @@ const Login = () => {
       let res = await onSignIn(userCredentials);
       console.log(res)
       navigate("/")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const SigninGoogle = async() =>{
+    try {
+      let res = await googleSignIn();
+      console.log(res)
     } catch (error) {
       console.log(error)
     }
@@ -125,6 +135,7 @@ const Login = () => {
             <Grid item xs={10} md={5}>
               <Tooltip title="ingresa con google">
                 <Button
+                  onClick={SigninGoogle}
                   variant="contained"
                   startIcon={<GoogleIcon />}
                   type="button"
