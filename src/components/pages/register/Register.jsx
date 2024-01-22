@@ -35,13 +35,15 @@ const Register = () => {
     e.preventDefault()
 
     try {
-      await register(userCredentials)
-      navigate("/login")
+      let res = await register(userCredentials)
+      console.log(res)
+      if (res.user.uid){
+        navigate("/login")
+      }
     } catch (error) {
       console.log(error)
     }
 
-    console.log(userCredentials)
   }
 
   return (
