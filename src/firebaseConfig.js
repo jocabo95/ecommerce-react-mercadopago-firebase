@@ -8,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail
 } from "firebase/auth";
+import {getFirestore} from "firebase/firestore"
 
 const firebaseConfig = {
   apiKey: "AIzaSyBaWv5HTItj2P34Gk6fN44pS6e4jF_Z8IM",
@@ -20,6 +21,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
+//db
+export const db = getFirestore(app)
 
 // AUTH
 const auth = getAuth(app)
