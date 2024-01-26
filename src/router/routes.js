@@ -18,5 +18,16 @@ export const routes = [
     path: "/itemDetail/:id",
     Element: ItemDetail,
   },
+  // {
+  //   id: "cart",
+  //   path: "/cart",
+  //   Element: ,
+  // },
+  // {
+  //   id: "checkout",
+  //   path: "/checkout",
+  //   Element: ,
+  // },
+  
  
 ];
