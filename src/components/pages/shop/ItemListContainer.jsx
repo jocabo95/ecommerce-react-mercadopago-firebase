@@ -30,9 +30,6 @@ const ItemListContainer = () => {
       });
   }, []);
 
-
-  console.log("products= ", products);
-
   return (
     <Container sx={{ width: "80%", height: "auto" }}>
       <Box sx={{ width: "100%", height: "100%" }}>

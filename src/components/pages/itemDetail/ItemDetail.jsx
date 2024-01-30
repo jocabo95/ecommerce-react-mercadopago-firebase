@@ -16,13 +16,15 @@ import useCounter from "../../../utils/hooks/useCounter";
 import { CartContext } from "../../context/CartContext";
 
 const ItemDetail = () => {
-  let { addToCart, cart } = useContext(CartContext);
+  let { addToCart, getQuantity } = useContext(CartContext);
 
   let { id } = useParams();
 
+  let quantity = getQuantity(id)
+
   const [product, setproduct] = useState({});
 
-  let { suma, resta, counter } = useCounter(0, product.stock);
+  let { suma, resta, counter } = useCounter(quantity, product.stock);
 
   useEffect(() => {
     (async () => {
