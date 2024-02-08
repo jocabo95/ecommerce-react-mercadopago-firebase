@@ -7,36 +7,11 @@ import {
   Divider,
   Image,
 } from "@nextui-org/react";
-import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getDoc, doc } from "firebase/firestore";
-import { db } from "../../../firebaseConfig";
 import { Box } from "@mui/material";
-import useCounter from "../../../utils/hooks/useCounter";
-import { CartContext } from "../../context/CartContext";
 
-const ItemDetail = () => {
-  let { addToCart, getQuantity } = useContext(CartContext);
+const ItemDetail = ({ data }) => {
 
-  let { id } = useParams();
-
-  let quantity = getQuantity(id)
-
-  const [product, setproduct] = useState({});
-
-  let { suma, resta, counter } = useCounter(quantity, product.stock);
-
-  useEffect(() => {
-    (async () => {
-      let refDoc = doc(db, "products", id);
-      try {
-        let res = await getDoc(refDoc);
-        setproduct({ ...res.data(), id: res.id });
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, [id]);
+  const { product, suma, resta, counter, addToCart } = data;
 
   return (
     <Card className="max-w-[400px] mb-5">

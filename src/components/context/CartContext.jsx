@@ -36,26 +36,33 @@ const CartContextComponent = ({ children }) => {
 
   // delete item from cart
   let deleteById = (id) => {
-    let newCart = cart.filter((el)=>{
-      return el.id !== id
-    })
+    let newCart = cart.filter((el) => {
+      return el.id !== id;
+    });
 
-    setCart(newCart)
-  }
+    setCart(newCart);
+  };
 
   let clearCart = () => {
     setCart({});
   };
 
-  let getTotalPrice = () =>{
-    let total = cart.reduce((total, prod)=>{
-      return total + (prod.quantity * prod.unit_price)
-    }, 0)
+  let getTotalPrice = () => {
+    let total = cart.reduce((total, prod) => {
+      return total + prod.quantity * prod.unit_price;
+    }, 0);
 
-    return total
-  }
+    return total;
+  };
 
-  const data = { addToCart, clearCart, cart, getQuantity, deleteById, getTotalPrice };
+  const data = {
+    addToCart,
+    clearCart,
+    cart,
+    getQuantity,
+    deleteById,
+    getTotalPrice,
+  };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };

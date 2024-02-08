@@ -1,29 +1,8 @@
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
-import { useState } from "react";
 
-
-import { useNavigate } from "react-router-dom";
-import { forgotPassword } from "../../../firebaseConfig";
-
-const ForgotPassword = () => {
-  const navigate = useNavigate();
-
-  const [email, setEmail] = useState("")
-
-  let handleChange=(e)=>{
-    setEmail(e.target.value)
-  }
-
-  let handleSubmit= async (e)=>{
-    e.preventDefault()
-    try {
-      await forgotPassword(email)
-      navigate('/login')
-    } catch (error) {
-      console.log(error)
-    }
-    
-  }
+const ForgotPassword = ({data}) => {
+  
+  const {navigate, handleChange, handleSubmit}=data;
 
   return (
     <div>

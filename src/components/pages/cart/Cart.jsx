@@ -1,13 +1,10 @@
-import { useContext } from "react"
-import { CartContext } from "../../context/CartContext"
 import { Button } from "@nextui-org/react"
 import { Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
-const Cart = () => {
+const Cart = ({data}) => {
 
-    let { cart, clearCart, deleteById, getTotalPrice} = useContext(CartContext);
-
-    let total = getTotalPrice();
+  const { cart, clearCart, deleteById, total } = data;
 
   return (
     <div>
@@ -26,6 +23,7 @@ const Cart = () => {
         }
         <Button onClick={clearCart}>Limpiar el carrito</Button>
         <Typography>Total: {total}</Typography>
+        <Link>Finalizar compra</Link>
     </div>
   )
 }

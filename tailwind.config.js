@@ -37,8 +37,7 @@ module.exports = {
           layout: {}, // dark theme layout tokens
           colors: {
 
-             background: "#FFFFFF",
-            // background: "#5F7D7D", BAKCGROUND SUSY
+             background: "#ffffff",
             foreground: "#616376",
 
             // gris consultic con negro gris de letra

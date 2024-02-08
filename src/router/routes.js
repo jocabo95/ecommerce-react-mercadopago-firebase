@@ -1,6 +1,9 @@
-import Cart from "../components/pages/cart/Cart";
+import CartContainer from "../components/pages/cart/CartContainer";
+import ForgotPasswordContainer from "../components/pages/forgotPassword/ForgotPasswordContainer";
 import Home from "../components/pages/home/Home";
-import ItemDetail from "../components/pages/itemDetail/ItemDetail";
+import ItemDetailContainer from "../components/pages/itemDetail/ItemDetailContainer";
+import LoginContainer from "../components/pages/login/LoginContainer";
+import RegisterContainer from "../components/pages/register/RegisterContainer";
 import ItemListContainer from "../components/pages/shop/ItemListContainer";
 
 export const routes = [
@@ -10,6 +13,21 @@ export const routes = [
     Element: Home,
   },
   {
+    id: "register",
+    path: "/register",
+    Element: RegisterContainer,
+  },
+  {
+    id: "login",
+    path: "/login",
+    Element: LoginContainer,
+  },
+  {
+    id: "forgotPassword",
+    path: "/forgot-password",
+    Element: ForgotPasswordContainer,
+  },
+  {
     id: "shop",
     path: "/shop",
     Element: ItemListContainer,
@@ -17,18 +35,12 @@ export const routes = [
   {
     id: "itemDetail",
     path: "/itemDetail/:id",
-    Element: ItemDetail,
+    Element: ItemDetailContainer,
   },
   {
     id: "cart",
     path: "/cart",
-    Element: Cart,
+    Element: CartContainer,
   },
-  // {
-  //   id: "checkout",
-  //   path: "/checkout",
-  //   Element: ,
-  // },
-  
  
 ];
