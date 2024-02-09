@@ -51,9 +51,12 @@ const CartContextComponent = ({ children }) => {
     let total = cart.reduce((total, prod) => {
       return total + prod.quantity * prod.unit_price;
     }, 0);
+    console.log("total= ", total);
 
     return total;
   };
+
+  
 
   const data = {
     addToCart,

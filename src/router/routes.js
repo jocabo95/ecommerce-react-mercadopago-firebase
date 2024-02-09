@@ -1,4 +1,5 @@
 import CartContainer from "../components/pages/cart/CartContainer";
+import CheckoutContainer from "../components/pages/checkout/CheckOutContainer";
 import ForgotPasswordContainer from "../components/pages/forgotPassword/ForgotPasswordContainer";
 import Home from "../components/pages/home/Home";
 import ItemDetailContainer from "../components/pages/itemDetail/ItemDetailContainer";
@@ -41,6 +42,11 @@ export const routes = [
     id: "cart",
     path: "/cart",
     Element: CartContainer,
+  },
+  {
+    id: "checkout",
+    path: "/checkout",
+    Element: CheckoutContainer,
   },
  
 ];

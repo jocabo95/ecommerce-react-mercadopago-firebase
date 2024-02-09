@@ -23,7 +23,7 @@ const Cart = ({data}) => {
         }
         <Button onClick={clearCart}>Limpiar el carrito</Button>
         <Typography>Total: {total}</Typography>
-        <Link>Finalizar compra</Link>
+        <Link to="/checkout">Finalizar compra</Link>
     </div>
   )
 }
