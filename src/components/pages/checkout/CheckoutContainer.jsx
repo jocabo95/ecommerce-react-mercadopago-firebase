@@ -9,7 +9,7 @@ const CheckoutContainer = () => {
   const [preferenceId, setPreferenceId]=useState(null)
 
   const { cart } = useContext(CartContext);
-  initMercadoPago("APP_USR-5109f626-83bc-462d-b265-4fc9e81bb292", {
+  initMercadoPago("import.meta.env.VITE_publicKey", {
     locale: "es-CO",
   });
 
