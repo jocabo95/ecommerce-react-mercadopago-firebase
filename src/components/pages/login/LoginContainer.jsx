@@ -1,11 +1,15 @@
 import Login from "./Login"
-import { useState } from "react";
-import { googleSignIn, onSignIn } from "../../../firebaseConfig";
+import { useContext, useState } from "react";
+import { db, googleSignIn, onSignIn } from "../../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import {collection, doc, getDoc} from "firebase/firestore"
+import { AuthContext } from "../../context/AuthContext";
 
 
 
 const LoginContainer = () => {
+
+    const {handleLoginAuth} = useContext(AuthContext)
 
     const [showPassword, setShowPassword] = useState(false);
     const [userCredentials, setUserCredentials] = useState({
@@ -29,7 +33,18 @@ const LoginContainer = () => {
 
       try {
         let res = await onSignIn(userCredentials);
-        console.log(res);
+
+        if(res.user){
+          let refCollection = collection(db, "users")
+          let refdoc = doc(refCollection, res.user.uid)
+          let userDoc = await getDoc(refdoc)
+
+          const userInfo = {id: res.user.uid, email: res.user.email, rol: userDoc.data().rol}
+
+          handleLoginAuth(userInfo)
+        }
+
+        
         navigate("/");
       } catch (error) {
         console.log(error);

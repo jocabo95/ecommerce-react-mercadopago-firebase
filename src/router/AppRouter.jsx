@@ -4,6 +4,8 @@ import { routes } from "./routes";
 import Login from "../components/pages/login/Login";
 import Register from "../components/pages/register/Register";
 import ForgotPassword from "../components/pages/forgotPassword/ForgotPassword";
+import DashboardContainer from "../components/pages/dashboard/DashboardContainer";
+import AdminProtected from "./AdminProtected";
 
 const AppRouter = () => {
   return (
@@ -22,6 +24,13 @@ const AppRouter = () => {
 
       {/* forgot password  */}
       <Route path="/forgot-password" element={<ForgotPassword />} />
+
+      {/* ADMIN PROTECTED */}
+      <Route element={<AdminProtected/>}>
+        <Route element={<Navbar/>}>
+          <Route path="/dashboard" element={<DashboardContainer />} />
+        </Route>
+      </Route>
 
       <Route path="*" element={<h1>Not found</h1>} />
     </Routes>
