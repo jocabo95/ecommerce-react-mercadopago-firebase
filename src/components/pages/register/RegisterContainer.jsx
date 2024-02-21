@@ -1,7 +1,8 @@
 import Register from "./Register"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { register } from "../../../firebaseConfig";
+import { db, register } from "../../../firebaseConfig";
+import {doc, setDoc} from "firebase/firestore"
 
 
 const RegisterContainer = () => {
@@ -29,9 +30,13 @@ const RegisterContainer = () => {
       try {
         let res = await register(userCredentials);
         console.log(res);
+
         if (res.user.uid) {
-          navigate("/login");
+          await setDoc(doc(db, "users", res.user.uid), {rol: "user"})
         }
+
+        navigate("/login");
+        
       } catch (error) {
         console.log(error);
       }
