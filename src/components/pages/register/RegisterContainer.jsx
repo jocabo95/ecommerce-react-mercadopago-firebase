@@ -31,6 +31,7 @@ const RegisterContainer = () => {
         let res = await register(userCredentials);
         console.log(res);
 
+        // Si hay res.user.uid, crea usuario con rol: user en firebase
         if (res.user.uid) {
           await setDoc(doc(db, "users", res.user.uid), {rol: "user"})
         }
