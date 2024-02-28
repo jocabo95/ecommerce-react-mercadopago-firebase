@@ -14,19 +14,19 @@ const ItemListContainer = () => {
     getDocs(refCollection)
       .then((res) => {
         let newarr = res.docs.map((product) => {
-          return { ...product.data(), id: product.id };
+          return { ...product.data(), id: product.id }; // product.id has role ok key when mapping 
         });
 
         setProducts(newarr);
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
   }, []);
 
   const data = {
     products, 
-    navigate 
+    navigate
   }
   return (
     <ItemList data={data}/>

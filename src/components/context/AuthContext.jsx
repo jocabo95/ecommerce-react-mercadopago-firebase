@@ -1,39 +1,34 @@
-import { createContext, useState } from "react"
+import { createContext, useState } from "react";
 
+export const AuthContext = createContext();
 
-export const AuthContext = createContext()
+const AuthContextComponent = ({ children }) => {
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user")) || {}
+  );
+  const [isLogged, setIsLogged] = useState(
+    JSON.parse(localStorage.getItem("isLogged")) || false
+  );
 
-const AuthContextComponent = ({children}) => {
+  let handleLoginAuth = (userData) => {
+    setUser(userData);
+    setIsLogged(true);
 
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || {})
-    const [isLogged, setIsLogged] = useState(JSON.parse(localStorage.getItem("isLogged"))  || false)
+    localStorage.setItem("isLogged", JSON.stringify(true));
+    localStorage.setItem("user", JSON.stringify(userData));
+  };
 
-    let handleLoginAuth = (userData) => {
-        setUser(userData)
-        setIsLogged(true)
+  let handleLogoutAuth = () => {
+    setUser({});
+    setIsLogged(false);
 
-        localStorage.setItem("isLogged", JSON.stringify(true))        
-        localStorage.setItem("user", JSON.stringify(userData))
-    }
+    localStorage.removeItem("user");
+    localStorage.removeItem("isLogged");
+  };
 
-    let handleLogoutAuth =() =>{
-        setUser({})
-        setIsLogged(false)
+  const data = { handleLoginAuth, handleLogoutAuth, user, isLogged };
 
-        localStorage.removeItem("user")
-        localStorage.removeItem("isLogged")
-    }
+  return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
+};
 
-    const data = {handleLoginAuth, handleLogoutAuth, user, isLogged}
-
-
-  return (
-    <AuthContext.Provider value={data}>
-        {children}
-    </AuthContext.Provider>
-  )
-}
-
-export default AuthContextComponent
-
-
+export default AuthContextComponent;

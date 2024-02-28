@@ -31,7 +31,7 @@ function Navbar(props) {
   const {user} = useContext(AuthContext)
   const adminRole = import.meta.env.VITE_ADMINROLE
 
-  const {handleLogoutAuth}= useContext(AuthContext)
+  const {handleLogoutAuth, isLogged}= useContext(AuthContext)
 
 
   const handleDrawerToggle = () => {
@@ -78,18 +78,21 @@ function Navbar(props) {
         </Link>
         }
         
+        {
+          isLogged && 
+          <ListItem disablePadding>
+            <ListItemButton onClick={handleLogout}>
+              <ListItemIcon>
+                <LogoutIcon sx={{ color: "whitesmoke" }} />
+              </ListItemIcon>
+              <ListItemText
+                primary={"Cerrar sesion"}
+                sx={{ color: "whitesmoke" }}
+              />
+            </ListItemButton>
+          </ListItem>
+        }
 
-        <ListItem disablePadding>
-          <ListItemButton onClick={handleLogout}>
-            <ListItemIcon>
-              <LogoutIcon sx={{ color: "whitesmoke" }} />
-            </ListItemIcon>
-            <ListItemText
-              primary={"Cerrar sesion"}
-              sx={{ color: "whitesmoke" }}
-            />
-          </ListItemButton>
-        </ListItem>
       </List>
     </div>
   );

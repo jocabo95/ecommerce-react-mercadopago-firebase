@@ -1,13 +1,27 @@
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 
 const Checkout = ({ data }) => {
-  const {handleBuy, Wallet, preferenceId} = data;
-  return(
+  const {handleChange, handleBuy, Wallet, preferenceId} = data;
+
+
+  return (
     <div>
-        <Button onClick={handleBuy}>Mercado pago</Button>
-        {
-            preferenceId && <Wallet initialization={{preferenceId, redirectMode:"self"}}/>
-        }
+      <TextField
+        name="cp"
+        variant="outlined"
+        label="codigo postal"
+        onChange={handleChange}
+      />
+      <TextField
+        name="tel"
+        variant="outlined"
+        label="codigo postal"
+        onChange={handleChange}
+      />
+      <Button onClick={handleBuy}>Mercado pago</Button>
+      {preferenceId && (
+        <Wallet initialization={{ preferenceId, redirectMode: "self" }} />
+      )}
     </div>
   );
 };

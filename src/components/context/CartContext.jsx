@@ -3,10 +3,11 @@ import { createContext, useState } from "react";
 export const CartContext = createContext();
 
 const CartContextComponent = ({ children }) => {
-  const [cart, setCart] = useState( JSON.parse(localStorage.getItem("cart"))|| []);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
 
   let addToCart = (product, quantity) => {
-
     // check if prod already exists in cart
     let checkProduct = cart.some((el) => {
       return el.id === product.id;
@@ -23,18 +24,15 @@ const CartContextComponent = ({ children }) => {
       });
 
       setCart(newArr);
-      localStorage.setItem("cart", JSON.stringify(newArr))
+      localStorage.setItem("cart", JSON.stringify(newArr));
     } else {
       // if prod not in cart, just add new product to cart
       let newProd = { ...product, quantity: quantity };
-      let newArr = [...cart, newProd]
+      let newArr = [...cart, newProd];
       setCart(newArr);
 
-      localStorage.setItem("cart", JSON.stringify(newArr))
+      localStorage.setItem("cart", JSON.stringify(newArr));
     }
-
-    
-
   };
 
   let getQuantity = (id) => {
@@ -52,12 +50,13 @@ const CartContextComponent = ({ children }) => {
     });
 
     setCart(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart))
   };
 
   let clearCart = () => {
     setCart({});
 
-    localStorage.removeItem("cart")
+    localStorage.removeItem("cart");
   };
 
   // Get cart total
@@ -69,8 +68,6 @@ const CartContextComponent = ({ children }) => {
 
     return total;
   };
-
-  
 
   const data = {
     addToCart,
