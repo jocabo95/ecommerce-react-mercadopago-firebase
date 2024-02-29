@@ -10,21 +10,23 @@ import {
   addDoc,
   serverTimestamp,
   updateDoc,
-  doc
+  doc,
+  getDoc
 } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
 
 const CheckoutContainer = () => {
-  // variable to store id given by mercadopago
-  const [preferenceId, setPreferenceId] = useState(null);
+
+  const [preferenceId, setPreferenceId] = useState(null); // variable to store id given by mercadopago
   const [userData, setUserData] = useState({
     cp: "",
     tel: "",
   });
   const [orderId, setOrderId] = useState(null);
+  const [shipmentCost, setShipmentCost] = useState();
 
   const { user } = useContext(AuthContext);
-  const { cart } = useContext(CartContext);
+  const { cart, clearCart, getTotalPrice } = useContext(CartContext);
   initMercadoPago("import.meta.env.VITE_publicKey", {
     locale: "es-CO",
   });
@@ -42,7 +44,7 @@ const CheckoutContainer = () => {
     try {
       let post = await axios.post("http://localhost:8000/create_preference", {
         items: summarizedArr,
-        shipment_cost: 10,
+        shipment_cost: shipmentCost,
       });
       const { id } = post.data;
 
@@ -57,7 +59,7 @@ const CheckoutContainer = () => {
   let queryParams = new URLSearchParams(location.search);
   let payment = queryParams.get("status");
 
-  // if desired param is positive, post order to fb and reduce stock
+  // if desired param is positive, post order to fb, reduce stock, clear cart and order in local storage
   useEffect(() => {
     let order = JSON.parse(localStorage.get("order"));
 
@@ -71,11 +73,27 @@ const CheckoutContainer = () => {
     }
 
     order.products.forEach((product) => {
-      updateDoc(doc(db, "products", product.id), {stock: product.stock - product.quantity})
+      updateDoc(doc(db, "products", product.id), {
+        stock: product.stock - product.quantity,
+      });
     });
 
-    localStorage.removeItem("order")
+    localStorage.removeItem("order");
+    clearCart();
   }, [payment]);
+
+  //gets shipment cost from firebase
+  useEffect(() => {
+    let refCollection = collection(db, "shipment");
+    let refdoc = doc(refCollection, "7WMHaShKKD7OV8YUIu8R");
+    getDoc(refdoc)
+      .then((res) => {
+        setShipmentCost(res.data().cost);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   // Stores id given by mercadopago. creates order obj and stores it in local storage while mercadopago is working
   const handleBuy = async () => {
@@ -84,6 +102,7 @@ const CheckoutContainer = () => {
       telefono: userData.tel,
       products: cart,
       email: user.email,
+      total: getTotalPrice + shipmentCost
     };
 
     localStorage.setItem("order", JSON.stringify(order));
