@@ -19,6 +19,7 @@ import { menuItems } from "../../../router/navigation";
 import { logout } from "../../../firebaseConfig";
 import { AuthContext } from "../../context/AuthContext";
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import { CartContext } from "../../context/CartContext";
 
 
 const drawerWidth = 200;
@@ -29,6 +30,7 @@ function Navbar(props) {
   const navigate = useNavigate()
 
   const {user} = useContext(AuthContext)
+  const {clearCart} = useContext(CartContext)
   const adminRole = import.meta.env.VITE_ADMINROLE
 
   const {handleLogoutAuth, isLogged}= useContext(AuthContext)
@@ -41,6 +43,7 @@ function Navbar(props) {
   const handleLogout = () =>{
     logout()
     handleLogoutAuth()
+    clearCart()
     navigate("/login")
   }
 
