@@ -18,6 +18,7 @@ const ItemDetailContainer = () => {
 
   let { suma, resta, counter } = useCounter(quantity, product.stock);
 
+  // get product from firebase using id from url
   useEffect(() => {
     (async () => {
       let refDoc = doc(db, "products", id);

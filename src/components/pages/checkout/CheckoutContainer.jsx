@@ -11,27 +11,28 @@ import {
   serverTimestamp,
   updateDoc,
   doc,
-  getDoc
+  getDoc,
 } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
 
 const CheckoutContainer = () => {
-
   const [preferenceId, setPreferenceId] = useState(null); // variable to store id given by mercadopago
+  const [orderId, setOrderId] = useState(null);
+  const [shipmentCost, setShipmentCost] = useState();
   const [userData, setUserData] = useState({
     cp: "",
     tel: "",
   });
-  const [orderId, setOrderId] = useState(null);
-  const [shipmentCost, setShipmentCost] = useState();
 
   const { user } = useContext(AuthContext);
   const { cart, clearCart, getTotalPrice } = useContext(CartContext);
+
+  // initialize mercadopago SDK
   initMercadoPago("import.meta.env.VITE_publicKey", {
     locale: "es-CO",
   });
 
-  // makes sumary of cart and makes post to backend
+  // creates preference in mercadopago: makes summary of cart and makes post to backend
   const createPreference = async () => {
     let summarizedArr = cart.map((el) => {
       return {
@@ -54,14 +55,14 @@ const CheckoutContainer = () => {
     }
   };
 
-  // store params to check if mercadopago transaction was succesfull
+  // manipulates URL query string to get "status" key value. Determines if transaction was succesful
   let location = useLocation();
   let queryParams = new URLSearchParams(location.search);
   let payment = queryParams.get("status");
 
-  // if desired param is positive, post order to fb, reduce stock, clear cart and order in local storage
+  // handles succesfull payment. post order to fb, reduce stock, clear cart and order in local storage
   useEffect(() => {
-    let order = JSON.parse(localStorage.get("order"));
+    let order = JSON.parse(localStorage.getItem("order"));
 
     if (payment === "approved") {
       let refCollection = collection(db, "orders");
@@ -80,7 +81,7 @@ const CheckoutContainer = () => {
 
     localStorage.removeItem("order");
     clearCart();
-  }, [payment]);
+  }, [payment, clearCart]);
 
   //gets shipment cost from firebase
   useEffect(() => {
@@ -95,14 +96,14 @@ const CheckoutContainer = () => {
       });
   }, []);
 
-  // Stores id given by mercadopago. creates order obj and stores it in local storage while mercadopago is working
+  // handles buy request. stores id given by mercadopago. creates order obj in local storage
   const handleBuy = async () => {
     const order = {
-      "codigo postal": userData.cp,
+      cp: userData.cp,
       telefono: userData.tel,
       products: cart,
       email: user.email,
-      total: getTotalPrice + shipmentCost
+      total: getTotalPrice + shipmentCost,
     };
 
     localStorage.setItem("order", JSON.stringify(order));

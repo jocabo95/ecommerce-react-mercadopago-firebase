@@ -9,6 +9,7 @@ const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate()
 
+  // get product collection from firebase & store in state
   useEffect(() => {
     const refCollection = collection(db, "products");
     getDocs(refCollection)

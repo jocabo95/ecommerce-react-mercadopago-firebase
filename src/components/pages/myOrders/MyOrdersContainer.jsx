@@ -11,6 +11,7 @@ const MyOrdersContainer = () => {
     const navigate = useNavigate()
     const { user } = useContext(AuthContext());
 
+    // get order form firebase
   useEffect(() => {
     (async () => {
       let refCollection = collection(db, "orders");

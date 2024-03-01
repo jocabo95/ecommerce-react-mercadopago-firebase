@@ -54,7 +54,7 @@ const CartContextComponent = ({ children }) => {
   };
 
   let clearCart = () => {
-    setCart({});
+    setCart([]);
 
     localStorage.removeItem("cart");
   };
@@ -62,7 +62,7 @@ const CartContextComponent = ({ children }) => {
   // Get cart total
   let getTotalPrice = () => {
     let total = cart.reduce((total, prod) => {
-      return total + prod.quantity * prod.unit_price;
+      return (total + prod.quantity * prod.unit_price);
     }, 0);
     console.log("total= ", total);
 
