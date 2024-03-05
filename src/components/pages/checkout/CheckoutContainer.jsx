@@ -28,7 +28,7 @@ const CheckoutContainer = () => {
   const { cart, clearCart, getTotalPrice } = useContext(CartContext);
 
   // initialize mercadopago SDK
-  initMercadoPago("import.meta.env.VITE_publicKey", {
+  initMercadoPago(import.meta.env.VITE_publicKeyTest, {
     locale: "es-CO",
   });
 
@@ -63,7 +63,7 @@ const CheckoutContainer = () => {
   // handles succesfull payment. post order to fb, reduce stock, clear cart and order in local storage
   useEffect(() => {
     let order = JSON.parse(localStorage.getItem("order"));
-    console.log("order", order)
+    console.log("orderpre =", order);
     if (payment === "approved") {
       let refCollection = collection(db, "orders");
       addDoc(refCollection, { ...order, date: serverTimestamp() })
@@ -77,6 +77,7 @@ const CheckoutContainer = () => {
           });
         });
         
+        console.log("order", order);
         localStorage.removeItem("order");
         clearCart();
       }

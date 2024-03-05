@@ -15,7 +15,7 @@ const Checkout = ({ data }) => {
       <TextField
         name="tel"
         variant="outlined"
-        label="codigo postal"
+        label="telefono"
         onChange={handleChange}
       />
       <Button onClick={handleBuy}>Mercado pago</Button>

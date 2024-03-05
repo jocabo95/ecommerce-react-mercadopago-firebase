@@ -1,9 +1,10 @@
 import CartContainer from "../components/pages/cart/CartContainer";
-import CheckoutContainer from "../components/pages/checkout/CheckOutContainer";
+import CheckoutContainer from "../components/pages/checkout/CheckoutContainer";
 import ForgotPasswordContainer from "../components/pages/forgotPassword/ForgotPasswordContainer";
 import Home from "../components/pages/home/Home";
 import ItemDetailContainer from "../components/pages/itemDetail/ItemDetailContainer";
 import LoginContainer from "../components/pages/login/LoginContainer";
+import MyOrdersContainer from "../components/pages/myOrders/MyOrdersContainer";
 import RegisterContainer from "../components/pages/register/RegisterContainer";
 import ItemListContainer from "../components/pages/shop/ItemListContainer";
 
@@ -47,6 +48,11 @@ export const routes = [
     id: "checkout",
     path: "/checkout",
     Element: CheckoutContainer,
+  },
+  {
+    id: "orders",
+    path: "/orders",
+    Element: MyOrdersContainer,
   },
  
 ];
