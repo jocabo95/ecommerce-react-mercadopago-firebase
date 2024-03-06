@@ -28,7 +28,7 @@ const CheckoutContainer = () => {
   const { cart, clearCart, getTotalPrice } = useContext(CartContext);
 
   // initialize mercadopago SDK
-  initMercadoPago(import.meta.env.VITE_publicKeyTest, {
+  initMercadoPago(import.meta.env.VITE_publicKey, {
     locale: "es-CO",
   });
 
