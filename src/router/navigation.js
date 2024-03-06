@@ -25,7 +25,7 @@ export const menuItems = [
     },
     {
         id: "userOrders",
-        path: "/user-orders",
+        path: "/orders",
         title: "Mis compras",
         Icon: ShopIcon
     }

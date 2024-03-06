@@ -9,7 +9,7 @@ const MyOrdersContainer = () => {
 
     const [myOrder, setMyOrder] = useState([])
     const navigate = useNavigate()
-    const { user } = useContext(AuthContext());
+    const { user } = useContext(AuthContext);
 
     // get order form firebase
   useEffect(() => {

@@ -18,7 +18,7 @@ import { db } from "../../../firebaseConfig";
 const CheckoutContainer = () => {
   const [preferenceId, setPreferenceId] = useState(null); // variable to store id given by mercadopago
   const [orderId, setOrderId] = useState(null);
-  const [shipmentCost, setShipmentCost] = useState();
+  const [shipmentCost, setShipmentCost] = useState(0);
   const [userData, setUserData] = useState({
     cp: "",
     tel: "",
@@ -26,6 +26,11 @@ const CheckoutContainer = () => {
 
   const { user } = useContext(AuthContext);
   const { cart, clearCart, getTotalPrice } = useContext(CartContext);
+
+  // manipulates URL query string to get "status" key value. Determines if transaction was succesful
+  let location = useLocation();
+  let queryParams = new URLSearchParams(location.search);
+  let payment = queryParams.get("status");
 
   // initialize mercadopago SDK
   initMercadoPago(import.meta.env.VITE_publicKey, {
@@ -55,15 +60,14 @@ const CheckoutContainer = () => {
     }
   };
 
-  // manipulates URL query string to get "status" key value. Determines if transaction was succesful
-  let location = useLocation();
-  let queryParams = new URLSearchParams(location.search);
-  let payment = queryParams.get("status");
 
   // handles succesfull payment. post order to fb, reduce stock, clear cart and order in local storage
   useEffect(() => {
     let order = JSON.parse(localStorage.getItem("order"));
-    console.log("orderpre =", order);
+
+    console.log("useffect order=", order)
+    console.log("payment status= ", payment);
+
     if (payment === "approved") {
       let refCollection = collection(db, "orders");
       addDoc(refCollection, { ...order, date: serverTimestamp() })
@@ -71,22 +75,23 @@ const CheckoutContainer = () => {
           setOrderId(res.id);
         })
         .catch((err) => console.log(err));
-        order?.products?.forEach((product) => {
-          updateDoc(doc(db, "products", product.id), {
-            stock: product.stock - product.quantity,
-          });
+
+      order?.products?.forEach((product) => {
+        updateDoc(doc(db, "products", product.id), {
+          stock: product.stock - product.quantity,
         });
-        
-        console.log("order", order);
-        localStorage.removeItem("order");
-        clearCart();
-      }
-  }, [payment, clearCart]);
+      });
+
+      console.log("order= ", order);
+      localStorage.removeItem("order");
+      clearCart();
+    }
+  }, [payment]);
 
   //gets shipment cost from firebase
   useEffect(() => {
     let refCollection = collection(db, "shipment");
-    let refdoc = doc(refCollection, "7WMHaShKKD7OV8YUIu8R");
+    let refdoc = doc(refCollection, "7WMHaShKKD7OV8YUIu8R"); //shipment cost id in fb
     getDoc(refdoc)
       .then((res) => {
         setShipmentCost(res.data().cost);
@@ -103,7 +108,7 @@ const CheckoutContainer = () => {
       telefono: userData.tel,
       products: cart,
       email: user.email,
-      total: getTotalPrice + shipmentCost
+      total: getTotalPrice + shipmentCost,
     };
 
     localStorage.setItem("order", JSON.stringify(storeOrder));
