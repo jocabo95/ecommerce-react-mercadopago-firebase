@@ -8,8 +8,13 @@ const MyOrders = ({ data }) => {
       <Box sx={{ width: "100%", height: "100%" }}>
         {myOrder.map((order) => {
           <div key={order.id}>
-            {order.items.map((product) => {
-              return <div key={product.id}></div>;
+            {order?.items?.map((product) => {
+              return (
+                <div key={product.id}>
+                  <h2>{product.title}</h2>
+                  <h3>{product.quantity}</h3>
+                </div>
+              );
             })}
           </div>;
         })}

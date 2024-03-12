@@ -26,6 +26,7 @@ const CheckoutContainer = () => {
 
   const { user } = useContext(AuthContext);
   const { cart, clearCart, getTotalPrice } = useContext(CartContext);
+  let totalPrice = getTotalPrice()
 
   // manipulates URL query string to get "status" key value. Determines if transaction was succesful
   let location = useLocation();
@@ -76,13 +77,12 @@ const CheckoutContainer = () => {
         })
         .catch((err) => console.log(err));
 
-      order?.products?.forEach((product) => {
-        updateDoc(doc(db, "products", product.id), {
-          stock: product.stock - product.quantity,
+        order.products.forEach((el) => {
+        updateDoc(doc(db, "products", el.id), {
+          stock: el.stock - el.quantity,
         });
       });
 
-      console.log("order= ", order);
       localStorage.removeItem("order");
       clearCart();
     }
@@ -108,7 +108,7 @@ const CheckoutContainer = () => {
       telefono: userData.tel,
       products: cart,
       email: user.email,
-      total: getTotalPrice + shipmentCost,
+      total: totalPrice + shipmentCost,
     };
 
     localStorage.setItem("order", JSON.stringify(storeOrder));
@@ -128,18 +128,11 @@ const CheckoutContainer = () => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
-  const data = { handleChange, handleBuy, Wallet, preferenceId };
+  const data = { handleChange, handleBuy, Wallet, preferenceId, orderId };
 
   return (
     <>
-      {!orderId ? (
-        <Checkout data={data} />
-      ) : (
-        <div>
-          <h1>se hizo pago</h1>
-          <h4>order id: {orderId}</h4>
-        </div>
-      )}
+     <Checkout data={data} />
     </>
   );
 };
