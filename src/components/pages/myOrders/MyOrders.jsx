@@ -5,6 +5,7 @@ const MyOrders = ({ data }) => {
 
   return (
     <Container sx={{ width: "80%", height: "auto" }}>
+      <h1>mis ordenes</h1>
       <Box sx={{ width: "100%", height: "100%" }}>
         {myOrder.map((order) => {
           <div key={order.id}>

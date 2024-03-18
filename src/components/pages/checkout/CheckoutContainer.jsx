@@ -31,7 +31,7 @@ const CheckoutContainer = () => {
   // manipulates URL query string to get "status" key value. Determines if transaction was succesful
   let location = useLocation();
   let queryParams = new URLSearchParams(location.search);
-  let payment = queryParams.get("status");
+  let paramValue = queryParams.get("status");
 
   // initialize mercadopago SDK
   initMercadoPago(import.meta.env.VITE_publicKey, {
@@ -67,9 +67,9 @@ const CheckoutContainer = () => {
     let order = JSON.parse(localStorage.getItem("order"));
 
     console.log("useffect order=", order)
-    console.log("payment status= ", payment);
+    console.log("paramValue status= ", paramValue);
 
-    if (payment === "approved") {
+    if (paramValue === "approved") {
       let refCollection = collection(db, "orders");
       addDoc(refCollection, { ...order, date: serverTimestamp() })
         .then((res) => {
@@ -86,7 +86,7 @@ const CheckoutContainer = () => {
       localStorage.removeItem("order");
       clearCart();
     }
-  }, [payment]);
+  }, [paramValue]);
 
   //gets shipment cost from firebase
   useEffect(() => {
