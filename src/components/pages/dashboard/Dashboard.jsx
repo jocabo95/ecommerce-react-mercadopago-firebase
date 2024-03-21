@@ -16,16 +16,18 @@ const Dashboard = ({ data }) => {
     removeProd,
     style,
     handleClose,
+    handleOpen,
     open,
-    addNewProduct,
-    setDbChange
+    setDbChange,
+    productTobeEdited,
+    setproductTobeEdited,
   } = data;
 
   return (
     <div>
       <h1>Dashboard</h1>
       <h2>Productos</h2>
-      <Button type="button" onClick={addNewProduct}>
+      <Button type="button" onClick={()=>handleOpen(null)}>
         agregar producto
       </Button>
 
@@ -62,10 +64,10 @@ const Dashboard = ({ data }) => {
                 <TableCell align="left">{product.stock}</TableCell>
                 <TableCell align="left">{product.category}</TableCell>
                 <TableCell align="left">
-                  <IconButton onClick={() => editProd(product.id)}>
+                  <IconButton onClick={() => handleOpen(product)}>
                     <EditIcon></EditIcon>
                   </IconButton>
-                  <IconButton onClick={() => removeProd(product.id)}>
+                  <IconButton onClick={() => removeProd(product)}>
                     <DeleteForeverIcon></DeleteForeverIcon>
                   </IconButton>
                 </TableCell>
@@ -80,7 +82,12 @@ const Dashboard = ({ data }) => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <ProductForm handleClose={handleClose} setDbChange={setDbChange} />
+            <ProductForm
+              handleClose={handleClose}
+              setDbChange={setDbChange}
+              productTobeEdited={productTobeEdited}
+              setproductTobeEdited={setproductTobeEdited}
+            />
           </Box>
         </Modal>
       </TableContainer>

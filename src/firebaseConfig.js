@@ -30,7 +30,7 @@ export const db = getFirestore(app);
 const auth = getAuth(app);
 
 //storage
-const storage = getStorage(app)
+export const storage = getStorage(app)
 
 // sign in
 export const onSignIn = async ({ email, password }) => {
