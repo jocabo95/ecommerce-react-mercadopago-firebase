@@ -6,29 +6,25 @@ import { deleteObject, ref } from "firebase/storage";
 
 const DashboardContainer = () => {
   const [products, setProducts] = useState(); // stores all products from fb
-  const [open, setOpen] = useState(false) // stores modal state
-  const [dbChange, setDbChange] = useState(false) // registers when a change is made to products colection
+  const [open, setOpen] = useState(false); // stores modal state
+  const [dbChange, setDbChange] = useState(false); // registers when a change is made to products colection
   const [productTobeEdited, setproductTobeEdited] = useState(null);
-  
 
   // function to close modal
-  let handleClose =()=>{
-    setOpen(false)
-    setproductTobeEdited(null)
-  }
+  let handleClose = () => {
+    setOpen(false);
+    setproductTobeEdited(null);
+  };
 
   //open modal
-  let handleOpen =(product)=>{
-
+  let handleOpen = (product) => {
     setproductTobeEdited(product);
-    setOpen(true)
-  }
-
+    setOpen(true);
+  };
 
   // get products from fb to show them in dashboard
   useEffect(() => {
-
-    setDbChange(false)
+    setDbChange(false);
 
     let productsCollection = collection(db, "products");
     getDocs(productsCollection)
@@ -48,16 +44,16 @@ const DashboardContainer = () => {
   }, [dbChange]);
 
   // remove prod from dashboard
-  let removeProd = async(product) =>{
-    deleteDoc(doc(db, "products", product.id))
-    
-    const imgRef = ref(storage, product.img)
-    await deleteObject(imgRef)
-    
-    setDbChange(true);
-  }
+  let removeProd = async (product) => {
+    deleteDoc(doc(db, "products", product.id));
 
-  // modal style (form mui)
+    const imgRef = ref(storage, product.img);
+    await deleteObject(imgRef);
+
+    setDbChange(true);
+  };
+
+  // modal style (from mui)
   const style = {
     position: "absolute",
     top: "50%",
@@ -69,7 +65,7 @@ const DashboardContainer = () => {
     boxShadow: 24,
     p: 4,
   };
-  
+
   const data = {
     products,
     removeProd,
