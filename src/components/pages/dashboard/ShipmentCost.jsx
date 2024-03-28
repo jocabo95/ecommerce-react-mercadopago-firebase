@@ -27,24 +27,22 @@ const ShipmentCost = () => {
     setNewCost({cost: e.target.value})
   }
 
-  console.log("new", newCost)
+  // update firebase with new cost
+  let editShipmentCost = async () => {
+    setCheckChange(false)
 
-    // update firebase with new cost
-    let editShipmentCost = async () => {
-        setCheckChange(false)
-
-      try {
-        let refShipmentCost = collection(db, "shipment");
-        updateDoc(
-            doc(refShipmentCost, "7WMHaShKKD7OV8YUIu8R"),
-            newCost
-        ).then(() => {
-            setCheckChange(true)
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    try {
+      let refShipmentCost = collection(db, "shipment");
+      updateDoc(
+          doc(refShipmentCost, "7WMHaShKKD7OV8YUIu8R"),
+          newCost
+      ).then(() => {
+          setCheckChange(true)
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>

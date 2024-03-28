@@ -39,7 +39,6 @@ const Dashboard = ({ data }) => {
 
       {/* PRODUCTS CHART */}
       <ProductsDashboard data={productsChartData} />
-
       
       
     </div>

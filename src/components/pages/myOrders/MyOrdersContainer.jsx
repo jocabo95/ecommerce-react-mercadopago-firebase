@@ -13,18 +13,18 @@ const MyOrdersContainer = () => {
 
     // get order form firebase
   useEffect(() => {
-    (async () => {
-      let refCollection = collection(db, "orders");
-      let filterOrders = query(refCollection, where("email", "==", user.email));
-      getDocs(filterOrders)
-        .then((res) => {
-            let orderArr = res.docs.map((order) => {
-              return { ...order.data(), id: order.id};
-            });
-          setMyOrder(orderArr)
-        })
-        .catch((err) => console.log(err));
-    })();
+    
+    let refCollection = collection(db, "orders");
+    let filterOrders = query(refCollection, where("email", "==", user.email));
+    getDocs(filterOrders)
+      .then((res) => {
+          let orderArr = res.docs.map((order) => {
+            return { ...order.data(), id: order.id};
+          });
+        setMyOrder(orderArr)
+      })
+      .catch((err) => console.log(err));
+    
   }, [user.email]);
 
   const data = {myOrder, navigate};
