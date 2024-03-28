@@ -72,8 +72,6 @@ const CheckoutContainer = () => {
         };
       });
 
-      console.log("summarized Arr= ", summarizedArr);
-
       const response = await axios.post(
         "http://localhost:8000/create_preference",
         {
@@ -83,7 +81,6 @@ const CheckoutContainer = () => {
       );
 
       let { id } = response.data;
-      console.log("post exitoso, id= ", id);
 
       return id;
     } catch (error) {
@@ -96,8 +93,9 @@ const CheckoutContainer = () => {
     let order = JSON.parse(localStorage.getItem("order"));
 
     if (paramValue === "approved") {
-      let refCollection = collection(db, "orders");
-      addDoc(refCollection, { ...order, date: serverTimestamp() })
+      console.log("ln 99. param value ok, value=", paramValue); //! remove later
+      let orderCollection = collection(db, "orders");
+      addDoc(orderCollection, { ...order, date: serverTimestamp() })
         .then((res) => {
           setOrderId(res.id);
         })
@@ -109,10 +107,16 @@ const CheckoutContainer = () => {
         });
       });
 
-      localStorage.removeItem("order");
       clearCart();
+    } else {
+      console.log("paramValue= ", paramValue);
     }
+
+    localStorage.removeItem("order");
   }, [paramValue]);
+
+  console.log("ln 121. orderId= ", orderId); //! remove later
+  console.log("ln 122. preferenceId= ", preferenceId); //! remove later
 
   //gets shipment cost from firebase
   useEffect(() => {
@@ -140,9 +144,9 @@ const CheckoutContainer = () => {
     localStorage.setItem("order", JSON.stringify(storeOrder));
 
     try {
-      const id = await createPreference(); //! create preference not returning id
+      const id = await createPreference();
       if (id) {
-        setPreferenceId(id);
+        setPreferenceId(id); // - preference id generado cuando sale boton mp
       }
     } catch (error) {
       console.log(error);

@@ -14,8 +14,8 @@ const MyOrdersContainer = () => {
     // get order form firebase
   useEffect(() => {
     
-    let refCollection = collection(db, "orders");
-    let filterOrders = query(refCollection, where("email", "==", user.email));
+    let ordersCollection = collection(db, "orders");
+    let filterOrders = query(ordersCollection, where("email", "==", user.email));
     getDocs(filterOrders)
       .then((res) => {
           let orderArr = res.docs.map((order) => {
