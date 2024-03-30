@@ -4,6 +4,7 @@ import CartContextComponent from "./components/context/CartContext";
 import AuthContextComponent from "./components/context/AuthContext";
 
 function App() {
+
   return (
     <BrowserRouter>
       <CartContextComponent>

@@ -116,7 +116,7 @@ function Navbar(props) {
           sx={{ gap: "20px", display: "flex", justifyContent: "space-between" }}
         >
           <Link to="/" style={{ color: "whitesmoke" }}>
-            Bazar-deco
+            <img alt="BASALTO STUDIO" src="src\images\logo.webp" />
           </Link>
           <IconButton
             color="secondary.primary"
