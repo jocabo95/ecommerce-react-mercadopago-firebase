@@ -8,25 +8,25 @@ export const menuItems = [
     {
         id: "home",
         path: "/",
-        title: "Inicio",
+        title: "INICIO",
         Icon: HomeIcon
     },
     {
         id: "products",
         path: "/shop",
-        title: "Tienda",
+        title: "TIENDA",
         Icon: StoreIcon
     },
     {
         id: "cart",
         path: "/cart",
-        title: "Carrito",
+        title: "CARRITO",
         Icon: ShoppingCartCheckoutIcon
     },
     {
         id: "userOrders",
         path: "/orders",
-        title: "Mis compras",
+        title: "MIS COMPRAS",
         Icon: ShopIcon
     }
 ]

@@ -1,4 +1,4 @@
-import { Box, Toolbar } from "@mui/material";
+import { Box, Toolbar, Typography } from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -22,13 +22,11 @@ const NavbarDrawer = ({ data }) => {
   const navLinkFontSize = "1.5rem"
 
   return (
-    <Box sx={{ backgroundColor: "primary.main", height: "100vh" }}>
+    <Box sx={{ backgroundColor: "background.main", height: "100vh" }}>
       <Toolbar />
 
       {/* logo */}
-      <Link to="/login">
-        <img alt="BASALTO STUDIO" src="src\images\logo.webp" />
-      </Link>
+      <Typography variant="h4" sx={{pl:"24px"}}>BASALTO STUDIO</Typography>
 
       {/* nav list */}
       <List>
@@ -36,7 +34,7 @@ const NavbarDrawer = ({ data }) => {
           return (
             <Link key={id} to={path}>
               <ListItem
-                divider="true"
+                divider={true}
                 disablePadding
                 sx={{ height: navLinkHeight }}
               >
@@ -63,7 +61,7 @@ const NavbarDrawer = ({ data }) => {
         {user.rol === adminRole && (
           <Link to={"/dashboard"}>
             <ListItem
-              divider="true"
+              divider={true}
               disablePadding
               sx={{ height: navLinkHeight }}
             >
@@ -88,7 +86,7 @@ const NavbarDrawer = ({ data }) => {
 
         {isLogged && (
           <ListItem
-            divider="true"
+            divider={true}
             disablePadding
             sx={{ height: navLinkHeight }}
           >

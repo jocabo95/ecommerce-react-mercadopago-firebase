@@ -19,7 +19,7 @@ function App() {
         main: "#36454F",
       },
       background: {
-        main: "#E3D3C8",
+        main: "#FDFDFD",
         light: "#ffffff",
         dark: "#A06348",
       },

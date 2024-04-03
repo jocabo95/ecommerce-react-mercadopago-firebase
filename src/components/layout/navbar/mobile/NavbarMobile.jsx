@@ -52,8 +52,9 @@ const NavbarMobile = ({ data }) => {
 
           {/* CART */}
           <IconButton>
-            <ShoppingCartIcon color="secondary" />
+              <ShoppingCartIcon color="secondary" />
           </IconButton>
+            
         </Toolbar>
       </AppBar>
 
