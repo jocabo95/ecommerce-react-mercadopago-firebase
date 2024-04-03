@@ -1,4 +1,7 @@
+import { Badge } from "@mui/material";
 import NavbarDrawer from "../NavbarDrawer";
+import { useContext } from "react";
+import { CartContext } from "../../../context/CartContext";
 
 
 const NavbarMobile = ({ data }) => {
@@ -19,6 +22,10 @@ const NavbarMobile = ({ data }) => {
     Outlet,
     Drawer,
   } = data;
+
+  const { cart } = useContext(CartContext);
+
+  let cartBadgeNumber = cart.length;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -51,10 +58,17 @@ const NavbarMobile = ({ data }) => {
           </Link>
 
           {/* CART */}
-          <IconButton>
-              <ShoppingCartIcon color="secondary" />
-          </IconButton>
-            
+          <Link to={"/cart"}>
+            <Badge
+              badgeContent={cartBadgeNumber}
+              color="primary"
+              overlap="circular"
+            >
+              <IconButton>
+                <ShoppingCartIcon color="secondary" />
+              </IconButton>
+            </Badge>
+          </Link>
         </Toolbar>
       </AppBar>
 
