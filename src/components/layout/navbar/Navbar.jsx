@@ -3,37 +3,38 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useContext, useState } from "react";
-import LogoutIcon from "@mui/icons-material/Logout";
 import { menuItems } from "../../../router/navigation";
 import { logout } from "../../../firebaseConfig";
 import { AuthContext } from "../../context/AuthContext";
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import { CartContext } from "../../context/CartContext";
+import { Button } from "@mui/base";
+import NavbarMobile from "./mobile/NavbarMobile";
+import { useMediaQuery, useTheme } from "@mui/material";
+import NavbarDesktop from "./desktop/NavbarDesktop";
 
-
-const drawerWidth = 200;
+const drawerWidth = "100%"; //! set drawer width
 
 function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
+
   const navigate = useNavigate();
 
-  const { user } = useContext(AuthContext);
   const { clearCart } = useContext(CartContext);
-  const adminRole = import.meta.env.VITE_ADMINROLE;
+  const { handleLogoutAuth, isLogged, user } = useContext(AuthContext);
 
-  const { handleLogoutAuth, isLogged } = useContext(AuthContext);
+  const theme = useTheme();
+  const mediaQuery = useMediaQuery(theme.breakpoints.down("md")); // true if display bellow  md
+
+  const adminRole = import.meta.env.VITE_ADMINROLE;
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -46,128 +47,46 @@ function Navbar(props) {
     navigate("/login");
   };
 
-  const drawer = (
-    <Box sx={{backgroundColor: 'primary.main', height: "100%"}}>
-      <Toolbar />
-
-      <List>
-        {menuItems.map(({ id, path, title, Icon }) => {
-          return (
-            <Link key={id} to={path}>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <Icon sx={{ color: "primary.contrastText" }} />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={title}
-                    sx={{ color: "primary.contrastText" }}
-                  />
-                </ListItemButton>
-              </ListItem>
-            </Link>
-          );
-        })}
-
-        {user.rol === adminRole && (
-          <Link to={"/dashboard"}>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <DashboardIcon sx={{ color: "primary.contrastText" }} />
-                </ListItemIcon>
-                <ListItemText
-                  primary={"Dashboard"}
-                  sx={{ color: "primary.contrastText" }}
-                />
-              </ListItemButton>
-            </ListItem>
-          </Link>
-        )}
-
-        {isLogged && (
-          <ListItem disablePadding>
-            <ListItemButton onClick={handleLogout}>
-              <ListItemIcon>
-                <LogoutIcon sx={{ color: "primary.contrastText" }} />
-              </ListItemIcon>
-              <ListItemText
-                primary={"Cerrar sesion"}
-                sx={{ color: "primary.contrastText" }}
-              />
-            </ListItemButton>
-          </ListItem>
-        )}
-      </List>
-    </Box>
-  );
-
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
-  return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{
-          width: "100%",
-          backgroundColor: "background.main",
-        }}
-      >
-        <Toolbar
-          sx={{ gap: "20px", display: "flex", justifyContent: "space-between" }}
-        >
-          <Link to="/">
-            <img alt="BASALTO STUDIO" src="src\images\logo.webp" />
-          </Link>
-          <IconButton
-            color="secondary.primary"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-          >
-            <MenuIcon color="secondary.primary" />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Box component="nav" aria-label="mailbox folders">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          anchor={"right"}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={{
-            display: { xs: "block" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-              //! set background color of drawer. cant be done by theme cause drawer hasnt color prop
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          py: 4,
-          width: "100%",
-          minHeight: "100vh",
-          px: 2,
-        }}
-      >
-        <Toolbar />
+  const drawerData = {
+    menuItems,
+    user,
+    adminRole,
+    isLogged,
+    handleLogout,
+    handleDrawerToggle,
+  };
 
-        <Outlet />
-      </Box>
-    </Box>
+  const navbarData = {
+    Box,
+    Button,
+    CssBaseline,
+    AppBar,
+    Toolbar,
+    Link,
+    menuItems,
+    IconButton,
+    ShoppingCartIcon,
+    handleDrawerToggle,
+    MenuIcon,
+    container,
+    mobileOpen,
+    drawerWidth,
+    drawerData,
+    Outlet,
+    Drawer,
+  };
+
+  return (
+    <>
+      {mediaQuery ? (
+        <NavbarMobile data={navbarData} />
+      ) : (
+        <NavbarDesktop data={navbarData} />
+      )}
+    </>
   );
 }
 
