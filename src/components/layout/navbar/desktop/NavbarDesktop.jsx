@@ -1,6 +1,8 @@
-import { Grid, Typography } from "@mui/material";
+import { Badge, Grid, Typography } from "@mui/material";
 import NavbarDrawer from "../NavbarDrawer";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../../context/CartContext";
 
 const NavbarDesktop = ({ data }) => {
   const {
@@ -20,6 +22,11 @@ const NavbarDesktop = ({ data }) => {
     Outlet,
     Drawer,
   } = data;
+
+  const {cart} = useContext(CartContext)
+
+  let cartBadgeNumber = cart.length;
+  
 
   return (
     <>
@@ -58,8 +65,8 @@ const NavbarDesktop = ({ data }) => {
                 container
                 xs={12}
                 sx={{
-                  height: "60px",
-                  borderBottom: "solid thin gray",
+                  height: "80px",
+                  borderBottom: "groove thin #D5D5D5",
                   padding: "0 24px 0 24px",
                 }}
               >
@@ -89,9 +96,17 @@ const NavbarDesktop = ({ data }) => {
                       alignItems: "center",
                     }}
                   >
-                    <IconButton>
-                      <ShoppingCartIcon color="secondary" />
-                    </IconButton>
+                    <Link to={"/cart"}>
+                      <Badge
+                        badgeContent={cartBadgeNumber}
+                        color="primary"
+                        overlap="circular"
+                      >
+                        <IconButton>
+                          <ShoppingCartIcon color="secondary" />
+                        </IconButton>
+                      </Badge>
+                    </Link>
                   </Box>
                 </Grid>
               </Grid>
@@ -101,7 +116,7 @@ const NavbarDesktop = ({ data }) => {
                 <Box
                   sx={{
                     display: {
-                      height: "60px",
+                      height: "70px",
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "center",
