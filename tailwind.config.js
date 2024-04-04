@@ -15,8 +15,12 @@ module.exports = {
     extend: {},
   },
   darkMode: "class",
-  plugins: [nextui({
-    
+  plugins: [
+    require("postcss-import"),
+    require("@tailwindcss/nesting")(require("postcss-nesting")),
+    require("tailwindcss"),
+    require("autoprefixer"),
+    nextui({
       prefix: "nextui", // prefix for themes variables
       addCommonColors: false, // override common colors (e.g. "blue", "green", "pink").
       defaultTheme: "light", // default theme from the themes object
@@ -32,12 +36,11 @@ module.exports = {
           colors: {}, // dark theme colors
         },
         // ... custom themes
-        
+
         mytheme: {
           layout: {}, // dark theme layout tokens
           colors: {
-
-             background: "#ffffff",
+            background: "#ffffff",
             foreground: "#616376",
 
             // gris consultic con negro gris de letra
@@ -55,13 +58,10 @@ module.exports = {
             },
 
             focus: "#BEF264",
-
-          }, 
+          },
         },
-
       },
-    
-  })
+    }),
   ],
 };
 
