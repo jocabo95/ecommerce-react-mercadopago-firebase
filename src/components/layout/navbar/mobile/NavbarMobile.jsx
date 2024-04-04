@@ -27,6 +27,9 @@ const NavbarMobile = ({ data }) => {
 
   let cartBadgeNumber = cart.length;
 
+  //- MODIFIABLES
+  let navbarHeight = "70px";
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -40,7 +43,7 @@ const NavbarMobile = ({ data }) => {
       >
         {/* Toolbar === navbar content */}
         <Toolbar
-          sx={{ gap: "20px", display: "flex", justifyContent: "space-between" }}
+          sx={{ height: navbarHeight ,gap: "20px", display: "flex", justifyContent: "space-between" }}
         >
           {/* menu icon */}
           <IconButton
@@ -102,10 +105,9 @@ const NavbarMobile = ({ data }) => {
         component="main"
         sx={{
           flexGrow: 1,
-          py: 4,
+          py: 0.5,
           width: "100%",
           minHeight: "100vh",
-          px: 2,
         }}
       >
         <Toolbar />

@@ -23,10 +23,13 @@ const NavbarDesktop = ({ data }) => {
     Drawer,
   } = data;
 
-  const {cart} = useContext(CartContext)
+  const { cart } = useContext(CartContext);
 
   let cartBadgeNumber = cart.length;
-  
+
+  //- MODIFIABLES
+  let topNavbarHeight = "80px";
+  let bottomNavbarHeight = "70px";
 
   return (
     <>
@@ -65,7 +68,7 @@ const NavbarDesktop = ({ data }) => {
                 container
                 xs={12}
                 sx={{
-                  height: "80px",
+                  height: topNavbarHeight,
                   borderBottom: "groove thin #D5D5D5",
                   padding: "0 24px 0 24px",
                 }}
@@ -83,7 +86,18 @@ const NavbarDesktop = ({ data }) => {
                       alignItems: "center",
                     }}
                   >
-                    <Typography variant="h5">BASALTO</Typography>
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        fontSize: "2rem",
+                        fontWeight: "600",
+                        fontFamily: "Raleway",
+
+                        letterSpacing: "2vw",
+                      }}
+                    >
+                      BASALTO STUDIO
+                    </Typography>
                   </Box>
                 </Grid>
                 <Grid item xs={1}>
@@ -116,7 +130,7 @@ const NavbarDesktop = ({ data }) => {
                 <Box
                   sx={{
                     display: {
-                      height: "70px",
+                      height: bottomNavbarHeight,
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "center",
@@ -176,10 +190,9 @@ const NavbarDesktop = ({ data }) => {
           component="main"
           sx={{
             flexGrow: 1,
-            py: 15,
+            py: "5.5rem", //! check height
             width: "100%",
             minHeight: "100vh",
-            px: 2,
           }}
         >
           <Toolbar />

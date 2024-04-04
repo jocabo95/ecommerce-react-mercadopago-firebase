@@ -1,0 +1,89 @@
+.hero-container {
+  /* height stipulated in id's hero-container-mobile/desktop with media querys */
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow-y: hidden;
+
+  background-color: black;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+
+  opacity: 0.7;
+}
+
+.hero-text-container {
+  position: absolute;
+  width: 100vw;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#hero-button {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: background;
+  text-transform: capitalize;
+
+  padding: 1rem 2rem 1rem 2rem;
+
+  border-radius: 0;
+}
+
+/* query MOBILE */
+#hero-container-mobile {
+  height: auto;
+
+  #hero-title {
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: "Raleway";
+
+    letter-spacing: 1.5vw;
+  }
+
+  .hero-text-container {
+    top: 65%;
+    left: 50%;
+  }
+
+  #hero-button {
+    top: 78%;
+    left: 50%;
+
+    font-size: 3rem;
+  }
+}
+
+/* query DESKTOP */
+#hero-container-desktop {
+  height: calc(100vh - 150px);
+
+  #hero-title {
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-family: "Raleway";
+
+    letter-spacing: 1rem;
+  }
+
+  .hero-text-container {
+    top: 70%;
+    left: 50%;
+  }
+
+  #hero-button {
+    top: 85%;
+    left: 50%;
+
+    font-size: 1.5rem;
+  }
+}
+
+

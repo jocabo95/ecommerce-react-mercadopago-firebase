@@ -1,10 +1,12 @@
+import HeroImage from "../../common/heroImage/HeroImage";
 
 const Home = () => {
 
+  const heroText="Arquitectura y diseño interior"
 
   return (
     <div>
-      <h1>Este es el home</h1>
+      <HeroImage imgUrl={"src/images/lampara.PNG"} text={heroText} button={true} />
     </div>
   );
 };
