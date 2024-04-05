@@ -2,6 +2,8 @@ import { Button } from "@nextui-org/react"
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
+
+
 const Cart = ({data}) => {
 
   const { cart, clearCart, deleteById, total } = data;
