@@ -1,11 +1,10 @@
-import { Card, CardHeader, CardBody, Divider, Image } from "@nextui-org/react";
-import { Box, Container } from "@mui/material";
+// import { Card, CardHeader, CardBody, Divider, Image } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 import ShopHeader from "./shopHeader/ShopHeader";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
+import { CardActionArea, Grid, Box, Card, CardMedia, CardContent, Typography } from "@mui/material";
 
 const ItemList = ({ data }) => {
-  const { products, navigate } = data;
+  const { products } = data;
 
   return (
     <div style={{ width: "100%" }}>
@@ -13,39 +12,42 @@ const ItemList = ({ data }) => {
       <ShopHeader />
 
       {/* PRODUCTS */}
-
-      {/* CARD */}
-
       <Box sx={{ width: "auto", height: "100%", ml: "1rem", mr: "1rem" }}>
-        <Grid container spacing={1} sx={{ width: "100%", padding: "0px" }}>
-          {/* map products */}
+        <Grid container rowSpacing={7} spacing={2} sx={{ width: "100%", padding: "0px" }}>
           {products.map((prod) => {
             return (
-              <Grid item key={prod.id} xs={12} sm={6} md={4}>
+
+              /* CARD */
+              <Grid item key={prod.id} xs={12} sm={12} md={4}>
                 <Card
-                  className="max-w-[400px] mb-5"
-                  isPressable
-                  radius="none"
-                  onPress={() => navigate(`/itemDetail/${prod.id}`)}
+                  raised={false}
+                  sx={{
+                    borderRadius: "0",
+                    boxShadow: "none",
+                    border: "thin red",
+                    bgcolor: "background",
+                  }}
                 >
-                  <CardHeader className="flex gap-3">
-                    <Image
-                      alt={prod.title}
-                      radius="sm"
-                      src={prod.img}
-                      width={400}
-                    />
-                  </CardHeader>
-                  <Divider />
-                  <CardBody>
-                    <div>
-                      <p className="text-md">{prod.title}</p>
-                      <p className="text-small text-default-500">
-                        {prod.description}
-                      </p>
-                    </div>
-                    <h4>{prod.unit_price}</h4>
-                  </CardBody>
+                  <CardActionArea>
+                    <Link to={`/itemDetail/${prod.id}`}>
+                      <CardMedia
+                        component="img"
+                        image={prod.img}
+                        height="auto"
+                        alt="prod.title"
+                        sx={{
+                          width: "100%",
+                          height: { xs: "40vh", sm: "60vh", md: "30vh" },
+                        }}
+                      />
+                      <CardContent>
+                        <Typography variant="body1">{prod.title}</Typography>
+                        <Typography variant="body1">
+                          {prod.unit_price}
+                        </Typography>
+                      </CardContent>
+                    </Link>
+                  </CardActionArea>
                 </Card>
               </Grid>
             );
