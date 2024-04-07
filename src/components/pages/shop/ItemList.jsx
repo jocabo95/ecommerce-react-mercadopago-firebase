@@ -1,22 +1,44 @@
 // import { Card, CardHeader, CardBody, Divider, Image } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import ShopHeader from "./shopHeader/ShopHeader";
-import { CardActionArea, Grid, Box, Card, CardMedia, CardContent, Typography } from "@mui/material";
+import { CardActionArea, Grid, Box, Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
 
 const ItemList = ({ data }) => {
-  const { products } = data;
+  const { products, filterProductByCategory } = data;
 
   return (
     <div style={{ width: "100%" }}>
       {/* SHOP HEADER */}
-      <ShopHeader />
+      <ShopHeader data={data} />
 
+      <Button
+        onClick={()=>filterProductByCategory(null)}
+        variant="outlined"
+        sx={{
+          width: "auto",
+          height: "auto",
+          borderRadius: "0",
+          ml: "1rem",
+          mb: "2rem",
+        }}
+      >
+        <Typography
+          variant="body"
+          sx={{ fontSize: "0.8rem", textTransform: "capitalize" }}
+        >
+          Todos los productos
+        </Typography>
+      </Button>
       {/* PRODUCTS */}
       <Box sx={{ width: "auto", height: "100%", ml: "1rem", mr: "1rem" }}>
-        <Grid container rowSpacing={7} spacing={2} sx={{ width: "100%", padding: "0px" }}>
+        <Grid
+          container
+          rowSpacing={7}
+          spacing={2}
+          sx={{ width: "100%", padding: "0px" }}
+        >
           {products.map((prod) => {
             return (
-
               /* CARD */
               <Grid item key={prod.id} xs={12} sm={12} md={4}>
                 <Card

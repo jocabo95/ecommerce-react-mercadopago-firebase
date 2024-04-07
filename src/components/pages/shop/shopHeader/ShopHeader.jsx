@@ -4,7 +4,9 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 
-const ShopHeader = () => {
+const ShopHeader = ({ data }) => {
+  const { filterProductByCategory } = data;
+  const allCategories = ["LÁMPARAS", "STOOLS", "COLUMNAS", "TORNILLOS"];
   return (
     <>
       <Typography
@@ -30,38 +32,25 @@ const ShopHeader = () => {
         }}
       >
         <Grid container sx={{ width: "100%", minHeight: "60px" }}>
-          <Grid item xs={6} sm={3} sx={{minHeight: "60px"}}>
-            <Button
-              variant="outlined"
-              sx={{ width: "100%", height: "100%", borderRadius: "0" }}
-            >
-              <Typography className="category">LÁMPARAS</Typography>
-            </Button>
-          </Grid>
-          <Grid item xs={6} sm={3} sx={{minHeight: "60px"}}>
-            <Button
-              variant="outlined"
-              sx={{ width: "100%", height: "100%", borderRadius: "0" }}
-            >
-              <Typography className="category">COLUMNAS</Typography>
-            </Button>
-          </Grid>
-          <Grid item xs={6} sm={3} sx={{minHeight: "60px"}}>
-            <Button
-              variant="outlined"
-              sx={{ width: "100%", height: "100%", borderRadius: "0" }}
-            >
-              <Typography className="category">STOOLS</Typography>
-            </Button>
-          </Grid>
-          <Grid item xs={6} sm={3} sx={{minHeight: "60px"}}>
-            <Button
-              variant="outlined"
-              sx={{ width: "100%", height: "100%", borderRadius: "0" }}
-            >
-              <Typography className="category">TORNILLOS</Typography>
-            </Button>
-          </Grid>
+          {allCategories.map((category) => {
+            return (
+              <Grid
+                key={category}
+                item
+                xs={6}
+                sm={3}
+                sx={{ minHeight: "60px" }}
+              >
+                <Button
+                  onClick={() => filterProductByCategory(category)}
+                  variant="outlined"
+                  sx={{ width: "100%", height: "100%", borderRadius: "0" }}
+                >
+                  <Typography className="category">{category}</Typography>
+                </Button>
+              </Grid>
+            );
+          })}
         </Grid>
       </Paper>
     </>
