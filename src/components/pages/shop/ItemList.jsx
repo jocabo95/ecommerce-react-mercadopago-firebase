@@ -1,7 +1,7 @@
 // import { Card, CardHeader, CardBody, Divider, Image } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import ShopHeader from "./shopHeader/ShopHeader";
-import { CardActionArea, Grid, Box, Card, CardMedia, CardContent, Typography } from "@mui/material";
+import { CardActionArea, Grid, Card, CardMedia, CardContent, Typography } from "@mui/material";
 
 const ItemList = ({ data }) => {
   const { products } = data;
@@ -12,19 +12,22 @@ const ItemList = ({ data }) => {
       <ShopHeader />
 
       {/* PRODUCTS */}
-      <Box sx={{ width: "auto", height: "100%", ml: "1rem", mr: "1rem" }}>
-        <Grid container rowSpacing={7} spacing={2} sx={{ width: "100%", padding: "0px" }}>
+        <Grid
+          container
+          // rowSpacing={7}
+          // spacing={2}
+          sx={{ width: "auto", margin:"0"}}
+        >
           {products.map((prod) => {
             return (
-
               /* CARD */
-              <Grid item key={prod.id} xs={12} sm={12} md={4}>
+              <Grid item key={prod.id} xs={12} sm={12} md={4} sx={{width:"auto",  px: "1rem", pb:"1rem"}}>
                 <Card
                   raised={false}
                   sx={{
                     borderRadius: "0",
-                    boxShadow: "none",
-                    border: "thin red",
+                    //- boxShadow: "none",
+                    border: "thin blue",
                     bgcolor: "background",
                   }}
                 >
@@ -33,7 +36,6 @@ const ItemList = ({ data }) => {
                       <CardMedia
                         component="img"
                         image={prod.img}
-                        height="auto"
                         alt="prod.title"
                         sx={{
                           width: "100%",
@@ -53,7 +55,7 @@ const ItemList = ({ data }) => {
             );
           })}
         </Grid>
-      </Box>
+      
     </div>
   );
 };

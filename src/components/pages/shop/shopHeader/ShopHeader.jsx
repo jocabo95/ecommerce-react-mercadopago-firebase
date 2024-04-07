@@ -10,8 +10,10 @@ const ShopHeader = () => {
       <Typography
         className="page-title"
         sx={{
-          fontSize: { xs: "2rem", sm: "3rem" },
-          letterSpacing: { xs: "0.5rem", sm: "1rem", md: "1.5rem" },
+          fontSize: { xs: "1.5rem", sm: "2rem" },
+          fontWeight: "200",
+          letterSpacing: { xs: "0.5rem"},
+
         }}
       >
         MOBILIARIO

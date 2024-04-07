@@ -1,8 +1,5 @@
 .page-title{
-    
-    font-weight: 200;
-    padding: 1.5rem 0.9rem;
-
+    padding: 1.5rem 1.2rem;
 }
 
 .category{
@@ -11,10 +8,4 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-@media (max-width: 600px){
-    .page-title{
-        font-size: 3rem;
-    }
 }
