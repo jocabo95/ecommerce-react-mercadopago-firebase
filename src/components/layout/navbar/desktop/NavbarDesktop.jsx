@@ -28,8 +28,8 @@ const NavbarDesktop = ({ data }) => {
   let cartBadgeNumber = cart.length;
 
   //- MODIFIABLES
-  let topNavbarHeight = "80px";
-  let bottomNavbarHeight = "70px";
+  let topNavbarHeight = "60px";
+  let bottomNavbarHeight = "64px";
 
   return (
     <>
@@ -87,13 +87,11 @@ const NavbarDesktop = ({ data }) => {
                     }}
                   >
                     <Typography
-                      variant="h5"
+                      variant="h6"
                       sx={{
-                        fontSize: "2rem",
+                        fontSize: "1.2rem",
                         fontWeight: "600",
                         fontFamily: "Raleway",
-
-                        letterSpacing: "2vw",
                       }}
                     >
                       BASALTO STUDIO
@@ -149,7 +147,9 @@ const NavbarDesktop = ({ data }) => {
                         }}
                       >
                         <Link to={el.path}>
-                          <Button variant="text">{el.title}</Button>
+                          <Button variant="text">
+                            <Typography variant="body" sx={{fontSize: "0.7rem"}}>{el.title}</Typography>
+                          </Button>
                         </Link>
                       </Box>
                     );
@@ -190,7 +190,7 @@ const NavbarDesktop = ({ data }) => {
           component="main"
           sx={{
             flexGrow: 1,
-            py: "5.5rem", //! check height
+            py: "60px", //! check height
             width: "100%",
             minHeight: "100vh",
           }}

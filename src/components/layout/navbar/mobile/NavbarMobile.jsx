@@ -28,7 +28,7 @@ const NavbarMobile = ({ data }) => {
   let cartBadgeNumber = cart.length;
 
   //- MODIFIABLES
-  let navbarHeight = "70px";
+  let navbarHeight = "64px";
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -43,7 +43,12 @@ const NavbarMobile = ({ data }) => {
       >
         {/* Toolbar === navbar content */}
         <Toolbar
-          sx={{ height: navbarHeight ,gap: "20px", display: "flex", justifyContent: "space-between" }}
+          sx={{
+            height: navbarHeight,
+            gap: "20px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
         >
           {/* menu icon */}
           <IconButton
@@ -52,12 +57,16 @@ const NavbarMobile = ({ data }) => {
             edge="start"
             onClick={handleDrawerToggle}
           >
-            <MenuIcon fontSize="medium" color="secondary" />
+            <MenuIcon fontSize="small" color="secondary" />
           </IconButton>
 
           {/* logo */}
           <Link to="/login">
-            <img alt="BASALTO STUDIO" src="src\images\logo.webp" />
+            <img
+              alt="BASALTO STUDIO"
+              src="src\images\logo.webp"
+              height="20px"
+            />
           </Link>
 
           {/* CART */}
@@ -68,7 +77,7 @@ const NavbarMobile = ({ data }) => {
               overlap="circular"
             >
               <IconButton>
-                <ShoppingCartIcon color="secondary" />
+                <ShoppingCartIcon fontSize="small" color="secondary" />
               </IconButton>
             </Badge>
           </Link>
@@ -105,7 +114,7 @@ const NavbarMobile = ({ data }) => {
         component="main"
         sx={{
           flexGrow: 1,
-          py: 0.5,
+          py: "0rem", //! padding from navbar to content
           width: "100%",
           minHeight: "100vh",
         }}
