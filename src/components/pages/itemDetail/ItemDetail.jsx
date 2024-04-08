@@ -1,12 +1,12 @@
+import "./itemDetail.css";
 import {
-  CardActionArea,
   Grid,
   Box,
   Card,
   CardMedia,
-  CardContent,
   Typography,
   Button,
+  Paper
 } from "@mui/material";
 
 const ItemDetail = ({ data }) => {
@@ -17,64 +17,96 @@ const ItemDetail = ({ data }) => {
       raised={false}
       sx={{
         width: "100%",
+        height: "auto",
         borderRadius: "0",
         boxShadow: "none",
-        border: "thin red",
         bgcolor: "background",
       }}
     >
-      <CardMedia
-        component="img"
-        image={product.img}
-        height="auto"
-        alt="prod.title"
-        sx={{
-          width: "100%",
-          height: { xs: "40vh", sm: "60vh", md: "30vh" },
-        }}
-      />
+      <Grid container>
+        {/* prouct img*/}
+        <Grid item xs={12} md={6}>
+          <CardMedia
+            component="img"
+            image={product.img}
+            alt="prod.title"
+            sx={{
+              width: "100%",
+              height: "auto",
+              maxHeight: { xs: "45vh", sm: "65vh", md: "82vh" },
+            }}
+          />
+        </Grid>
 
-      <Typography variant="h5">{product.title}</Typography>
+        {/* product info, price, button */}
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            py: { xs: "1rem", md: "2.5rem" },
+            px: { xs: "1rem", md: "2rem" },
+          }}
+        >
+          <Typography
+            sx={{ fontSize: "1.5rem", fontWeight: "400" }}
+            className="description-text"
+            variant="body"
+          >
+            {product.title}
+          </Typography>
+          <Typography className="description-text" variant="body2">
+            {product.unit_price}
+          </Typography>
 
-      <Box sx={{display: "flex"}}>
-        <Button variant="outlined" onClick={resta}>
-          -
-        </Button>
-        <Box>{counter}</Box>
-        <Button variant="outlined" onClick={suma}>
-          +
-        </Button>
-      </Box>
+          <Box
+            sx={{
+              width: "auto",
+              display: "flex",
+              mt: { xs: "2rem", md: "5rem" },
+            }}
+          >
+            <Button
+              className="counter-button"
+              variant="outlined"
+              onClick={resta}
+            >
+              -
+            </Button>
+            <div className="counter-display">{counter}</div>
+            <Button
+              className="counter-button"
+              variant="outlined"
+              onClick={suma}
+            >
+              +
+            </Button>
+          </Box>
+          <Button
+            color="secondary"
+            variant="contained"
+            sx={{ width: "100%", mr: "auto", ml: "auto", mt: "1rem" }}
+            onClick={() => addToCart(product, counter)}
+          >
+            Agregar al carrito
+          </Button>
 
-      <Button variant="outlined" sx={{width: "95%", mr: "auto", ml:"auto"}} onClick={() => addToCart(product, counter)}>
-        Agregar al carrito
-      </Button>
+          <Paper
+            sx={{
+              mt: { xs: "2rem", md: "5rem" },
+              py: { xs: "1rem", md: "1rem" },
+              px: { xs: "1rem", md: "1rem" },
+              height: { xs: "4rem", md: "7rem" },
+              
+            }}
+          >
+            <Typography variant="body">{product.description}</Typography>
+          </Paper>
+        </Grid>
+
+        {/* aditional info product */}
+      </Grid>
     </Card>
-    // <Card className="max-w-[400px] mb-5">
-    //   <CardHeader className="flex gap-3">
-    //     <Image alt={product.title} radius="sm" src={product.img} width={400} />
-    //   </CardHeader>
-    //   <Divider />
-    //   <CardBody>
-    //     <div>
-    //       <p className="text-md">{product.title}</p>
-    //       <p className="text-small text-default-500">{product.description}</p>
-    //     </div>
-    //     <h4>{product.unit_price}</h4>
-    //   </CardBody>
-    //   <CardFooter>
-    //     <Button color="primary" onClick={resta}>
-    //
-    // </Button>
-    // <Box>{counter}</Box>
-    // <Button color="primary" onClick={suma}>
-    //   +
-    // </Button>
-    // <Button color="secondary" onClick={() => addToCart(product, counter)}>
-    //   Agregar al carrito
-    // </Button>
-    //   </CardFooter>
-    // </Card>
   );
 };
 
