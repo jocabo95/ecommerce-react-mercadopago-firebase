@@ -6,7 +6,7 @@ const Home = () => {
 
   return (
     <div>
-      <HeroImage imgUrl={"src/images/lampara.PNG"} text={heroText} button={true} />
+      <HeroImage imgUrl={"src/images/heroDesktop.PNG"} text={heroText} button={true} />
     </div>
   );
 };
