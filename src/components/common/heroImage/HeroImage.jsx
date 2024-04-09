@@ -35,7 +35,7 @@ const HeroImage = ({imgUrl, text, button}) => {
         {button && (
           <Button
             id="hero-button"
-            variant="outlined"
+            variant="contained"
             size="large"
             disableFocusRipple={true}
           >

@@ -12,30 +12,29 @@
     height: 100%;
     display: block;
     object-fit: cover;
-    opacity: 0.9;
+    opacity: 0.75;
   }
 
 .hero-text-container {
   position: absolute;
   width: 100vw;
-  transform: translate(-50%, -400%);
+  transform: translate(-50%, -300%);
   text-align: center;
 }
 
 #hero-button {
   position: absolute;
-  top: 90%;
-  left: 50%;
+  /* top: 90%;
+  left: 50%; */
   transform: translate(-50%, -50%);
-  color: background;
   text-transform: capitalize;
-
-  padding: 1rem 2rem 1rem 2rem;
+  padding: 0.5rem 1rem;
+  background-color: background;
 
   border-radius: 0;
 }
 
-/* MOBILE & TABLET */
+/* MOBILE */
 @media (max-width: 600px) {
   #hero-container {
     height: calc(100vh - 64px);
@@ -46,7 +45,7 @@
   }
 
   #hero-title {
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: 500;
     font-family: "Raleway";
 
@@ -54,7 +53,7 @@
   }
 
   .hero-text-container {
-    top: 65%;
+    top: 85%;
     left: 50%;
   }
 
