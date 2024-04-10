@@ -10,7 +10,11 @@ const ItemListContainer = () => {
   const [selectedCategory, setSelectedCategory] = useState(null)
   const navigate = useNavigate()
 
-  
+  let { mobiliario } = useParams();
+
+  let homeCategory = mobiliario;
+
+  console.log("categ= ",selectedCategory)
 
   // get product collection from firebase & store in state
   useEffect(() => {
@@ -21,6 +25,12 @@ const ItemListContainer = () => {
     if(selectedCategory){
       console.log("category= ",selectedCategory)
       displayProducts = query(productsCollection, where("category", "==", selectedCategory))
+    }else if(homeCategory){
+      displayProducts = query(
+        productsCollection,
+        where("category", "==", homeCategory)
+      );
+
     }else{
       displayProducts = productsCollection
     }

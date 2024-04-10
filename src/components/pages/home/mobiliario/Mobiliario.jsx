@@ -8,10 +8,10 @@ const Mobiliario = () => {
   let widthMd = 2.8;
 
   const categories = [
-    { category: "lámparas", img: "src/images/categoria-lamparas.PNG" },
-    { category: "stools", img: "src/images/categoria-stools.PNG" },
-    { category: "tornillos", img: "src/images/categoria-tornillos.PNG" },
-    { category: "columnas", img: "src/images/categoria-columnas.PNG" },
+    { category: "Lámparas", img: "src/images/categoria-lamparas.PNG" },
+    { category: "Stools", img: "src/images/categoria-stools.PNG" },
+    { category: "Tornillos", img: "src/images/categoria-tornillos.PNG" },
+    { category: "Columnas", img: "src/images/categoria-columnas.PNG" },
   ];
 
   return (

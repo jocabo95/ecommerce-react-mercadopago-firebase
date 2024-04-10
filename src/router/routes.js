@@ -35,6 +35,11 @@ export const routes = [
     Element: ItemListContainer,
   },
   {
+    id: "shop per category",
+    path: "/shop/:mobiliario",
+    Element: ItemListContainer,
+  },
+  {
     id: "itemDetail",
     path: "/itemDetail/:id",
     Element: ItemDetailContainer,
