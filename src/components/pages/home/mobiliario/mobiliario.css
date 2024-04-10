@@ -16,7 +16,7 @@
 }
 
 /* TALET & HALF-SCREEN */
-@media (min-width: 600) {
+@media (min-width: 600px) {
   .home-categoryImg {
     height: 60vh;
     width: 100%;
@@ -24,7 +24,7 @@
 }
 
 /* DESKTOP */
-@media (min-width: 900) {
+@media (min-width: 900px) {
   .home-categoryImg {
     height: 60vh;
     width: 100%;
