@@ -1,4 +1,5 @@
 import HeroImage from "../../common/heroImage/HeroImage";
+import Mobiliario from "./mobiliario/Mobiliario";
 
 const Home = () => {
 
@@ -7,6 +8,7 @@ const Home = () => {
   return (
     <div>
       <HeroImage imgUrl={"src/images/heroDesktop.PNG"} text={heroText} button={true} />
+      <Mobiliario />
     </div>
   );
 };
