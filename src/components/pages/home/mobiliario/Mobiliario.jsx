@@ -19,7 +19,7 @@ const Mobiliario = () => {
       <Typography
         variant="h5"
         align="enter"
-        sx={{ my: "2rem", textAlign: "center" }}
+        sx={{ my: "4rem", textAlign: "center" }}
       >
         MOBILIARIO
       </Typography>

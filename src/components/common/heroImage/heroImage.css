@@ -2,7 +2,7 @@
   /* height stipulated in id's hero-container-mobile/desktop with media querys */
   width: 100%;
   position: relative;
-  overflow-y: hidden;
+  overflow: hidden;
 
   background-color: black;
 }

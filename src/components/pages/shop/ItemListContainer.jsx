@@ -7,14 +7,12 @@ import ItemList from "./ItemList";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null)
-  const navigate = useNavigate()
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const navigate = useNavigate();
 
+  // params from home category img
   let { mobiliario } = useParams();
-
   let homeCategory = mobiliario;
-
-  console.log("categ= ",selectedCategory)
 
   // get product collection from firebase & store in state
   useEffect(() => {
@@ -22,45 +20,45 @@ const ItemListContainer = () => {
 
     let displayProducts;
 
-    if(selectedCategory){
-      console.log("category= ",selectedCategory)
-      displayProducts = query(productsCollection, where("category", "==", selectedCategory))
-    }else if(homeCategory){
+    if (selectedCategory) {
+      console.log("category= ", selectedCategory);
+      displayProducts = query(
+        productsCollection,
+        where("category", "==", selectedCategory)
+      );
+    } else if (homeCategory) {
       displayProducts = query(
         productsCollection,
         where("category", "==", homeCategory)
       );
-
-    }else{
-      displayProducts = productsCollection
+    } else {
+      displayProducts = productsCollection;
     }
 
     getDocs(displayProducts)
       .then((res) => {
         let newarr = res.docs.map((product) => {
-          return { ...product.data(), id: product.id }; // product.id has role ok key when mapping 
+          return { ...product.data(), id: product.id }; // product.id has role ok key when mapping
         });
 
         setProducts(newarr);
       })
       .catch((err) => {
         console.log(err);
-      })
-  }, [selectedCategory]);
+      });
+  }, [selectedCategory, homeCategory]);
 
-  let filterProductByCategory = (desiredCategory) =>{
+  let filterProductByCategory = (desiredCategory) => {
     setSelectedCategory(desiredCategory);
-  }
+  };
 
   const data = {
-    products, 
+    products,
     navigate,
     selectedCategory,
     filterProductByCategory,
-  }
-  return (
-    <ItemList data={data}/>
-  );
+  };
+  return <ItemList data={data} />;
 };
 
 export default ItemListContainer;
