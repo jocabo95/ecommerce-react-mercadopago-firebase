@@ -2,13 +2,15 @@ import { db } from "../../../firebaseConfig";
 import { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ItemList from "./ItemList";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null)
   const navigate = useNavigate()
+
+  
 
   // get product collection from firebase & store in state
   useEffect(() => {
