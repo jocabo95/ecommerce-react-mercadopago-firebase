@@ -25,7 +25,9 @@ const NavbarMobile = ({ data }) => {
 
   const { cart } = useContext(CartContext);
 
-  let cartBadgeNumber = cart.length;
+  let cartBadgeNumber = cart.reduce((total, product) => {
+    return total + product.quantity;
+  }, 0);
 
   //- MODIFIABLES
   let navbarHeight = "64px";
@@ -114,7 +116,7 @@ const NavbarMobile = ({ data }) => {
         component="main"
         sx={{
           flexGrow: 1,
-          py: "0rem", //! padding from navbar to content
+          py: "0px", //! padding from navbar to content
           width: "100%",
           minHeight: "100vh",
         }}

@@ -6,11 +6,13 @@ import Register from "../components/pages/register/Register";
 import ForgotPassword from "../components/pages/forgotPassword/ForgotPassword";
 import DashboardContainer from "../components/pages/dashboard/DashboardContainer";
 import AdminProtected from "./AdminProtected";
+import Layout from "../components/layout/Layout";
+import Footer from "../components/layout/footer/Footer";
 
 const AppRouter = () => {
   return (
     <Routes>
-      <Route element={<Navbar />}>
+      <Route element={<Layout />}>
         {routes.map(({ id, path, Element }) => (
           <Route key={id} path={path} element={<Element />} />
         ))}

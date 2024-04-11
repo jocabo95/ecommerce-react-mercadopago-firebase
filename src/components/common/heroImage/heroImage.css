@@ -2,56 +2,58 @@
   /* height stipulated in id's hero-container-mobile/desktop with media querys */
   width: 100%;
   position: relative;
-  overflow-y: hidden;
+  overflow: hidden;
 
   background-color: black;
 }
 
 .hero-img {
-  width: 100%;
-  height: auto;
-  display: block;
-
-  opacity: 0.7;
-}
+  /* width i nmedia querys */
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    opacity: 0.75;
+  }
 
 .hero-text-container {
   position: absolute;
   width: 100vw;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -300%);
   text-align: center;
 }
 
 #hero-button {
   position: absolute;
-  top: 90%;
-  left: 50%;
+  /* top: 90%;
+  left: 50%; */
   transform: translate(-50%, -50%);
-  color: background;
   text-transform: capitalize;
-
-  padding: 1rem 2rem 1rem 2rem;
+  padding: 0.5rem 1rem;
+  background-color: background;
 
   border-radius: 0;
 }
 
-/* MOBILE & TABLET */
-@media (max-width: 900px){
-
+/* MOBILE */
+@media (max-width: 600px) {
   #hero-container {
-    height: auto;
+    height: calc(100vh - 64px);
   }
-  
+
+  .hero-img {
+    width: auto;
+  }
+
   #hero-title {
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: 500;
     font-family: "Raleway";
 
     letter-spacing: 1.5vw;
   }
-  
+
   .hero-text-container {
-    top: 65%;
+    top: 85%;
     left: 50%;
   }
 
@@ -63,21 +65,31 @@
   }
 }
 
-/* DESKTOP */
-@media (min-width: 900px){
+/* TABLET & DESKTOP */
+@media (min-width: 600px) {
+  @media (max-width: 900px) {
+    #hero-container {
+      height: calc(100vh - 64px);
+    }
+  }
+  @media (min-width: 900px) {
+    #hero-container {
+      height: calc(100vh - 124px);
+    }
+  }
 
-  #hero-container{
-    height: calc(100vh - 124px);
+  .hero-img {
+    width: 100%;
   }
 
   #hero-title {
-    font-size: 1.2rem;
-    font-weight: 400;
+    font-size: 2rem;
+    font-weight: 500;
     font-family: "Raleway";
 
     letter-spacing: 1rem;
   }
-  
+
   .hero-text-container {
     top: 70%;
     left: 50%;
@@ -90,8 +102,3 @@
     font-size: 1.5rem;
   }
 }
-
-
-
-
-

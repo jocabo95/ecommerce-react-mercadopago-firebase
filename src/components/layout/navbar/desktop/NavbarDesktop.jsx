@@ -25,8 +25,11 @@ const NavbarDesktop = ({ data }) => {
 
   const { cart } = useContext(CartContext);
 
-  let cartBadgeNumber = cart.length;
+  let cartBadgeNumber = cart.reduce((total, product)=>{
+    return total + product.quantity
+  }, 0)
 
+  console.log(cartBadgeNumber)
   //- MODIFIABLES
   let topNavbarHeight = "60px";
   let bottomNavbarHeight = "64px";
@@ -190,7 +193,7 @@ const NavbarDesktop = ({ data }) => {
           component="main"
           sx={{
             flexGrow: 1,
-            py: "60px", //! check height
+            py: "60px", //! padding betwwen hero img and content
             width: "100%",
             minHeight: "100vh",
           }}
