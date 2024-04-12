@@ -2,8 +2,8 @@ import { Grid, Typography } from "@mui/material"
 
 const CompanyInfo = () => {
   return (
-    <Grid container sx={{ border: "solid red", ml: "1rem" }}>
-      <Grid item xs={6} sx={{ border: "solid blue", mb:"1rem"}}>
+    <Grid container sx={{ml: "1rem" }}>
+      <Grid item xs={6} sx={{ mb:"1rem"}}>
         <img src="src\images\logo.PNG" />
       </Grid>
       <Grid item>
