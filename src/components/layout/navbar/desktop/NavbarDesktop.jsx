@@ -115,7 +115,7 @@ const NavbarDesktop = ({ data }) => {
                     <Link to={"/cart"}>
                       <Badge
                         badgeContent={cartBadgeNumber}
-                        color="primary"
+                        color="warning"
                         overlap="circular"
                       >
                         <IconButton>

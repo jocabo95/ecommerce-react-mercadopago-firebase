@@ -21,6 +21,9 @@ function App() {
         light: "#ffffff",
         dark: "#A06348",
       },
+      warning: {
+        main: "#D70040",
+      },
     },
     typography: {
       fontFamily: ["Raleway", "Playfair", "sans-serif"].join(","),
