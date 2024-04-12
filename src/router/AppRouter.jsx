@@ -1,18 +1,16 @@
 import { Route, Routes } from "react-router-dom";
-import Navbar from "../components/layout/navbar/Navbar";
 import { routes } from "./routes";
 import Login from "../components/pages/login/Login";
 import Register from "../components/pages/register/Register";
 import ForgotPassword from "../components/pages/forgotPassword/ForgotPassword";
 import DashboardContainer from "../components/pages/dashboard/DashboardContainer";
 import AdminProtected from "./AdminProtected";
-import Layout from "../components/layout/Layout";
-import Footer from "../components/layout/footer/Footer";
+import Navbar from "../components/layout/navbar/Navbar";
 
 const AppRouter = () => {
   return (
     <Routes>
-      <Route element={<Layout />}>
+      <Route element={<Navbar />}>
         {routes.map(({ id, path, Element }) => (
           <Route key={id} path={path} element={<Element />} />
         ))}

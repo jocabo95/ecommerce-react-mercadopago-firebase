@@ -29,6 +29,7 @@ const ItemList = ({ data }) => {
           Todos los productos
         </Typography>
       </Button>
+
       {/* PRODUCTS */}
       <Box sx={{ width: "auto", height: "100%", ml: "1rem", mr: "1rem" }}>
         <Grid
@@ -74,7 +75,8 @@ const ItemList = ({ data }) => {
             );
           })}
         </Grid>
-      
+      </Box>
+
     </div>
   );
 };

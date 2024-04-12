@@ -12,7 +12,7 @@
     height: 100%;
     display: block;
     object-fit: cover;
-    opacity: 0.75;
+    opacity: 1;
   }
 
 .hero-text-container {
@@ -53,7 +53,7 @@
   }
 
   .hero-text-container {
-    top: 85%;
+    top: 65vh;
     left: 50%;
   }
 
@@ -91,7 +91,7 @@
   }
 
   .hero-text-container {
-    top: 70%;
+    top: 92%;
     left: 50%;
   }
 

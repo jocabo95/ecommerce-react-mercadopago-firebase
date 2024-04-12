@@ -2,6 +2,8 @@ import { Badge } from "@mui/material";
 import NavbarDrawer from "../NavbarDrawer";
 import { useContext } from "react";
 import { CartContext } from "../../../context/CartContext";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import Footer from "../../footer/Footer";
 
 
 const NavbarMobile = ({ data }) => {
@@ -12,7 +14,6 @@ const NavbarMobile = ({ data }) => {
     Toolbar,
     Link,
     IconButton,
-    ShoppingCartIcon,
     handleDrawerToggle,
     MenuIcon,
     container,
@@ -66,8 +67,8 @@ const NavbarMobile = ({ data }) => {
           <Link to="/login">
             <img
               alt="BASALTO STUDIO"
-              src="src\images\logo.webp"
-              height="20px"
+              src="src\images\logo.PNG"
+              width={"50px"}
             />
           </Link>
 
@@ -79,7 +80,8 @@ const NavbarMobile = ({ data }) => {
               overlap="circular"
             >
               <IconButton>
-                <ShoppingCartIcon fontSize="small" color="secondary" />
+                {/* <ShoppingCartIcon fontSize="small" color="secondary" /> */}
+                <ShoppingBagIcon fontSize="small" color="secondary"/>
               </IconButton>
             </Badge>
           </Link>
@@ -124,6 +126,7 @@ const NavbarMobile = ({ data }) => {
         <Toolbar />
 
         <Outlet />
+        <Footer />
       </Box>
     </Box>
   );

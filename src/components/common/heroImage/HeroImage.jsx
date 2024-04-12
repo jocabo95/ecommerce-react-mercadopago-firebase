@@ -8,7 +8,8 @@ const HeroImage = ({imgUrl, text, button}) => {
 
   let theme = useTheme()
 
-  let desktop = useMediaQuery(theme.breakpoints.up('sm'))
+  let desktop = useMediaQuery(theme.breakpoints.up('md'))
+  let tablet = useMediaQuery(theme.breakpoints.up('xs'))
 
  
   return (
@@ -16,6 +17,12 @@ const HeroImage = ({imgUrl, text, button}) => {
       <div id="hero-container">
         {desktop ? (
           <img className="hero-img" alt="Basalto estudio" src={imgUrl} />
+        ) : tablet ? (
+          <img
+            className="hero-img"
+            alt="Basalto estudio"
+            src={"src/images/heroTablet.PNG"}
+          />
         ) : (
           <img
             className="hero-img"
@@ -39,7 +46,7 @@ const HeroImage = ({imgUrl, text, button}) => {
             size="large"
             disableFocusRipple={true}
           >
-            <Typography>Descubre más</Typography>
+            <Typography sx={{ fontFamily: "Playfair" }}>Sobre nosotros</Typography>
           </Button>
         )}
       </div>

@@ -4,9 +4,7 @@ import CartContextComponent from "./components/context/CartContext";
 import AuthContextComponent from "./components/context/AuthContext";
 import { createTheme, ThemeProvider } from "@mui/material";
 
-
 function App() {
-  
   const theme = createTheme({
     palette: {
       primary: {
@@ -19,20 +17,23 @@ function App() {
         main: "#36454F",
       },
       background: {
-        main: "#FDFDFD",
+        main: "#FFFFFF",
         light: "#ffffff",
         dark: "#A06348",
       },
+    },
+    typography: {
+      fontFamily: ["Raleway", "Playfair", "sans-serif"].join(","),
     },
   });
 
   return (
     // theme prodivder helps customize pallete
-    <ThemeProvider theme={theme}> 
+    <ThemeProvider theme={theme}>
       <BrowserRouter>
         <CartContextComponent>
           <AuthContextComponent>
-          <AppRouter />
+            <AppRouter />
           </AuthContextComponent>
         </CartContextComponent>
       </BrowserRouter>

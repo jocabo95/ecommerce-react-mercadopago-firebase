@@ -18,8 +18,8 @@ const Mobiliario = () => {
     <Box sx={{ margin: "1rem" }}>
       <Typography
         variant="h5"
-        align="enter"
-        sx={{ my: "4rem", textAlign: "center" }}
+        align="center"
+        sx={{ my: "4rem", textAlign: "center", letterSpacing: "0.15rem" }}
       >
         MOBILIARIO
       </Typography>

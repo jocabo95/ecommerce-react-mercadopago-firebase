@@ -19,8 +19,10 @@
   left: 1rem;
   color: white;
 
-  font-size: 1.2rem;
+  
   font-weight: 500;
+  font-family: Playfair;
+
 }
 
 /* MOBILE */
@@ -33,6 +35,11 @@
   .home-gridItem {
     height: 35vh;
   }
+
+  .home-categoryImgText{
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+  }
 }
 
 /* TABLET & HALF-SCREEN & DESKTOP */
@@ -41,8 +48,14 @@
     height: 60vh;
     width: 100%;
   }
+
   .home-gridItem {
     height: 60vh;
+  }
+
+  .home-categoryImgText{
+    font-size: 1.3rem;
+    letter-spacing: 0.3rem;
   }
 }
 

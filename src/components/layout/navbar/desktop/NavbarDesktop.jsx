@@ -3,6 +3,7 @@ import NavbarDrawer from "../NavbarDrawer";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../../../context/CartContext";
+import Footer from "../../footer/Footer";
 
 const NavbarDesktop = ({ data }) => {
   const {
@@ -201,6 +202,7 @@ const NavbarDesktop = ({ data }) => {
           <Toolbar />
 
           <Outlet />
+          <Footer />
         </Box>
       </Box>
     </>
