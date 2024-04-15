@@ -10,26 +10,30 @@ const Socials = () => {
   return (
     <Grid container sx={{ ml: "1rem" }}>
       <Grid item xs={12}>
-        <Typography variant="h6">Redes</Typography>
+        <Typography variant="h5" sx={{mb:"1rem"}}>Redes</Typography>
       </Grid>
-      <Grid item xs={1}>
+      <Grid item xs={2} md={3}>
         <Link to="https://www.instagram.com/basaltostudio/">
           <IconButton edge="start">
-            <InstagramIcon size="small" color="secondary" sx={{ ml: "0rem" }} />
+            <InstagramIcon
+              fontSize="large"
+              color="secondary"
+              sx={{ ml: "0rem" }}
+            />
           </IconButton>
         </Link>
       </Grid>
-      <Grid item xs={1}>
+      <Grid item xs={2} md={3}>
         <Link to="https://www.linkedin.com/in/basalto-studio-b57147259/?originalSubdomain=co">
           <IconButton edge="start">
-            <LinkedInIcon size="small" color="secondary" />
+            <LinkedInIcon fontSize="large" color="secondary" />
           </IconButton>
         </Link>
       </Grid>
-      <Grid item xs={1}>
+      <Grid item xs={2} md={3}>
         <Link to="https://wa.me/573124572091">
           <IconButton edge="start">
-            <WhatsAppIcon size="small" color="secondary" />
+            <WhatsAppIcon fontSize="large" color="secondary" />
           </IconButton>
         </Link>
       </Grid>
