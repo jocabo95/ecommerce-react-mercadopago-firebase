@@ -6,8 +6,9 @@ import {
   CardMedia,
   Typography,
   Button,
-  Paper
+  Paper,
 } from "@mui/material";
+import { NumericFormat } from "react-number-format";
 
 const ItemDetail = ({ data }) => {
   const { product, suma, resta, counter, addToCart } = data;
@@ -56,7 +57,12 @@ const ItemDetail = ({ data }) => {
             {product.title}
           </Typography>
           <Typography className="description-text" variant="body2">
-            {product.unit_price}
+            <NumericFormat
+              prefix="$"
+              suffix=" COP"
+              thousandSeparator=","
+              value={product.unit_price}
+            />
           </Typography>
 
           <Box
@@ -97,7 +103,6 @@ const ItemDetail = ({ data }) => {
               py: { xs: "1rem", md: "1rem" },
               px: { xs: "1rem", md: "1rem" },
               height: { xs: "4rem", md: "7rem" },
-              
             }}
           >
             <Typography variant="body">{product.description}</Typography>

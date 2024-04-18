@@ -64,7 +64,7 @@ const NavbarMobile = ({ data }) => {
           </IconButton>
 
           {/* logo */}
-          <Link to="/login">
+          <Link to="/">
             <img
               alt="BASALTO STUDIO"
               src="src\images\logo.PNG"

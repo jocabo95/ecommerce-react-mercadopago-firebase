@@ -1,6 +1,13 @@
 import { useTheme } from "@emotion/react";
 import "./footer.css";
-import { Button, Divider, Grid, Paper, Typography, useMediaQuery } from "@mui/material";
+import {
+  Button,
+  Divider,
+  Grid,
+  Paper,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import Socials from "./socials/Socials";
 import CompanyInfo from "./companyInfo/CompanyInfo";
 import Horarios from "./horarios/Horarios";
@@ -70,7 +77,7 @@ const Footer = () => {
         }}
       >
         <gmp-map
-          style={{height:"250px"}}
+          style={{ height: "250px" }}
           center="4.663970470428467,-74.0535888671875"
           zoom="14"
           map-id="DEMO_MAP_ID"
@@ -81,12 +88,17 @@ const Footer = () => {
           ></gmp-advanced-marker>
         </gmp-map>
         <Link variant="body" to={"https://maps.app.goo.gl/MgLQZh7RN3FZsn3r8"}>
-          <Button variant="outlined" color="details" sx={{mt:"1rem"}}>Ver en google maps</Button>
+          <Button variant="outlined" color="details" sx={{ mt: "1rem" }}>
+            Ver en google maps
+          </Button>
         </Link>
       </div>
       <Divider sx={{ mt: "1.5rem", mb: "1rem" }} />
       <Typography variant="body2" sx={{ fontFamily: "Playfair" }}>
         © 2023 copyrights All rights reserved. BASALTO STUDIO, Susana Garavito
+      </Typography>
+      <Typography variant="body2" sx={{fontSize: "0.7rem"}}>
+        <Link to={"/login"}>login</Link>
       </Typography>
     </Paper>
   );

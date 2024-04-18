@@ -1,7 +1,17 @@
 // import { Card, CardHeader, CardBody, Divider, Image } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import ShopHeader from "./shopHeader/ShopHeader";
-import { CardActionArea, Grid, Box, Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
+import {
+  CardActionArea,
+  Grid,
+  Box,
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  Button,
+} from "@mui/material";
+import { NumericFormat } from "react-number-format";
 
 const ItemList = ({ data }) => {
   const { products, filterProductByCategory } = data;
@@ -12,7 +22,7 @@ const ItemList = ({ data }) => {
       <ShopHeader data={data} />
 
       <Button
-        onClick={()=>filterProductByCategory(null)}
+        onClick={() => filterProductByCategory(null)}
         variant="outlined"
         sx={{
           width: "auto",
@@ -41,7 +51,14 @@ const ItemList = ({ data }) => {
           {products.map((prod) => {
             return (
               /* CARD */
-              <Grid item key={prod.id} xs={12} sm={12} md={4} sx={{width:"auto",  px: "1rem", pb:"1rem"}}>
+              <Grid
+                item
+                key={prod.id}
+                xs={12}
+                sm={12}
+                md={4}
+                sx={{ width: "auto", px: "1rem", pb: "1rem" }}
+              >
                 <Card
                   raised={false}
                   sx={{
@@ -65,7 +82,12 @@ const ItemList = ({ data }) => {
                       <CardContent>
                         <Typography variant="body1">{prod.title}</Typography>
                         <Typography variant="body1">
-                          {prod.unit_price}
+                          <NumericFormat
+                            value={prod.unit_price}
+                            thousandSeparator=","
+                            prefix="$"
+                            suffix=" COP"
+                          />
                         </Typography>
                       </CardContent>
                     </Link>
@@ -76,7 +98,6 @@ const ItemList = ({ data }) => {
           })}
         </Grid>
       </Box>
-
     </div>
   );
 };

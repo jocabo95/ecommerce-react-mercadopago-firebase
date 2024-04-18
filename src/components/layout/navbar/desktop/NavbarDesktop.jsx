@@ -98,7 +98,7 @@ const NavbarDesktop = ({ data }) => {
                         fontFamily: "Raleway",
                       }}
                     >
-                      BASALTO STUDIO
+                      <Link to={"/"}>BASALTO STUDIO</Link>
                     </Typography>
                   </Box>
                 </Grid>
@@ -152,7 +152,12 @@ const NavbarDesktop = ({ data }) => {
                       >
                         <Link to={el.path}>
                           <Button variant="text">
-                            <Typography variant="body" sx={{fontSize: "0.7rem"}}>{el.title}</Typography>
+                            <Typography
+                              variant="body"
+                              sx={{ fontSize: "0.7rem" }}
+                            >
+                              {el.title}
+                            </Typography>
                           </Button>
                         </Link>
                       </Box>

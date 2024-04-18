@@ -8,6 +8,7 @@ import AdminProtected from "./AdminProtected";
 import Navbar from "../components/layout/navbar/Navbar";
 
 const AppRouter = () => {
+
   return (
     <Routes>
       <Route element={<Navbar />}>

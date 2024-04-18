@@ -15,8 +15,14 @@ import GoogleIcon from "@mui/icons-material/Google";
 
 import { Link } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useEffect } from "react";
 
 const Login = ({ data }) => {
+
+  //be redirected to top of screen when click log in button in footer
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   
   const {
     showPassword,
