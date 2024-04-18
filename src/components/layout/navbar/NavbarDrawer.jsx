@@ -2,10 +2,7 @@ import { Box, Toolbar, Typography } from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import LogoutIcon from "@mui/icons-material/Logout";
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import { Link } from "react-router-dom";
 
 const NavbarDrawer = ({ data }) => {
@@ -19,18 +16,25 @@ const NavbarDrawer = ({ data }) => {
   } = data;
 
   const navLinkHeight = "5rem";
-  const navLinkFontSize = "1.5rem"
+  const navLinkFontSize = "1.5rem";
 
   return (
     <Box sx={{ backgroundColor: "background.main", height: "100vh" }}>
       <Toolbar />
 
       {/* logo */}
-      <Typography variant="h4" sx={{pl:"24px"}}>BASALTO STUDIO</Typography>
+      <Link to={"/"} onClick={handleDrawerToggle}>
+        <Typography
+          variant="h4"
+          sx={{ pl: "24px", mb: "1.5rem", fontWeight: "500" }}
+        >
+          BASALTO STUDIO
+        </Typography>
+      </Link>
 
       {/* nav list */}
       <List>
-        {menuItems.map(({ id, path, title, Icon }) => {
+        {menuItems.map(({ id, path, title }) => {
           return (
             <Link key={id} to={path}>
               <ListItem
@@ -39,12 +43,6 @@ const NavbarDrawer = ({ data }) => {
                 sx={{ height: navLinkHeight }}
               >
                 <ListItemButton onClick={handleDrawerToggle}>
-                  <ListItemIcon>
-                    <Icon
-                      fontSize="large"
-                      sx={{ color: "primary.contrastText" }}
-                    />
-                  </ListItemIcon>
                   <ListItemText
                     primary={title}
                     sx={{
@@ -58,6 +56,7 @@ const NavbarDrawer = ({ data }) => {
           );
         })}
 
+        {/* DASHBOARD */}
         {user.rol === adminRole && (
           <Link to={"/dashboard"}>
             <ListItem
@@ -66,14 +65,8 @@ const NavbarDrawer = ({ data }) => {
               sx={{ height: navLinkHeight }}
             >
               <ListItemButton>
-                <ListItemIcon>
-                  <DashboardIcon
-                    fontSize="large"
-                    sx={{ color: "primary.contrastText" }}
-                  />
-                </ListItemIcon>
                 <ListItemText
-                  primary={"Dashboard"}
+                  primary={"DASHBOARD"}
                   sx={{
                     color: "primary.contrastText",
                     ".MuiListItemText-primary": { fontSize: navLinkFontSize },
@@ -84,6 +77,7 @@ const NavbarDrawer = ({ data }) => {
           </Link>
         )}
 
+        {/* CERRAR SESION */}
         {isLogged && (
           <ListItem
             divider={true}
@@ -91,16 +85,10 @@ const NavbarDrawer = ({ data }) => {
             sx={{ height: navLinkHeight }}
           >
             <ListItemButton onClick={handleLogout}>
-              <ListItemIcon>
-                <LogoutIcon
-                  fontSize="large"
-                  sx={{ color: "primary.contrastText" }}
-                />
-              </ListItemIcon>
               <ListItemText
-                primary={"Cerrar sesion"}
+                primary={"CERRAR SESIÓN"}
                 sx={{
-                  color: "primary.contrastText",
+                  color: "#bf3815",
                   ".MuiListItemText-primary": { fontSize: navLinkFontSize },
                 }}
               />

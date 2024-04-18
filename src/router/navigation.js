@@ -1,32 +1,31 @@
-import HomeIcon from '@mui/icons-material/Home';
-import StoreIcon from '@mui/icons-material/Store';
-import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
-import ShopIcon from '@mui/icons-material/Shop';
+
+
+
 export const menuItems = [
     
-   
-    {
-        id: "home",
-        path: "/",
-        title: "INICIO",
-        Icon: HomeIcon
-    },
     {
         id: "products",
         path: "/shop",
-        title: "TIENDA",
-        Icon: StoreIcon
+        title: "PRODUCTOS",
     },
     {
-        id: "cart",
+        id: "espacios",
         path: "/cart",
-        title: "CARRITO",
-        Icon: ShoppingCartCheckoutIcon
+        title: "ESPACIOS",
     },
     {
-        id: "userOrders",
+        id: "publicaciones",
         path: "/orders",
-        title: "MIS COMPRAS",
-        Icon: ShopIcon
-    }
+        title: "PUBLICACIONES",
+    },
+    {
+        id: "publicaciones",
+        path: "/orders",
+        title: "SOBRE NOSOTROS",
+    },
+    {
+        id: "publicaciones",
+        path: "/orders",
+        title: "CONTACTO",
+    },
 ]

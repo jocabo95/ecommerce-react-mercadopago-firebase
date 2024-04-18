@@ -140,6 +140,7 @@ const NavbarDesktop = ({ data }) => {
                     },
                   }}
                 >
+                  
                   {menuItems.map((el) => {
                     return (
                       <Box
