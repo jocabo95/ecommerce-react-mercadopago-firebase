@@ -1,9 +1,10 @@
 import { useTheme } from "@emotion/react";
 import "./footer.css";
-import { Divider, Grid, Paper, Typography, useMediaQuery } from "@mui/material";
+import { Button, Divider, Grid, Paper, Typography, useMediaQuery } from "@mui/material";
 import Socials from "./socials/Socials";
 import CompanyInfo from "./companyInfo/CompanyInfo";
 import Horarios from "./horarios/Horarios";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   let theme = useTheme();
@@ -59,18 +60,29 @@ const Footer = () => {
           </>
         )}
       </Grid>
-      <div style={{height:"300px", width:"100%", marginTop:"3rem", marginBottom:"3rem"}}>
+      <Divider sx={{ mt: "1.5rem", mb: "1rem" }} />
+      <div
+        style={{
+          minHeight: "300px",
+          width: "100%",
+          marginTop: "3rem",
+          marginBottom: "3rem",
+        }}
+      >
         <gmp-map
+          style={{height:"250px"}}
           center="4.663970470428467,-74.0535888671875"
           zoom="14"
           map-id="DEMO_MAP_ID"
-          style={{height:"100%"}}
         >
           <gmp-advanced-marker
             position="4.663970470428467,-74.0535888671875"
-            title="My location"
+            title="Basalto Studio"
           ></gmp-advanced-marker>
         </gmp-map>
+        <Link variant="body" to={"https://maps.app.goo.gl/MgLQZh7RN3FZsn3r8"}>
+          <Button variant="outlined" color="details" sx={{mt:"1rem"}}>Ver en google maps</Button>
+        </Link>
       </div>
       <Divider sx={{ mt: "1.5rem", mb: "1rem" }} />
       <Typography variant="body2" sx={{ fontFamily: "Playfair" }}>

@@ -21,6 +21,9 @@ function App() {
         light: "#ffffff",
         dark: "#A06348",
       },
+      details: {
+        main: "#bf3815",
+      },
       warning: {
         main: "#D70040",
       },
