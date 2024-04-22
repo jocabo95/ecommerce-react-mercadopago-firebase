@@ -1,7 +1,6 @@
 import { useTheme } from "@emotion/react";
 import "./footer.css";
 import {
-  Button,
   Divider,
   Grid,
   Paper,
@@ -76,6 +75,7 @@ const Footer = () => {
           marginBottom: "3rem",
         }}
       >
+        {/* google maps */}
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15906.432430540057!2d-74.0535814!3d4.6637566!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a5fd5440001%3A0xbe4b59d9fb4db9c1!2sBASALTO%20STUDIO!5e0!3m2!1ses-419!2sco!4v1713797171543!5m2!1ses-419!2sco"
           width="100%"
@@ -84,11 +84,6 @@ const Footer = () => {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
-        <Link variant="body" to={"https://maps.app.goo.gl/MgLQZh7RN3FZsn3r8"}>
-          <Button variant="outlined" color="details" sx={{ mt: "1rem" }}>
-            Ver en google maps
-          </Button>
-        </Link>
       </div>
       <Divider sx={{ mt: "1.5rem", mb: "1rem" }} />
       <Typography variant="body2" sx={{ fontFamily: "Playfair" }}>

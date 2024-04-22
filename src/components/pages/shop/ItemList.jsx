@@ -1,4 +1,3 @@
-// import { Card, CardHeader, CardBody, Divider, Image } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import ShopHeader from "./shopHeader/ShopHeader";
 import {
@@ -23,70 +22,81 @@ const ItemList = ({ data }) => {
 
       <Button
         onClick={() => filterProductByCategory(null)}
-        variant="outlined"
+        variant="text"
         sx={{
           width: "auto",
           height: "auto",
           borderRadius: "0",
-          ml: "1rem",
-          mb: "2rem",
+          ml: "3rem",
+          mb: "0.5rem",
         }}
       >
         <Typography
           variant="body"
           sx={{ fontSize: "0.8rem", textTransform: "capitalize" }}
         >
-          Todos los productos
+          limpiar filtros
         </Typography>
       </Button>
 
       {/* PRODUCTS */}
-      <Box sx={{ width: "auto", height: "100%", ml: "1rem", mr: "1rem" }}>
-        <Grid
-          container
-          rowSpacing={7}
-          spacing={2}
-          sx={{ width: "100%", padding: "0px" }}
-        >
+      <Box
+        sx={{
+          width: "auto",
+          height: "100%",
+          ml: { md: "2rem" },
+          mr: { md: "2rem" },
+        }}
+      >
+        <Grid container rowSpacing={1.2} sx={{ width: "100%", padding: "0px" }}>
           {products.map((prod) => {
             return (
               /* CARD */
-              <Grid
-                item
-                key={prod.id}
-                xs={12}
-                sm={12}
-                md={4}
-                sx={{ width: "auto", px: "1rem", pb: "1rem" }}
-              >
+              <Grid item key={prod.id} xs={6} md={4} sx={{ px: "1rem" }}>
                 <Card
                   raised={false}
                   sx={{
                     borderRadius: "0",
-                    //- boxShadow: "none",
-                    border: "thin blue",
+                    boxShadow: "none",
                     bgcolor: "background",
+                    pading: "0px",
                   }}
                 >
                   <CardActionArea>
                     <Link to={`/itemDetail/${prod.id}`}>
+                      {/* prod img */}
                       <CardMedia
                         component="img"
                         image={prod.img}
                         alt="prod.title"
                         sx={{
                           width: "100%",
-                          height: { xs: "40vh", sm: "60vh", md: "30vh" },
+                          aspectRatio: "1/1",
                         }}
                       />
-                      <CardContent>
-                        <Typography variant="body1">{prod.title}</Typography>
-                        <Typography variant="body1">
+
+                      {/* card text */}
+                      <CardContent
+                        sx={{
+                          p: "1rem 0rem 0rem 0rem",
+                        }}
+                      >
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            fontSize: "1rem",
+                            mb: "0.2rem",
+                            fontWeight: "600",
+                            fontFamily: "Playfair",
+                          }}
+                        >
+                          {prod.title}
+                        </Typography>
+                        <Typography variant="body2" sx={{ fontSize: "0.7rem" }}>
                           <NumericFormat
                             value={prod.unit_price}
                             thousandSeparator=","
-                            prefix="$"
-                            suffix=" COP"
+                            prefix="$ "
                           />
                         </Typography>
                       </CardContent>
