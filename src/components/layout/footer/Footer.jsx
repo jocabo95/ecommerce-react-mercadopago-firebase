@@ -76,17 +76,14 @@ const Footer = () => {
           marginBottom: "3rem",
         }}
       >
-        <gmp-map
-          style={{ height: "250px" }}
-          center="4.663970470428467,-74.0535888671875"
-          zoom="14"
-          map-id="DEMO_MAP_ID"
-        >
-          <gmp-advanced-marker
-            position="4.663970470428467,-74.0535888671875"
-            title="Basalto Studio"
-          ></gmp-advanced-marker>
-        </gmp-map>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15906.432430540057!2d-74.0535814!3d4.6637566!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a5fd5440001%3A0xbe4b59d9fb4db9c1!2sBASALTO%20STUDIO!5e0!3m2!1ses-419!2sco!4v1713797171543!5m2!1ses-419!2sco"
+          width="100%"
+          height="300px"
+          allowFullscreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
         <Link variant="body" to={"https://maps.app.goo.gl/MgLQZh7RN3FZsn3r8"}>
           <Button variant="outlined" color="details" sx={{ mt: "1rem" }}>
             Ver en google maps
@@ -97,7 +94,7 @@ const Footer = () => {
       <Typography variant="body2" sx={{ fontFamily: "Playfair" }}>
         © 2023 copyrights All rights reserved. BASALTO STUDIO, Susana Garavito
       </Typography>
-      <Typography variant="body2" sx={{fontSize: "0.7rem"}}>
+      <Typography variant="body2" sx={{ fontSize: "0.7rem" }}>
         <Link to={"/login"}>login</Link>
       </Typography>
     </Paper>
