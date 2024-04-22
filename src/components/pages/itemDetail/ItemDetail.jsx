@@ -21,7 +21,8 @@ const ItemDetail = ({ data }) => {
         height: "auto",
         borderRadius: "0",
         boxShadow: "none",
-        bgcolor: "background",
+        mx: { md: "3rem" },
+        my: { md: "3rem" },
       }}
     >
       <Grid container>
@@ -32,9 +33,9 @@ const ItemDetail = ({ data }) => {
             image={product.img}
             alt="prod.title"
             sx={{
-              width: "100%",
-              height: "auto",
-              maxHeight: { xs: "45vh", sm: "65vh", md: "82vh" },
+              width: { xs: "100%", md: "80%" },
+              // maxHeight: { xs: "45vh", sm: "65vh", md: "82vh" },
+              aspectRatio: "1 / 1",
             }}
           />
         </Grid>
@@ -45,31 +46,29 @@ const ItemDetail = ({ data }) => {
           xs={12}
           md={6}
           sx={{
-            py: { xs: "1rem", md: "2.5rem" },
-            px: { xs: "1rem", md: "2rem" },
+            py: { xs: "1rem", md: "0rem" },
+            px: { xs: "1rem", md: "0rem" },
           }}
         >
           <Typography
-            sx={{ fontSize: "1.5rem", fontWeight: "400" }}
-            className="description-text"
+            sx={{ fontSize: "1.5rem", fontWeight: "500", letterSpacing:"0.2rem"}}
             variant="body"
+
           >
             {product.title}
           </Typography>
-          <Typography className="description-text" variant="body2">
+          <Typography variant="body2" sx={{pt:"1rem", fontSize:"1rem"}}>
             <NumericFormat
-              prefix="$"
-              suffix=" COP"
+              prefix="$ "
               thousandSeparator=","
               value={product.unit_price}
             />
           </Typography>
-
+          <Typography variant="body2" sx={{mt:"8rem", mb:"1rem"}}>cantidad</Typography>
           <Box
             sx={{
               width: "auto",
               display: "flex",
-              mt: { xs: "2rem", md: "5rem" },
             }}
           >
             <Button
@@ -90,8 +89,8 @@ const ItemDetail = ({ data }) => {
           </Box>
           <Button
             color="secondary"
-            variant="contained"
-            sx={{ width: "100%", mr: "auto", ml: "auto", mt: "1rem" }}
+            variant="outlined"
+            sx={{ width: "80%", mt: "1rem", mx:"auto"}}
             onClick={() => addToCart(product, counter)}
           >
             Agregar al carrito

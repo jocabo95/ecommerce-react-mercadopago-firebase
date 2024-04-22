@@ -27,8 +27,8 @@ const ItemList = ({ data }) => {
           width: "auto",
           height: "auto",
           borderRadius: "0",
-          ml: "3rem",
-          mb: "0.5rem",
+          ml: { xs: "1rem", md: "3rem" },
+          mb: "1rem",
         }}
       >
         <Typography
