@@ -21,7 +21,7 @@ const ItemDetail = ({ data }) => {
         height: "auto",
         borderRadius: "0",
         boxShadow: "none",
-        mx: { md: "3rem" },
+        mx: { md: "6rem" },
         my: { md: "3rem" },
       }}
     >
@@ -34,7 +34,6 @@ const ItemDetail = ({ data }) => {
             alt="prod.title"
             sx={{
               width: { xs: "100%", md: "80%" },
-              // maxHeight: { xs: "45vh", sm: "65vh", md: "82vh" },
               aspectRatio: "1 / 1",
             }}
           />
@@ -44,27 +43,33 @@ const ItemDetail = ({ data }) => {
         <Grid
           item
           xs={12}
-          md={6}
+          md={4}
           sx={{
-            py: { xs: "1rem", md: "0rem" },
+            py: { xs: "2.5rem", md: "0rem" },
             px: { xs: "1rem", md: "0rem" },
           }}
         >
           <Typography
-            sx={{ fontSize: "1.5rem", fontWeight: "500", letterSpacing:"0.2rem"}}
+            sx={{
+              fontSize: "1.5rem",
+              fontWeight: "500",
+              letterSpacing: "0.2rem",
+              fontFamily: "Playfair",
+            }}
             variant="body"
-
           >
             {product.title}
           </Typography>
-          <Typography variant="body2" sx={{pt:"1rem", fontSize:"1rem"}}>
+          <Typography variant="body2" sx={{ pt: "1rem", fontSize: "1rem" }}>
             <NumericFormat
               prefix="$ "
               thousandSeparator=","
               value={product.unit_price}
             />
           </Typography>
-          <Typography variant="body2" sx={{mt:"8rem", mb:"1rem"}}>cantidad</Typography>
+          <Typography variant="body2" sx={{ mt: "8rem", mb: "1rem" }}>
+            cantidad
+          </Typography>
           <Box
             sx={{
               width: "auto",
@@ -90,7 +95,7 @@ const ItemDetail = ({ data }) => {
           <Button
             color="secondary"
             variant="outlined"
-            sx={{ width: "80%", mt: "1rem", mx:"auto"}}
+            sx={{ width: "100%", mt: "1rem", mx: "auto" }}
             onClick={() => addToCart(product, counter)}
           >
             Agregar al carrito

@@ -38,9 +38,11 @@ const NavbarMobile = ({ data }) => {
       <CssBaseline />
       <AppBar
         position="fixed"
+        elevation={0}
         sx={{
           width: "100%",
           backgroundColor: "background.main",
+          borderBottom: "solid thin #E6DED7 ",
         }}
         component="nav"
       >
@@ -81,7 +83,7 @@ const NavbarMobile = ({ data }) => {
             >
               <IconButton>
                 {/* <ShoppingCartIcon fontSize="small" color="secondary" /> */}
-                <ShoppingBagIcon fontSize="small" color="secondary"/>
+                <ShoppingBagIcon fontSize="small" color="secondary" />
               </IconButton>
             </Badge>
           </Link>

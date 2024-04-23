@@ -50,9 +50,11 @@ const NavbarDesktop = ({ data }) => {
         {/* AppBar === navbar content */}
         <AppBar
           position="fixed"
+          elevation={0}
           sx={{
             width: "100%",
             backgroundColor: "background.main",
+            borderBottom: "solid thin #E6DED7 ",
           }}
           component="nav"
         >
@@ -140,7 +142,6 @@ const NavbarDesktop = ({ data }) => {
                     },
                   }}
                 >
-                  
                   {menuItems.map((el) => {
                     return (
                       <Box

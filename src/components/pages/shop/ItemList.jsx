@@ -13,31 +13,32 @@ import {
 import { NumericFormat } from "react-number-format";
 
 const ItemList = ({ data }) => {
-  const { products, filterProductByCategory } = data;
+  const { products } = data;
 
   return (
     <div style={{ width: "100%" }}>
       {/* SHOP HEADER */}
       <ShopHeader data={data} />
 
-      <Button
-        onClick={() => filterProductByCategory(null)}
-        variant="text"
-        sx={{
-          width: "auto",
-          height: "auto",
-          borderRadius: "0",
-          ml: { xs: "1rem", md: "3rem" },
-          mb: "1rem",
-        }}
-      >
-        <Typography
-          variant="body"
-          sx={{ fontSize: "0.8rem", textTransform: "capitalize" }}
+      <Link to={"/shop"}>
+        <Button
+          variant="text"
+          sx={{
+            width: "auto",
+            height: "auto",
+            borderRadius: "0",
+            ml: { xs: "1rem", md: "3rem" },
+            mb: "1rem",
+          }}
         >
-          limpiar filtros
-        </Typography>
-      </Button>
+          <Typography
+            variant="body"
+            sx={{ fontSize: "0.8rem", textTransform: "capitalize" }}
+          >
+            limpiar filtros
+          </Typography>
+        </Button>
+      </Link>
 
       {/* PRODUCTS */}
       <Box
