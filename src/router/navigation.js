@@ -19,12 +19,12 @@ export const menuItems = [
         title: "PUBLICACIONES",
     },
     {
-        id: "publicaciones",
+        id: "sobre nosotros",
         path: "/orders",
         title: "SOBRE NOSOTROS",
     },
     {
-        id: "publicaciones",
+        id: "contacto",
         path: "/orders",
         title: "CONTACTO",
     },

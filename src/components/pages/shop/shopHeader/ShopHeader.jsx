@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 const ShopHeader = ({ data }) => {
   const { filterProductByCategory } = data;
   const allCategories = ["Lámparas", "Stools", "Columnas", "Tornillos"];
+  
   return (
     <Box sx={{ px: { xs: "1rem", md: "3rem" } }}>
       <Typography
@@ -58,6 +59,8 @@ const ShopHeader = ({ data }) => {
           })}
         </Grid>
       </Paper>
+
+      
     </Box>
   );
 };

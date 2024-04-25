@@ -1,9 +1,12 @@
 import HeroImage from "../../common/heroImage/HeroImage";
 import Mobiliario from "./mobiliario/Mobiliario";
 
+
+
 const Home = () => {
 
   const heroText="Arquitectura y diseño interior"
+
 
   return (
     <div>

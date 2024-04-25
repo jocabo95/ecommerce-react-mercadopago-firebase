@@ -80,7 +80,6 @@ const Footer = () => {
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15906.432430540057!2d-74.0535814!3d4.6637566!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a5fd5440001%3A0xbe4b59d9fb4db9c1!2sBASALTO%20STUDIO!5e0!3m2!1ses-419!2sco!4v1713797171543!5m2!1ses-419!2sco"
           width="100%"
           height="300px"
-          allowFullscreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
