@@ -3,11 +3,29 @@ import { Box, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../../../firebaseConfig";
+import { Link } from "react-router-dom";
 
-const ShopHeader = ({ data }) => {
-  const { filterProductByCategory } = data;
-  const allCategories = ["Lámparas", "Stools", "Columnas", "Tornillos"];
+const ShopHeader = () => {
+
+  const [categories, setCategories] = useState([]) // stores product categories from firebase
   
+  useEffect(()=>{
+
+    const categoriesCollection = collection(db, "categories")
+
+    getDocs(categoriesCollection)
+      .then((res)=>{
+        let categoriesArr = res.docs.map((el)=>{return {...el.data()}})
+
+        setCategories(categoriesArr)
+      }
+    )
+
+  },[])
+
   return (
     <Box sx={{ px: { xs: "1rem", md: "3rem" } }}>
       <Typography
@@ -32,28 +50,28 @@ const ShopHeader = ({ data }) => {
         }}
       >
         <Grid container sx={{ width: "100%" }}>
-          {allCategories.map((category) => {
+          {categories.map((el) => {
             return (
               <Grid
-                key={category}
+                key={el.category}
                 item
                 xs={6}
                 sm={3}
-                //! sx={{ minHeight: "30px" }}
               >
-                <Button
-                  onClick={() => filterProductByCategory(category)}
-                  variant="outlined"
-                  sx={{ width: "100%", borderRadius: "0" }}
-                >
-                  <Typography
-                    className="category"
-                    variant="body2"
-                    sx={{ fontWeight: "600" }}
+                <Link to={`/shop/${el.category}`}>
+                  <Button
+                    variant="outlined"
+                    sx={{ width: "100%", borderRadius: "0" }}
                   >
-                    {category}
-                  </Typography>
-                </Button>
+                    <Typography
+                      className="category"
+                      variant="body2"
+                      sx={{ fontWeight: "600" }}
+                    >
+                      {el.category}
+                    </Typography>
+                  </Button>
+                </Link>
               </Grid>
             );
           })}

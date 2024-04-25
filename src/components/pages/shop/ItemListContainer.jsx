@@ -6,12 +6,11 @@ import ItemList from "./ItemList";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
   const navigate = useNavigate();
 
   // params from home category img
-  let { mobiliario } = useParams();
-  let homeCategory = mobiliario;
+  let { category } = useParams();
+  let selectedCategoryFromHome = category;
 
   // get product collection from firebase & store in state
   useEffect(() => {
@@ -19,16 +18,11 @@ const ItemListContainer = () => {
 
     let displayProducts;
 
-    if (selectedCategory) {
-      console.log("category= ", selectedCategory);
+    if (selectedCategoryFromHome) {
+      // if someone selected a category in "/" or in shop buttons
       displayProducts = query(
         productsCollection,
-        where("category", "==", selectedCategory)
-      );
-    } else if (homeCategory) {
-      displayProducts = query(
-        productsCollection,
-        where("category", "==", homeCategory)
+        where("category", "==", selectedCategoryFromHome)
       );
     } else {
       displayProducts = productsCollection;
@@ -45,17 +39,11 @@ const ItemListContainer = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [selectedCategory, homeCategory]);
-
-  let filterProductByCategory = (desiredCategory) => {
-    setSelectedCategory(desiredCategory);
-  };
+  }, [selectedCategoryFromHome]);
 
   const data = {
     products,
     navigate,
-    selectedCategory,
-    filterProductByCategory,
   };
   return <ItemList data={data} />;
 };

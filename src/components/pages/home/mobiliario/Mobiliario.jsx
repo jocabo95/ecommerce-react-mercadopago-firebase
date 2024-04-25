@@ -1,18 +1,34 @@
 import "./mobiliario.css";
 import { Box, Grid, Typography } from "@mui/material";
 import { Image } from "@nextui-org/react";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { db } from "../../../../firebaseConfig";
 
 const Mobiliario = () => {
+
+  const[categories, setCategories] = useState([]) //stores product categories from firebase
+  
+
+  useEffect(()=>{
+
+    let categoriesCollection = collection(db, "categories")
+
+    getDocs(categoriesCollection)
+      .then((res)=>{
+        let categoriesArr = res.docs.map((product)=>{
+          return {...product.data()}
+        })
+
+        setCategories(categoriesArr)
+      })
+
+  },[])
+
+
   let widthXs = 6;
   let widthMd = 2.8;
-
-  const categories = [
-    { category: "Lámparas", img: "src/images/categoria-lamparas.PNG" },
-    { category: "Stools", img: "src/images/categoria-stools.PNG" },
-    { category: "Tornillos", img: "src/images/categoria-tornillos.PNG" },
-    { category: "Columnas", img: "src/images/categoria-columnas.PNG" },
-  ];
 
   return (
     <Box sx={{ margin: "1rem" }}>

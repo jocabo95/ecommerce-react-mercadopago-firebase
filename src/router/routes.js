@@ -36,7 +36,7 @@ export const routes = [
   },
   {
     id: "shop per category",
-    path: "/shop/:mobiliario",
+    path: "/shop/:category",
     Element: ItemListContainer,
   },
   {

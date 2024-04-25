@@ -33,7 +33,6 @@ function App() {
       fontFamily: ["Raleway", "Playfair", "sans-serif"].join(","),
     },
   });
-
   
 
   return (
