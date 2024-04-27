@@ -1,18 +1,31 @@
 import "./itemDetail.css";
 import {
   Grid,
-  Box,
   Card,
   CardMedia,
   Typography,
-  Button,
   Paper,
+  Box,
 } from "@mui/material";
 import { NumericFormat } from "react-number-format";
+import ManufactureDtails from "./manufactureDetails/ManufactureDtails";
+import CounterButton from "../../common/counterButton/CounterButton";
 
 const ItemDetail = ({ data }) => {
   const { product, suma, resta, counter, addToCart } = data;
 
+  const manufactureDetailsData = {
+    product,
+    addToCart,
+    counter
+  }
+
+  const counterButtonData ={
+    counter,
+    suma,
+    resta
+  }
+  
   return (
     <Card
       raised={false}
@@ -67,39 +80,29 @@ const ItemDetail = ({ data }) => {
               value={product.unit_price}
             />
           </Typography>
-          <Typography variant="body2" sx={{ mt: "8rem", mb: "1rem" }}>
-            cantidad
-          </Typography>
-          <Box
-            sx={{
-              width: "auto",
-              display: "flex",
-            }}
-          >
-            <Button
-              className="counter-button"
-              variant="outlined"
-              onClick={resta}
-            >
-              -
-            </Button>
-            <div className="counter-display">{counter}</div>
-            <Button
-              className="counter-button"
-              variant="outlined"
-              onClick={suma}
-            >
-              +
-            </Button>
-          </Box>
-          <Button
-            color="secondary"
-            variant="outlined"
-            sx={{ width: "100%", mt: "1rem", mx: "auto" }}
-            onClick={() => addToCart(product, counter)}
-          >
-            Agregar al carrito
-          </Button>
+
+            {/* TAG WHEN STOCK=0 */}
+          {product.stock === 0 && (
+            <Box sx={{ width: "8rem", backgroundColor: "green", mt: "0.5rem", mb:"3rem" }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  width: "auto",
+                  color: "white",
+                  backgroundColor: "red",
+                  textAlign: "center",
+                }}
+              >
+                por encargo
+              </Typography>
+            </Box>
+          )}
+
+          {/* COUNTER BUTTON */}
+          <CounterButton data={counterButtonData} />
+
+          {/* PRODUCTION DETAILS */}
+          <ManufactureDtails data={manufactureDetailsData} />
 
           <Paper
             sx={{

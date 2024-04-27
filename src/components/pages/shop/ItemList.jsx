@@ -100,6 +100,21 @@ const ItemList = ({ data }) => {
                             prefix="$ "
                           />
                         </Typography>
+                        {prod.stock === 0 && (
+                          <Box sx={{ width: "8rem", backgroundColor: "green", mt:"0.5rem" }}>
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                width: "auto",
+                                color: "white",
+                                backgroundColor: "red",
+                                textAlign: "center",
+                              }}
+                            >
+                              por encargo
+                            </Typography>
+                          </Box>
+                        )}
                       </CardContent>
                     </Link>
                   </CardActionArea>
