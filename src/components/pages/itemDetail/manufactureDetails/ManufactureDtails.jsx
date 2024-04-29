@@ -1,42 +1,38 @@
 import { Button, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const ManufactureDtails = ({data}) => {
+const ManufactureDtails = ({ data }) => {
+  const { product, addToCart, counter } = data;
 
-    const{product, addToCart, counter}=data;
+  const [acceptConditions, setAcceptConditions] = useState(null);
 
-    const [acceptConditions, setAcceptConditions] = useState(false);
+  useEffect(() => {
+    if (product.stock === 0) {
+      setAcceptConditions(false);
+    }
+  }, [product]);
 
-
-    let handleConditions = () => {
-      if (acceptConditions) {
-        setAcceptConditions(false);
-      } else {
-        setAcceptConditions(true);
-      }
-    };
+  let handleConditions = () => {
+    if (acceptConditions) {
+      setAcceptConditions(false);
+    } else {
+      setAcceptConditions(true);
+    }
+  };
 
   return (
     <>
-      {product.stock === 0 ? (
-        <>
+      {product.stock === 0 && 
+        (
           <Typography variant="body2" sx={{ mt: "2rem", fontWeight: "600" }}>
             Entiendo que el tiempo de producción de este producto es de{" "}
             {product.productionTime} días hábiles luego de realizada su compra
           </Typography>
-        </>
-      ) : (
-        <Button
-          color="secondary"
-          variant="outlined"
-          sx={{ width: "100%", mt: "1rem", mx: "auto" }}
-          onClick={() => addToCart(product, counter)}
-        >
-          Agregar al carrito
-        </Button>
-      )}
+        )
+      }
 
-      {acceptConditions ? (
+      {/* aceept conditions == false only when stock=0 and conditions havent been accepted */}
+      {acceptConditions !== false ? (
         <Button
           color="secondary"
           variant="outlined"
@@ -66,6 +62,6 @@ const ManufactureDtails = ({data}) => {
       )}
     </>
   );
-}
+};
 
-export default ManufactureDtails
+export default ManufactureDtails;

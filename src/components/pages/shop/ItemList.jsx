@@ -101,14 +101,23 @@ const ItemList = ({ data }) => {
                           />
                         </Typography>
                         {prod.stock === 0 && (
-                          <Box sx={{ width: "8rem", backgroundColor: "green", mt:"0.5rem" }}>
+                          <Box
+                            sx={{
+                              width: "6rem",
+                              backgroundColor: "none",
+                              mt: "0.5rem",
+                              borderRadius: "20px",
+                            }}
+                          >
                             <Typography
                               variant="body2"
                               sx={{
                                 width: "auto",
+                                fontSize: "0.7rem",
                                 color: "white",
-                                backgroundColor: "red",
+                                backgroundColor: "#CA310D",
                                 textAlign: "center",
+                                borderRadius: "20px",
                               }}
                             >
                               por encargo
