@@ -11,11 +11,21 @@ const CounterButton = ({data}) => {
         display: "flex",
       }}
     >
-      <Button className="counter-button" variant="outlined" onClick={resta}>
+      <Button
+        sx={{ borderRadius: "0px", padding: "0rem", minWidth: "3rem", height:"2rem" }}
+        className="counter-button"
+        variant="outlined"
+        onClick={resta}
+      >
         -
       </Button>
       <div className="counter-display">{counter}</div>
-      <Button className="counter-button" variant="outlined" onClick={suma}>
+      <Button
+        sx={{ borderRadius: "0px", padding: "0rem", minWidth: "3rem", height:"2rem" }}
+        className="counter-button"
+        variant="outlined"
+        onClick={suma}
+      >
         +
       </Button>
     </Box>

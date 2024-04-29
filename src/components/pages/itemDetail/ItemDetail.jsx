@@ -52,51 +52,59 @@ const ItemDetail = ({ data }) => {
           />
         </Grid>
 
-        {/* product info, price, button */}
+        {/*PRODUCT, PRICE, BUTTONS */}
         <Grid
           item
           xs={12}
           md={4}
           sx={{
-            py: { xs: "2.5rem", md: "0rem" },
+            pt: { xs: "2.5rem", md: "0rem" },
             px: { xs: "1rem", md: "0rem" },
           }}
         >
-          <Typography
-            sx={{
-              fontSize: "1.5rem",
-              fontWeight: "500",
-              letterSpacing: "0.2rem",
-              fontFamily: "Playfair",
-            }}
-            variant="body"
-          >
-            {product.title}
-          </Typography>
-          <Typography variant="body2" sx={{ pt: "1rem", fontSize: "1rem" }}>
-            <NumericFormat
-              prefix="$ "
-              thousandSeparator=","
-              value={product.unit_price}
-            />
-          </Typography>
-
+          {/* price, title, availability info */}
+          <Box sx={{ mb: "3rem" }}>
+            <Typography
+              sx={{
+                fontSize: "1.5rem",
+                fontWeight: "500",
+                letterSpacing: "0.2rem",
+                fontFamily: "Playfair",
+              }}
+              variant="body"
+            >
+              {product.title}
+            </Typography>
+            <Typography variant="body2" sx={{ pt: "1rem", fontSize: "1rem" }}>
+              <NumericFormat
+                prefix="$ "
+                thousandSeparator=","
+                value={product.unit_price}
+              />
+            </Typography>
             {/* TAG WHEN STOCK=0 */}
-          {product.stock === 0 && (
-            <Box sx={{ width: "8rem", backgroundColor: "green", mt: "0.5rem", mb:"3rem" }}>
-              <Typography
-                variant="body2"
+            {product.stock === 0 && (
+              <Box
                 sx={{
-                  width: "auto",
-                  color: "white",
-                  backgroundColor: "red",
-                  textAlign: "center",
+                  width: "8rem",
+                  backgroundColor: "green",
+                  mt: "0.5rem",
                 }}
               >
-                por encargo
-              </Typography>
-            </Box>
-          )}
+                <Typography
+                  variant="body2"
+                  sx={{
+                    width: "auto",
+                    color: "white",
+                    backgroundColor: "red",
+                    textAlign: "center",
+                  }}
+                >
+                  por encargo
+                </Typography>
+              </Box>
+            )}
+          </Box>
 
           {/* COUNTER BUTTON */}
           <CounterButton data={counterButtonData} />
@@ -105,14 +113,31 @@ const ItemDetail = ({ data }) => {
           <ManufactureDtails data={manufactureDetailsData} />
 
           <Paper
+            variant="outlined"
             sx={{
-              mt: { xs: "2rem", md: "5rem" },
+              mt: { xs: "3rem", md: "5rem" },
               py: { xs: "1rem", md: "1rem" },
               px: { xs: "1rem", md: "1rem" },
-              height: { xs: "4rem", md: "7rem" },
+              height: "auto",
+              borderRadius: "0px"
             }}
           >
-            <Typography variant="body">{product.description}</Typography>
+            <Typography variant="h6" sx={{ mb: "0.5rem" }}>
+              Descripción:
+            </Typography>
+            <Typography variant="body">
+              {product.description}.
+              <br />
+            </Typography>
+            <Typography variant="h6" sx={{ mb: "0.5rem", mt:"1rem" }}>
+              Medidas:
+            </Typography>
+            <Typography variant="body">
+              {product.dimensions}<br/>
+            </Typography>
+            <Typography variant="body2" sx={{fontWeight:"600", mt:"2rem"}}>
+              Si quieres conocer más alternativas de este producto, visita nuestro showroom o contactanos
+            </Typography>
           </Paper>
         </Grid>
 
