@@ -1,0 +1,35 @@
+#homeInteriorDesign-imgContainer {
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+#homeInteriorDesign-img {
+  position:relative;
+  opacity: 0.9;
+}
+
+#img-background {
+  position:relative;
+  width: 95%;
+  background-color: black;
+}
+
+#interiorism-button{
+  position: relative;
+  top: -7rem;
+  left: 10rem;
+  border-radius: 0px;
+  
+  font-weight: 500;
+  font-family: Playfair;
+}
+
+#interiorism-text{
+
+}
