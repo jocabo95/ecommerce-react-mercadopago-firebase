@@ -1,6 +1,7 @@
 import "./proyectos.css";
 import { Box, Button, Typography } from "@mui/material";
 import { Image } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 
 const Proyectos = () => {
   return (
@@ -26,27 +27,32 @@ const Proyectos = () => {
         {/* following div avoidas text & button relative position to leave empty space in doc flow */}
         <div
           style={{
-            position: "relative",
-            height: "0px",
+            position: "absolute",
             width: "100%",
+            height:"100%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <Typography id="projects-heroText" variant="body2">
+          <Typography id="projects-heroText" variant="body2" sx={{fontSize:{xs:"1rem", md:"2rem"}}}>
             Renovamos tus espacios
           </Typography>
-          <Button
-            id="proyects-button"
-            variant="contained"
-            color="background"
-            disableElevation={true}
-            disableFocusRipple={true}
-          >
-            Conoce nuestros proyectos
-          </Button>
+            <Button
+              id="proyects-button"
+              variant="contained"
+              color="background"
+              disableElevation={true}
+              disableFocusRipple={true}
+              sx={{fontSize:{xs:"0.7rem", sm:"1rem"}}}
+              >
+              <Link to={'/projects'}>
+                <div>
+                  Conoce nuestros proyectos
+                </div>
+              </Link>
+            </Button>
         </div>
       </div>
     </Box>
