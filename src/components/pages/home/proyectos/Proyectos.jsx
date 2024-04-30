@@ -1,4 +1,4 @@
-import "./proyectos.css"
+import "./proyectos.css";
 import { Box, Button, Typography } from "@mui/material";
 import { Image } from "@nextui-org/react";
 
@@ -13,7 +13,7 @@ const Proyectos = () => {
         ARQUITECTURA E INTERIORISMO
       </Typography>
 
-      <div id="homeInteriorDesign-imgContainer">
+      <div id="homeInteriorDesign-heroContainer">
         <div id="img-background">
           <Image
             id="homeInteriorDesign-img"
@@ -22,14 +22,35 @@ const Proyectos = () => {
             radius="none"
           />
         </div>
-      </div>
 
-      <Typography variant="body2">Renovamos tus espacios</Typography>
-      <Button variant="contained" color="background" disableElevation={true}>
-        Conoce nuestros proyectos
-      </Button>
+        {/* following div avoidas text & button relative position to leave empty space in doc flow */}
+        <div
+          style={{
+            position: "relative",
+            height: "0px",
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Typography id="projects-heroText" variant="body2">
+            Renovamos tus espacios
+          </Typography>
+          <Button
+            id="proyects-button"
+            variant="contained"
+            color="background"
+            disableElevation={true}
+            disableFocusRipple={true}
+          >
+            Conoce nuestros proyectos
+          </Button>
+        </div>
+      </div>
     </Box>
   );
-}
+};
 
-export default Proyectos
+export default Proyectos;
