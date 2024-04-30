@@ -1,3 +1,4 @@
+import AboutUs from "../components/pages/aboutUs/AboutUs";
 import CartContainer from "../components/pages/cart/CartContainer";
 import CheckoutContainer from "../components/pages/checkout/CheckoutContainer";
 import ForgotPasswordContainer from "../components/pages/forgotPassword/ForgotPasswordContainer";
@@ -5,6 +6,8 @@ import Home from "../components/pages/home/Home";
 import ItemDetailContainer from "../components/pages/itemDetail/ItemDetailContainer";
 import LoginContainer from "../components/pages/login/LoginContainer";
 import MyOrdersContainer from "../components/pages/myOrders/MyOrdersContainer";
+import ProjectDetailContainer from "../components/pages/projectDetail/ProjectDetailContainer";
+import ProjectsContainer from "../components/pages/projects/ProjectsContainer";
 import RegisterContainer from "../components/pages/register/RegisterContainer";
 import ItemListContainer from "../components/pages/shop/ItemListContainer";
 
@@ -58,6 +61,21 @@ export const routes = [
     id: "orders",
     path: "/orders",
     Element: MyOrdersContainer,
+  },
+  {
+    id: "projects",
+    path: "/projects",
+    Element: ProjectsContainer,
+  },
+  {
+    id: "project",
+    path: "/projects/:project",
+    Element: ProjectDetailContainer,
+  },
+  {
+    id: "about",
+    path: "/aboutUs",
+    Element: AboutUs,
   },
  
 ];

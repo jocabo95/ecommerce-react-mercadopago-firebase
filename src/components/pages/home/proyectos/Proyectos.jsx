@@ -36,7 +36,7 @@ const Proyectos = () => {
             justifyContent: "center",
           }}
         >
-          <Typography id="projects-heroText" variant="body2" sx={{fontSize:{xs:"1rem", md:"2rem"}}}>
+          <Typography id="projects-heroText" variant="body2" sx={{fontSize:{xs:"1rem", sm:"2rem"}}}>
             Renovamos tus espacios
           </Typography>
             <Button

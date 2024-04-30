@@ -2,6 +2,7 @@ import "./heroImage.css";
 import { useTheme } from "@emotion/react";
 import { Button, Typography } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { Link } from "react-router-dom";
 
 
 const HeroImage = ({imgUrl, text, button}) => {
@@ -46,7 +47,11 @@ const HeroImage = ({imgUrl, text, button}) => {
             size="large"
             disableFocusRipple={true}
           >
-            <Typography sx={{ fontFamily: "Playfair" }}>Sobre nosotros</Typography>
+            <Link to={"/aboutUs"}>
+              <Typography sx={{ fontFamily: "Playfair" }}>
+                Sobre nosotros
+              </Typography>
+            </Link>
           </Button>
         )}
       </div>
