@@ -1,7 +1,13 @@
+import { useEffect } from 'react';
 import './aboutUs.css'
 import { Grid, Typography } from "@mui/material"
 
 const AboutUs = () => {
+  //be redirected to top of screen when click log in button in footer
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  
   return (
     <div style={{ width: "100%" }}>
       <Grid container>
@@ -27,7 +33,7 @@ const AboutUs = () => {
         >
           <Typography
             variant="body2"
-            sx={{ fontWeight: "400", fontSize: { md: "1.2rem" }, mb:"3rem" }}
+            sx={{ fontWeight: "400", fontSize: { md: "1.2rem" }, mb: "3rem" }}
           >
             Basalto Studio es una oficina de arquitectura, diseño e interiorismo
             fundada por la arquitecta Colombiana Susana Garavito. Es arquitecta
@@ -46,7 +52,9 @@ const AboutUs = () => {
             y los tótems modulares de gran formato de la colección Endless
             Balance y Solé
           </Typography>
-          <Typography variant='body' sx={{fontWeight:"600"}}>GANADORA ICONOS DE DISEÑO 2022</Typography>
+          <Typography variant="body" sx={{ fontWeight: "600" }}>
+            GANADORA ICONOS DE DISEÑO 2022
+          </Typography>
         </Grid>
       </Grid>
     </div>

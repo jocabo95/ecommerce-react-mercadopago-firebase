@@ -5,7 +5,6 @@ import AuthContextComponent from "./components/context/AuthContext";
 import { createTheme, ThemeProvider } from "@mui/material";
 
 function App() {
-
   const theme = createTheme({
     palette: {
       primary: {
@@ -33,6 +32,7 @@ function App() {
       fontFamily: ["Raleway", "Playfair", "sans-serif"].join(","),
     },
   });
+
   
 
   return (

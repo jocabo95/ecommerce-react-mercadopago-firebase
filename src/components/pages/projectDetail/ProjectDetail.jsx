@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import "./projectDetails.css"
 import { Box, Grid, Typography } from "@mui/material";
 
 const ProjectDetail = ({data}) => {
-
   const { projectOnDisplay } = data;
+
+  //be redirected to top of screen when click log in button in footer
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <div style={{ width: "100%", padding: "3rem" }}>
@@ -25,10 +30,10 @@ const ProjectDetail = ({data}) => {
         // spacing={4}
         sx={{ display: "flex", justifyContent: "center", mt: "2rem" }}
       >
-        <Grid item xs={4} sx={{ height: "100px", mx:"1rem" }}>
+        <Grid item xs={4} sx={{ height: "100px", mx: "1rem" }}>
           <img className="projectImg" src={projectOnDisplay.img1} />
         </Grid>
-        <Grid item xs={4} sx={{ height: "100px", mx:"1rem" }}>
+        <Grid item xs={4} sx={{ height: "100px", mx: "1rem" }}>
           <img className="projectImg" src={projectOnDisplay.img2} />
         </Grid>
       </Grid>

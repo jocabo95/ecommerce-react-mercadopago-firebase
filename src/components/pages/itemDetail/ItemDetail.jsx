@@ -10,22 +10,28 @@ import {
 import { NumericFormat } from "react-number-format";
 import ManufactureDtails from "./manufactureDetails/ManufactureDtails";
 import CounterButton from "../../common/counterButton/CounterButton";
+import { useEffect } from "react";
 
 const ItemDetail = ({ data }) => {
   const { product, suma, resta, counter, addToCart } = data;
 
+  //be redirected to top of screen when click log in button in footer
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   const manufactureDetailsData = {
     product,
     addToCart,
-    counter
-  }
+    counter,
+  };
 
-  const counterButtonData ={
+  const counterButtonData = {
     counter,
     suma,
-    resta
-  }
-  
+    resta,
+  };
+
   return (
     <Card
       raised={false}
@@ -119,7 +125,7 @@ const ItemDetail = ({ data }) => {
               py: { xs: "1rem", md: "1rem" },
               px: { xs: "1rem", md: "1rem" },
               height: "auto",
-              borderRadius: "0px"
+              borderRadius: "0px",
             }}
           >
             <Typography variant="h6" sx={{ mb: "0.5rem" }}>
@@ -129,14 +135,16 @@ const ItemDetail = ({ data }) => {
               {product.description}.
               <br />
             </Typography>
-            <Typography variant="h6" sx={{ mb: "0.5rem", mt:"1rem" }}>
+            <Typography variant="h6" sx={{ mb: "0.5rem", mt: "1rem" }}>
               Medidas:
             </Typography>
             <Typography variant="body">
-              {product.dimensions}<br/>
+              {product.dimensions}
+              <br />
             </Typography>
-            <Typography variant="body2" sx={{fontWeight:"600", mt:"2rem"}}>
-              Si quieres conocer más alternativas de este producto, visita nuestro showroom o contactanos
+            <Typography variant="body2" sx={{ fontWeight: "600", mt: "2rem" }}>
+              Si quieres conocer más alternativas de este producto, visita
+              nuestro showroom o contactanos
             </Typography>
           </Paper>
         </Grid>

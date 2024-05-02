@@ -20,7 +20,7 @@ export const menuItems = [
     },
     {
         id: "sobre nosotros",
-        path: "/orders",
+        path: "/aboutUs",
         title: "SOBRE NOSOTROS",
     },
     {

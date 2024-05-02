@@ -27,8 +27,8 @@ const AppRouter = () => {
       <Route path="/forgot-password" element={<ForgotPassword />} />
 
       {/* ADMIN PROTECTED */}
-      <Route element={<AdminProtected/>}>
-        <Route element={<Navbar/>}>
+      <Route element={<AdminProtected />}>
+        <Route element={<Navbar />}>
           <Route path="/dashboard" element={<DashboardContainer />} />
         </Route>
       </Route>
