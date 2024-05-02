@@ -11,7 +11,7 @@ const ProjectDetail = ({data}) => {
   });
 
   return (
-    <div style={{ width: "100%", padding: "3rem" }}>
+    <Box sx={{ width: "100%", p:"3rem"}}>
       <Box sx={{ display: "flex", justifyContent: "center", mb: "3rem" }}>
         <img
           id="mainImg"
@@ -27,8 +27,7 @@ const ProjectDetail = ({data}) => {
       </Typography>
       <Grid
         container
-        // spacing={4}
-        sx={{ display: "flex", justifyContent: "center", mt: "2rem" }}
+        sx={{ display: "flex", justifyContent: "center", my: "2rem"}}
       >
         <Grid item xs={4} sx={{ height: "100px", mx: "1rem" }}>
           <img className="projectImg" src={projectOnDisplay.img1} />
@@ -37,7 +36,7 @@ const ProjectDetail = ({data}) => {
           <img className="projectImg" src={projectOnDisplay.img2} />
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 }
 
