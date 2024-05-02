@@ -10,7 +10,7 @@ export const menuItems = [
     },
     {
         id: "espacios",
-        path: "/cart",
+        path: "/projects",
         title: "ESPACIOS",
     },
     {

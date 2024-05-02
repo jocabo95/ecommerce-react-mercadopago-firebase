@@ -30,7 +30,6 @@ const NavbarDesktop = ({ data }) => {
     return total + product.quantity
   }, 0)
 
-  console.log(cartBadgeNumber)
   //- MODIFIABLES
   let topNavbarHeight = "60px";
   let bottomNavbarHeight = "64px";

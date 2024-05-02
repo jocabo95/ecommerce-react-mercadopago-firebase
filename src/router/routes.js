@@ -69,7 +69,7 @@ export const routes = [
   },
   {
     id: "project",
-    path: "/projects/:project",
+    path: "/projects/:projectId",
     Element: ProjectDetailContainer,
   },
   {
@@ -77,5 +77,4 @@ export const routes = [
     path: "/aboutUs",
     Element: AboutUs,
   },
- 
 ];

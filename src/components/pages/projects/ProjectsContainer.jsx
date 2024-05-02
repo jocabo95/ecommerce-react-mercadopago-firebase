@@ -17,7 +17,7 @@ const ProjectsContainer = () => {
     getDocs(projectsCollection)
       .then((res)=>{
         let projectsArr = res.docs.map((el)=>{
-          return {...el.data()}
+          return {...el.data(), id: el.id}
         })
 
         setProjects(projectsArr)
@@ -25,8 +25,6 @@ const ProjectsContainer = () => {
       .catch((err)=>console.log(err))
 
   },[])
-
-  console.log("projects arr= ", projects);
 
 
   const data ={

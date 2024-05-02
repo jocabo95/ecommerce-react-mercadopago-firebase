@@ -1,15 +1,11 @@
-#prject-imgContainer{
+#project-imgContainer{
   width: 100%;
-  height: auto;
-  overflow: hidden;
-
-  border: solid thin green;
-
 }
 
-#prject-imgContainer > img{
-  width:100%;
+#project-imgContainer > img{
+  width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
 }
 
