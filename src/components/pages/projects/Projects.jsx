@@ -18,13 +18,19 @@ const Projects = ({ data }) => {
   console.log("obj",obj);
 
   return (
-    <div style={{margin: "0rem 3rem"}}>
-      <Grid
-        container
-        spacing={5}
-        rowSpacing={3}
-        sx={{ mt: "3rem" }}
+    <Box sx={{ mx:{xs:"1rem", md:"3rem"} }}>
+      <Typography
+        className="page-title"
+        sx={{
+          fontSize: { xs: "1.5rem", sm: "2rem" },
+          fontWeight: "200",
+          letterSpacing: { xs: "0.5rem" },
+          pl: "0rem",
+        }}
       >
+        ESPACIOS BASALTO
+      </Typography>
+      <Grid container spacing={5} rowSpacing={3} sx={{ mt: "0rem" }}>
         {projects.map((el) => {
           return (
             <Grid key={el.title} item xs={12} md={6} lg={4}>
@@ -60,7 +66,7 @@ const Projects = ({ data }) => {
           );
         })}
       </Grid>
-    </div>
+    </Box>
   );
 };
 
