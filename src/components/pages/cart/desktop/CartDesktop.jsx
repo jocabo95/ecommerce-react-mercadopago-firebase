@@ -1,13 +1,20 @@
 import { Box, Grid, IconButton, Typography } from "@mui/material";
-import { NumericFormat } from "react-number-format";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const CartDesktop = ({ data }) => {
   const { cart, deleteById } = data;
   return (
-    <Grid item container sx={{ px: { xs: "1rem", sm: "3rem" } }}>
+    <Grid
+      item
+      container
+      sx={{ px: { xs: "1rem", sm: "3rem"} }}
+    >
       {/* //- HEADER CONTAINER */}
-      <Grid item container sx={{ backgroundColor: "#F7F7F7" }}>
+      <Grid
+        item
+        container
+        sx={{ backgroundColor: "#F7F7F7"}}
+      >
         <Grid className="cartHeaderGrid" item xs={4}>
           <Box>
             <Typography variant="h6" sx={{ fontWeight: "600" }}>
@@ -46,8 +53,10 @@ const CartDesktop = ({ data }) => {
             container
             key={el.id}
             xs={12}
-            sx={{ borderBottom: "solid #F7F7F7", px: "1rem" }}
-            columnGap={1}
+            sx={{
+              borderBottom: "solid #F7F7F7",
+              px: "1rem",
+            }}
           >
             <Grid className="cartCellGrid" item xs={12} md={2}>
               <Box className="cartCell">
@@ -61,28 +70,24 @@ const CartDesktop = ({ data }) => {
             </Grid>
             <Grid className="cartCellGrid" item xs={12} md={2}>
               <Box className="cartCell">
-                <NumericFormat
-                  prefix="$ "
-                  thousandSeparator=","
-                  value={el.unit_price}
-                />
+                <Typography sx={{ width: "100%", textAlign: "center" }}>
+                  $ {Intl.NumberFormat().format(el.unit_price)}
+                </Typography>
               </Box>
             </Grid>
             <Grid className="cartCellGrid" item xs={12} md={2}>
-              <Box className="cartCell">
-                <Typography>Unidades= {el.quantity}</Typography>
+              <Box className="cartCell" sx={{ width: "100%" }}>
+                <Typography sx={{ textAlign: "center" }}>
+                  {el.quantity}
+                </Typography>
               </Box>
             </Grid>
             <Grid className="cartCellGrid" item xs={12} md={2}>
-              <Box className="cartCell">
-                <NumericFormat
-                  prefix="$ "
-                  thousandSeparator=","
-                  value={el.unit_price * el.quantity}
-                />
-              </Box>
+              <Typography sx={{ width: "100%", textAlign: "center" }}>
+                $ {Intl.NumberFormat().format(el.unit_price * el.quantity)}
+              </Typography>
             </Grid>
-            <Grid className="cartCellGrid" item xs={12} md={1}>
+            <Grid className="cartCellGrid" item xs={12} md={2}>
               <Box className="cartCell">
                 <IconButton
                   size="medium"

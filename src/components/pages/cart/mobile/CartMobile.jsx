@@ -1,6 +1,5 @@
 import "./cartMobile.css"
-import { Box, Grid, IconButton, Typography } from "@mui/material";
-import { NumericFormat } from "react-number-format";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const CartMobile = ({ data }) => {
@@ -60,7 +59,7 @@ const CartMobile = ({ data }) => {
               sx={{ borderBottom: `solid thin ${divisionColor}` }}
             >
               <Grid item xs={cellsXs}>
-                <Typography sx={{ fontWeight: "600" }}>Precio COP: </Typography>
+                <Typography sx={{ fontWeight: "600" }}>Precio: </Typography>
               </Grid>
               <Box className="cartCell mobile-cartHeaderTitle">
                 <Typography>
@@ -80,7 +79,7 @@ const CartMobile = ({ data }) => {
                 <Typography sx={{ fontWeight: "600" }}>Unidades: </Typography>
               </Grid>
               <Box className="cartCell mobile-cartHeaderTitle">
-                <Typography>Unidades= {el.quantity}</Typography>
+                <Typography>{el.quantity}</Typography>
               </Box>
             </Grid>
             <Grid
@@ -109,18 +108,9 @@ const CartMobile = ({ data }) => {
                   justifyContent: "center",
                 }}
               >
-                <IconButton
-                  size="medium"
-                  color="secondary"
-                  onClick={() => deleteById(el.id)}
-                  sx={{
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <DeleteIcon />
-                </IconButton>
+                <Button sx={{color:"primary.contrastText"}} variant='text' startIcon={<DeleteIcon/>} onClick={()=>deleteById(el.id)}>
+                  eliminar del carrito
+                </Button>
               </Box>
             </Grid>
           </Grid>
