@@ -19,10 +19,11 @@ function App() {
       background: {
         main: "#FFFFFF",
         light: "#ffffff",
-        dark: "#A06348",
+        dark: "#F7F7F7",
       },
       details: {
-        main: "#bf3815",
+        // main: "#bf3815",
+        main: "#1E372F",
       },
       warning: {
         main: "#D70040",

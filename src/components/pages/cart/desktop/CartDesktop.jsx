@@ -3,17 +3,19 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 const CartDesktop = ({ data }) => {
   const { cart, deleteById } = data;
+
+
   return (
     <Grid
       item
       container
-      sx={{ px: { xs: "1rem", sm: "3rem"} }}
+      sx={{ pr: { xs: "1rem", sm: "3rem"} }}
     >
       {/* //- HEADER CONTAINER */}
       <Grid
         item
         container
-        sx={{ backgroundColor: "#F7F7F7"}}
+        sx={{ backgroundColor: "background.dark"}}
       >
         <Grid className="cartHeaderGrid" item xs={4}>
           <Box>
