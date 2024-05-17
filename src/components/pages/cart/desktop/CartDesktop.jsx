@@ -1,5 +1,6 @@
 import { Box, Grid, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Link } from "react-router-dom";
 
 const CartDesktop = ({ data }) => {
   const { cart, deleteById } = data;
@@ -17,7 +18,7 @@ const CartDesktop = ({ data }) => {
         container
         sx={{ backgroundColor: "background.dark"}}
       >
-        <Grid className="cartHeaderGrid" item xs={4}>
+        <Grid className="cartHeaderGrid" item xs={5}>
           <Box>
             <Typography variant="h6" sx={{ fontWeight: "600" }}>
               Producto
@@ -60,9 +61,11 @@ const CartDesktop = ({ data }) => {
               px: "1rem",
             }}
           >
-            <Grid className="cartCellGrid" item xs={12} md={2}>
+            <Grid className="cartCellGrid" item xs={12} md={3}>
               <Box className="cartCell">
-                <img src={el.img} style={{ height: "90px" }} />
+                <Link to={`/itemDetail/${el.id}`}>
+                  <img src={el.img} style={{ height: "90px" }} />
+                </Link>
               </Box>
             </Grid>
             <Grid className="cartCellGrid" item xs={12} md={2}>
@@ -89,7 +92,7 @@ const CartDesktop = ({ data }) => {
                 $ {Intl.NumberFormat().format(el.unit_price * el.quantity)}
               </Typography>
             </Grid>
-            <Grid className="cartCellGrid" item xs={12} md={2}>
+            <Grid className="cartCellGrid" item xs={12} md={1}>
               <Box className="cartCell">
                 <IconButton
                   size="medium"

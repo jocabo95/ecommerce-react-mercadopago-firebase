@@ -1,6 +1,7 @@
 import "./cartMobile.css"
 import { Box, Button, Grid, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Link } from "react-router-dom";
 
 const CartMobile = ({ data }) => {
   const { cart, deleteById } = data;
@@ -31,9 +32,11 @@ const CartMobile = ({ data }) => {
               md={2}
               sx={{ display: "flex", justifyContent: "center" }}
             >
+              <Link to={`/itemDetail/${el.id}`}>
               <Box className="cartCell">
                 <img src={el.img} style={{ height: "150px" }} />{" "}
               </Box>
+              </Link>
             </Grid>
 
             {/* //-  PRODUCT */}
@@ -108,7 +111,12 @@ const CartMobile = ({ data }) => {
                   justifyContent: "center",
                 }}
               >
-                <Button sx={{color:"primary.contrastText"}} variant='text' startIcon={<DeleteIcon/>} onClick={()=>deleteById(el.id)}>
+                <Button
+                  sx={{ color: "primary.contrastText" }}
+                  variant="text"
+                  startIcon={<DeleteIcon />}
+                  onClick={() => deleteById(el.id)}
+                >
                   eliminar del carrito
                 </Button>
               </Box>
