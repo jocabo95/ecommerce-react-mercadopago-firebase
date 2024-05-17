@@ -30,7 +30,7 @@ const CartMobile = ({ data }) => {
               item
               xs={12}
               md={2}
-              sx={{ display: "flex", justifyContent: "center" }}
+              sx={{ display: "flex", justifyContent: "center", borderBottom:`solid thin ${divisionColor} ` }}
             >
               <Link to={`/itemDetail/${el.id}`}>
               <Box className="cartCell">
