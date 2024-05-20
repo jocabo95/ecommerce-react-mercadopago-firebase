@@ -15,7 +15,7 @@ export const menuItems = [
     },
     {
         id: "publicaciones",
-        path: "/orders",
+        path: "/publications",
         title: "PUBLICACIONES",
     },
     {

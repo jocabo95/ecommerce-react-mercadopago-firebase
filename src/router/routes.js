@@ -5,6 +5,7 @@ import ForgotPasswordContainer from "../components/pages/forgotPassword/ForgotPa
 import Home from "../components/pages/home/Home";
 import ItemDetailContainer from "../components/pages/itemDetail/ItemDetailContainer";
 import LoginContainer from "../components/pages/login/LoginContainer";
+import MagazinesContainer from "../components/pages/magazines/MagazinesContainer";
 import MyOrdersContainer from "../components/pages/myOrders/MyOrdersContainer";
 import ProjectDetailContainer from "../components/pages/projectDetail/ProjectDetailContainer";
 import ProjectsContainer from "../components/pages/projects/ProjectsContainer";
@@ -76,5 +77,10 @@ export const routes = [
     id: "about",
     path: "/aboutUs",
     Element: AboutUs,
+  },
+  {
+    id: "publications",
+    path: "/publications",
+    Element: MagazinesContainer,
   },
 ];
