@@ -4,22 +4,21 @@ const Magazines = ({data}) => {
 
   const {publications} = data
   return (
-    <Grid container>
-      
-      {
-        publications.map((el)=>{
+    <Box sx={{m:{xs:"1rem", md:"3rem"}, border:"solid red"}}>
+      <Grid container>
+        {publications.map((el) => {
           return (
-            <Grid key={el.title} item>
+            <Grid key={el.title} item xs={12} md={4}>
               <Box>
+                <img src={el.portada} />
                 <Typography variant="h6">{el.title}</Typography>
-                <img src={el.portada}/>
               </Box>
             </Grid>
           );
-        })
-      }
-    </Grid>
-  )
+        })}
+      </Grid>
+    </Box>
+  );
 }
 
 export default Magazines
