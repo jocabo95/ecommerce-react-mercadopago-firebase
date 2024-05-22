@@ -4,6 +4,8 @@ const MagazinesDetail = ({data}) => {
 
   const {magOnDisplay}=data;
 
+  console.log("mag fotos", magOnDisplay.fotos);
+
   return (
     <div style={{ margin: "3rem 3rem 0px 3rem" }}>
       <Box sx={{ display: "flex", justifyContent: "center", mb: "3rem" }}>
@@ -18,6 +20,8 @@ const MagazinesDetail = ({data}) => {
         container
         sx={{ display: "flex", justifyContent: "center", my: "2rem" }}
       >
+
+        
        
       </Grid>
     </div>

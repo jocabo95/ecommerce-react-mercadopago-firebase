@@ -6,9 +6,6 @@ import { db } from "../../../firebaseConfig"
 
 const ProjectsContainer = () => {
 
-  // crear variable estado que almacene projects en un arr
-  // llamar colecction projects desde firebase
-
   const [projects, setProjects]=useState([])
 
   useEffect(()=>{
