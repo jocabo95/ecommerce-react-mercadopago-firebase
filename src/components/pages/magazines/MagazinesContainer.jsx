@@ -11,8 +11,9 @@ const MagazinesContainer = () => {
     const refMagazines = collection(db, 'magazines')
     getDocs(refMagazines)
       .then((res)=>{
+
         let magazinesArr = res.docs.map((el)=>{
-          return {...el.data(), id: res.id}
+          return {...el.data(), id: el.id}
         })
 
         setPublications(magazinesArr)

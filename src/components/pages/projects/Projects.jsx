@@ -12,11 +12,6 @@ import {
 const Projects = ({ data }) => {
   const { projects } = data;
 
-  console.log("projects= ", projects);
-  const obj = {}
-
-  console.log("obj",obj);
-
   return (
     <Box sx={{ mx:{xs:"1rem", md:"3rem"} }}>
       <Typography
