@@ -15,13 +15,11 @@ const MagazinesDetailContainer = () => {
 
     getDoc(desiredDoc)
       .then((res) => {
-        console.log("Res", res.data());
         setMagOnDisplay({ ...res.data(), id: res.id });
       })
       .catch((err) => console.log(err));
   }, [magId]);
 
-  console.log("magDisplay", magOnDisplay);
 
   const data ={
     magOnDisplay

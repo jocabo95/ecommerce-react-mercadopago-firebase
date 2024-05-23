@@ -4,25 +4,28 @@ const MagazinesDetail = ({data}) => {
 
   const {magOnDisplay}=data;
 
-  console.log("mag fotos", magOnDisplay.fotos);
+
+  console.log("mag fotos", magOnDisplay.title);
 
   return (
     <div style={{ margin: "3rem 3rem 0px 3rem" }}>
-      <Box sx={{ display: "flex", justifyContent: "center", mb: "3rem" }}>
-        <img
-          id="mainImg"
-          src={magOnDisplay.portada}
-          alt={magOnDisplay.title}
-        />
+      <Box sx={{ display: "flex", justifyContent: "center", mb: "3rem", height:"auto"}}>
+        <img style={{height:"auto", width:"100%", maxWidth:"300px"}} src={magOnDisplay.portada} alt={magOnDisplay.title} />
       </Box>
-    
+
       <Grid
         container
+        gap={2}
         sx={{ display: "flex", justifyContent: "center", my: "2rem" }}
       >
-
-        
-       
+        {magOnDisplay.fotos &&
+          magOnDisplay.fotos.map((el) => {
+            return (
+              <Grid item key={el} xs={5} md={4}>
+                <img src={el} />
+              </Grid>
+            )
+          })}
       </Grid>
     </div>
   );
