@@ -7,7 +7,6 @@ import {
   Paper,
   Box,
 } from "@mui/material";
-import { NumericFormat } from "react-number-format";
 import ManufactureDtails from "./manufactureDetails/ManufactureDtails";
 import CounterButton from "../../common/counterButton/CounterButton";
 import { useEffect } from "react";
@@ -82,11 +81,7 @@ const ItemDetail = ({ data }) => {
               {product.title}
             </Typography>
             <Typography variant="body2" sx={{ pt: "1rem", fontSize: "1rem" }}>
-              <NumericFormat
-                prefix="$ "
-                thousandSeparator=","
-                value={product.unit_price}
-              />
+              $ {Intl.NumberFormat().format(product.unit_price)}
             </Typography>
             {/* TAG WHEN STOCK=0 */}
             {product.stock === 0 && (

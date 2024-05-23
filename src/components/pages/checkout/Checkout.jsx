@@ -1,27 +1,17 @@
-import { Button, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
+import CheckoutForm from "./checkoutForm/CheckoutForm";
 
 const Checkout = ({ data }) => {
   const {handleChange, handleBuy, Wallet, preferenceId, orderId} = data;
 
-
+  const formData = {
+    handleChange, handleBuy
+  }
   return (
     <div>
       {!orderId ? (
         <>
-          <TextField
-            name="cp"
-            variant="outlined"
-            label="codigo postal"
-            onChange={handleChange}
-          />
-          <TextField
-            name="tel"
-            variant="outlined"
-            label="telefono"
-            onChange={handleChange}
-          />
-          <Button onClick={handleBuy}>Mercado pago</Button>
+          <CheckoutForm data={formData}/>
         </>
         ) : (
         <>
