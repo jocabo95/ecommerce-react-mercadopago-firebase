@@ -76,7 +76,7 @@ const CartDesktop = ({ data }) => {
             <Grid className="cartCellGrid" item xs={12} md={2}>
               <Box className="cartCell">
                 <Typography sx={{ width: "100%", textAlign: "center" }}>
-                  $ {Intl.NumberFormat().format(el.unit_price)}
+                  ${Intl.NumberFormat().format(el.unit_price)}
                 </Typography>
               </Box>
             </Grid>
@@ -89,7 +89,7 @@ const CartDesktop = ({ data }) => {
             </Grid>
             <Grid className="cartCellGrid" item xs={12} md={2}>
               <Typography sx={{ width: "100%", textAlign: "center" }}>
-                $ {Intl.NumberFormat().format(el.unit_price * el.quantity)}
+                ${Intl.NumberFormat().format(el.unit_price * el.quantity)}
               </Typography>
             </Grid>
             <Grid className="cartCellGrid" item xs={12} md={1}>

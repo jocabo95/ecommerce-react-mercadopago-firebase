@@ -1,8 +1,8 @@
-/* .cartCell{
-  max-height: 100px;
-} */
+.cartCell {
+  width: 100%;
+}
 
-.cartCellGrid{
+.cartCellGrid {
   padding: 1rem;
   width: 100%;
   display: flex;
@@ -10,10 +10,11 @@
   justify-content: center;
 }
 
-.cartHeaderGrid{
+.cartHeaderGrid {
   width: 100%;
   display: flex;
   align-items: center;
   padding-left: 0rem;
   justify-content: center;
 }
+

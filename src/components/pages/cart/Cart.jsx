@@ -6,10 +6,10 @@ import CartMobile from "./mobile/CartMobile";
 import CartButtonsDesktop from "./desktop/CartButtonsDesktop";
 
 const Cart = ({ data }) => {
-  const { cart, deleteById, total } = data;
+  const { cart, deleteById, total, cityShipmentInfo } = data;
 
   const cartData = { cart, deleteById };
-  const cartButtonsData = { total };
+  const cartButtonsData = { total, cityShipmentInfo };
 
   const theme = useTheme();
   const desktopQuery = useMediaQuery(theme.breakpoints.up("md"));
@@ -29,7 +29,7 @@ const Cart = ({ data }) => {
         CARRITO
       </Typography>
 
-      {/* //- IMG, PRODUCT, PRICE, DELTE ITEM */}
+      {/* //- DESKTOP IMG, PRODUCT, PRICE, DELTE ITEM */}
       <Grid container sx={{ px: { xs: "1rem", sm: "3rem" } }}>
         {desktopQuery ? (
           <>
@@ -49,6 +49,8 @@ const Cart = ({ data }) => {
               <CartButtonsDesktop data={cartButtonsData} />
             </Grid>
           </>
+
+          //- MOBILE IMG, PRODUCT, PRICE, DELTE ITEM */}
         ) : (
           <>
             <CartMobile data={cartData} />
