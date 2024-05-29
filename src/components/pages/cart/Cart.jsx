@@ -1,6 +1,6 @@
 import "./cart.css";
 import { Link } from "react-router-dom";
-import { Button, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import CartDesktop from "./desktop/CartDesktop";
 import CartMobile from "./mobile/CartMobile";
 import CartButtonsDesktop from "./desktop/CartButtonsDesktop";
@@ -61,23 +61,60 @@ const Cart = ({ data }) => {
               <CartButtonsDesktop data={cartButtonsData} />
             </Grid>
           </>
-
-          //- MOBILE IMG, PRODUCT, PRICE, DELTE ITEM */}
         ) : (
+          //- MOBILE IMG, PRODUCT, PRICE, DELTE ITEM */}
           <>
             <CartMobile data={cartData} />
-            <Typography
+
+            {/* Price summary */}
+            <Box
               sx={{
                 width: "100%",
-                textAlign: "center",
                 backgroundColor: "background.dark",
-                mt: "2rem",
+                p: "1rem",
               }}
             >
-              <strong>TOTAL: $ {Intl.NumberFormat().format(total)} </strong>
-            </Typography>
+              <Typography
+                sx={{
+                  textAlign: "center",
+                  borderBottom: "solid thin gray",
+                  mb: "0.5rem",
+                  pb: "0.5rem",
+                }}
+              >
+                {selectedCityShipmentInfo ? (
+                  <strong>
+                    TOTAL: ${" "}
+                    {Intl.NumberFormat().format(
+                      total + selectedCityShipmentInfo.shipment
+                    )}{" "}
+                  </strong>
+                ) : (
+                  <strong>TOTAL: $ ------</strong>
+                )}
+              </Typography>
+              <Typography>
+                <strong>
+                  Subtotal: $ {Intl.NumberFormat().format(total)}{" "}
+                </strong>
+              </Typography>
+              <Typography>
+                {selectedCityShipmentInfo ? (
+                  <strong>
+                    Envío: ${" "}
+                    {Intl.NumberFormat().format(
+                      selectedCityShipmentInfo.shipment
+                    )}{" "}
+                  </strong>
+                ) : (
+                  <strong>
+                    Envío: ${" "}------
+                  </strong>
+                )}
+              </Typography>
+            </Box>
 
-            <Link to="/checkout" style={{width:"100%"}}>
+            <Link to="/checkout" style={{ width: "100%" }}>
               <Button
                 variant="contained"
                 color="details"
