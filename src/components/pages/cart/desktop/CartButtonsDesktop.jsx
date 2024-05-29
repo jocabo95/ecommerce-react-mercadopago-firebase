@@ -1,33 +1,10 @@
 import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const CartButtonsDesktop = ({ data }) => {
-  // cityShipmentInfo is obj with info of all cities
-  const { total, cityShipmentInfo } = data;
-  
-  const [selectedCity, setSelectedCity] = useState("Bogotá"); // city selected in <Select />
-  const [selectedCityShipment, setSelectedCityShipment] = useState();
 
-
-  useEffect(()=>{
-
-    // get shipment value of selectedCity
-    if(cityShipmentInfo){
-      const shipmentValue = cityShipmentInfo.filter((el) => {
-        el.city == selectedCity;
-        setSelectedCityShipment(shipmentValue)
-      });
-    }
-
-  },[selectedCity])
-
-  let onChange = (e) => {
-    setSelectedCity(e.target.value);
-  };
-
-  console.log("city", selectedCity);
-  console.log("shipment", selectedCityShipment);
+  const { total, allCitiesShipmentInfo, onChange, selectedCityShipmentInfo } =
+    data;
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -48,7 +25,10 @@ const CartButtonsDesktop = ({ data }) => {
             borderBottom: "solid thin black",
           }}
         >
-          <strong>Costo de envío: $ </strong>
+          <strong>
+            Costo de envío: $
+            {Intl.NumberFormat().format(selectedCityShipmentInfo.shipment)}
+          </strong>
         </Typography>
 
         {/* slect city */}
@@ -61,8 +41,8 @@ const CartButtonsDesktop = ({ data }) => {
           sx={{ width: "100%", my: "1rem" }}
           onChange={onChange}
         >
-          {cityShipmentInfo &&
-            cityShipmentInfo.map((el) => (
+          {allCitiesShipmentInfo &&
+            allCitiesShipmentInfo.map((el) => (
               <MenuItem key={el.id} value={el.city}>
                 {el.city}
               </MenuItem>
@@ -87,14 +67,20 @@ const CartButtonsDesktop = ({ data }) => {
             borderBottom: "solid thin black",
           }}
         >
-          <strong>TOTAL: ${Intl.NumberFormat().format(total)} </strong>
+          <strong>
+            TOTAL: $
+            {Intl.NumberFormat().format(
+              total + selectedCityShipmentInfo.shipment
+            )}{" "}
+          </strong>
         </Typography>
 
         <Typography sx={{ width: "100%" }}>
           Subtotal: ${Intl.NumberFormat().format(total)}
         </Typography>
         <Typography sx={{ width: "100%" }}>
-          Envío: ${Intl.NumberFormat().format(total)}
+          Envío: $
+          {Intl.NumberFormat().format(selectedCityShipmentInfo.shipment)}
         </Typography>
 
         <Link to="/checkout">

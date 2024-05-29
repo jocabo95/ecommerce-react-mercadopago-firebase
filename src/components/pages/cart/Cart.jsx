@@ -6,10 +6,22 @@ import CartMobile from "./mobile/CartMobile";
 import CartButtonsDesktop from "./desktop/CartButtonsDesktop";
 
 const Cart = ({ data }) => {
-  const { cart, deleteById, total, cityShipmentInfo } = data;
+  const {
+    cart,
+    deleteById,
+    total,
+    allCitiesShipmentInfo,
+    onChange,
+    selectedCityShipmentInfo,
+  } = data;
 
   const cartData = { cart, deleteById };
-  const cartButtonsData = { total, cityShipmentInfo };
+  const cartButtonsData = {
+    total,
+    allCitiesShipmentInfo,
+    onChange,
+    selectedCityShipmentInfo,
+  };
 
   const theme = useTheme();
   const desktopQuery = useMediaQuery(theme.breakpoints.up("md"));
