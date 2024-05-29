@@ -25,10 +25,14 @@ const CartButtonsDesktop = ({ data }) => {
             borderBottom: "solid thin black",
           }}
         >
-          <strong>
-            Costo de envío: $
-            {Intl.NumberFormat().format(selectedCityShipmentInfo.shipment)}
-          </strong>
+          {selectedCityShipmentInfo ? (
+            <strong>
+              Costo de envío: $
+              {Intl.NumberFormat().format(selectedCityShipmentInfo.shipment)}
+            </strong>
+          ) : (
+            <strong>Costo de envío: $ ------</strong>
+          )}
         </Typography>
 
         {/* slect city */}
@@ -67,20 +71,25 @@ const CartButtonsDesktop = ({ data }) => {
             borderBottom: "solid thin black",
           }}
         >
-          <strong>
-            TOTAL: $
-            {Intl.NumberFormat().format(
-              total + selectedCityShipmentInfo.shipment
-            )}{" "}
-          </strong>
+          {selectedCityShipmentInfo ? (
+            <strong>TOTAL: ${Intl.NumberFormat().format(total)} </strong>
+          ) : (
+            <strong>TOTAL: $ --------- </strong>
+          )}
         </Typography>
 
         <Typography sx={{ width: "100%" }}>
           Subtotal: ${Intl.NumberFormat().format(total)}
         </Typography>
         <Typography sx={{ width: "100%" }}>
-          Envío: $
-          {Intl.NumberFormat().format(selectedCityShipmentInfo.shipment)}
+          {selectedCityShipmentInfo ? (
+            <p>
+              Envío: $
+              {Intl.NumberFormat().format(selectedCityShipmentInfo.shipment)}
+            </p>
+          ) : (
+            <p>Envío: $</p>
+          )}
         </Typography>
 
         <Link to="/checkout">

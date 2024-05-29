@@ -42,7 +42,6 @@ const CartContainer = () => {
     setSelectedCity(e.target.value);
   };
 
-  // console.log('allCitiesShipmentInfo', allCitiesShipmentInfo);
   console.log('shipmentValue= ', selectedCityShipmentInfo);
 
   const data = {
