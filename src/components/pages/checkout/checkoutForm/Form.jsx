@@ -1,4 +1,4 @@
-import { Box, Button, Grid, MenuItem, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 
 const Form = ({data}) => {
 
@@ -6,14 +6,13 @@ const Form = ({data}) => {
   const {handleChange, handleBuy}=data;
 
   const clientData = [
-    { name: "nombre", example: "Pedro" },
-    { name: "apeliido", example: "González" },
-    { name: "teléfono", example: "312 834 209|" },
-    { name: "correo", example: "pedro.gonzalez@gmail.com" },
-    { name: "verificar correo", example: "pedro.gonzalez@gmail.com" },
+    { name: "nombre"},
+    { name: "apeliido"},
+    { name: "teléfono"},
+    { name: "correo"},
+    { name: "verificar correo"},
   ];
 
-  const ciudades = ["Bogotá", "Medellin", "Cartagena", "Otras"];
 
   return (
     <Grid
@@ -25,36 +24,38 @@ const Form = ({data}) => {
         mt: { xs: "1rem", md: "3rem", height: "100%" },
       }}
     >
-      {clientData.map((el) => {
-        return (
-          <Box key={el}>
-            <Typography sx={{ fontWeight: "600" }}>{el.name}</Typography>
-            <TextField
-              name={el.name}
-              variant="outlined"
-              size="small"
-              fullWidth
-              onChange={handleChange}
-              sx={{ mb: "1rem", mr: "1rem" }}
-            />
-          </Box>
-        );
-      })}
+      <form>
+        {clientData.map((el) => {
+          return (
+            <Box key={el.name}>
+              <Typography sx={{ fontWeight: "600" }}>{el.name}</Typography>
+              <TextField
+                name={el.name}
+                variant="outlined"
+                size="small"
+                fullWidth
+                onChange={handleChange}
+                sx={{ mb: "1rem", mr: "1rem" }}
+              />
+            </Box>
+          );
+        })}
 
-      <Typography sx={{ fontWeight: "600" }}>Ciudad</Typography>
-      <TextField
-        id="filled-select-currency"
-        select
-        label="Select"
-        variant="outlined"
-        fullWidth
-      >
-        {ciudades.map((option) => (
-          <MenuItem key={option} value={option}>
-            {option}
-          </MenuItem>
-        ))}
-      </TextField>
+        <Button
+          onClick={handleBuy}
+          variant="contained"
+          color="details"
+          sx={{
+            mt: "3rem",
+            opacity: "0.9",
+            color: "white",
+            width: "100%",
+          }}
+        >
+          Pagar
+        </Button>
+      </form>
+
       {/* <TextField
           name="cp"
           variant="outlined"
@@ -67,19 +68,6 @@ const Form = ({data}) => {
           label="telefono"
           onChange={handleChange}
         /> */}
-      <Button
-        onClick={handleBuy}
-        variant="contained"
-        color="details"
-        sx={{
-          mt: "3rem",
-          opacity: "0.9",
-          color: "white",
-          width: "100%",
-        }}
-      >
-        Pagar
-      </Button>
     </Grid>
   );
 }
