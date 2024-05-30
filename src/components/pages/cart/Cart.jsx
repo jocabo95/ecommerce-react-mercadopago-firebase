@@ -1,27 +1,22 @@
 import "./cart.css";
 import { Link } from "react-router-dom";
-import { Box, Button, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import CartDesktop from "./desktop/CartDesktop";
 import CartMobile from "./mobile/CartMobile";
 import CartButtonsDesktop from "./desktop/CartButtonsDesktop";
 
 const Cart = ({ data }) => {
-  const {
-    cart,
-    deleteById,
-    total,
-    allCitiesShipmentInfo,
-    onChange,
-    selectedCityShipmentInfo,
-  } = data;
+  const { cart, deleteById, total, selectedCityShipmentInfo } = data;
 
   const cartData = { cart, deleteById };
-  const cartButtonsData = {
-    total,
-    allCitiesShipmentInfo,
-    onChange,
-    selectedCityShipmentInfo,
-  };
+  const cartButtonsData = {total};
 
   const theme = useTheme();
   const desktopQuery = useMediaQuery(theme.breakpoints.up("md"));
@@ -109,13 +104,11 @@ const Cart = ({ data }) => {
                     )}{" "}
                   </strong>
                 ) : (
-                  <strong>
-                    Envío: ${" "}------
-                  </strong>
+                  <strong>Envío: $ ------</strong>
                 )}
               </Typography>
             </Box>
-            
+
             {/* Continue with payment button */}
             <Link to="/checkout" style={{ width: "100%" }}>
               <Button

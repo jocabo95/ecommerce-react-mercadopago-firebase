@@ -1,11 +1,13 @@
 import { Box, Grid, Paper, Typography } from "@mui/material";
 import { useContext } from "react";
 import { CartContext } from "../../../context/CartContext";
+import { ShipmentContext } from "../../../context/ShipmentContext";
 
 
 const OrderSummary = () => {
 
   const {cart, getTotalPrice} = useContext(CartContext);
+  const { selectedCityShipmentInfo } = useContext(ShipmentContext);
 
   return (
     <Grid item xs={12} md={6}>
@@ -18,9 +20,18 @@ const OrderSummary = () => {
         }}
       >
         <p>Total</p>
-        <Typography variant="h4" sx={{ mb: "1.5rem", fontWeight: "500" }}>
-          $ {Intl.NumberFormat().format(getTotalPrice())}
-        </Typography>
+        {selectedCityShipmentInfo ? (
+          <Typography variant="h4" sx={{ mb: "1.5rem", fontWeight: "500" }}>
+            ${" "}
+            {Intl.NumberFormat().format(
+              getTotalPrice() + selectedCityShipmentInfo.shipment
+            )}
+          </Typography>
+        ) : (
+          <Typography variant="h4" sx={{ mb: "1.5rem", fontWeight: "500" }}>
+            $ ---------
+          </Typography>
+        )}
 
         {/* product info */}
         <Box>
@@ -45,7 +56,18 @@ const OrderSummary = () => {
               <Typography>Costo de envío</Typography>
             </Grid>
             <Grid item xs={4}>
-              <Typography>$ {Intl.NumberFormat().format(3000)}</Typography>
+              {selectedCityShipmentInfo ? (
+                <Typography>
+                  ${" "}
+                  {Intl.NumberFormat().format(
+                    selectedCityShipmentInfo.shipment
+                  )}
+                </Typography>
+              ) : (
+                <Typography>
+                  ${" "}-----
+                </Typography>
+              )}
             </Grid>
           </Grid>
         </Box>

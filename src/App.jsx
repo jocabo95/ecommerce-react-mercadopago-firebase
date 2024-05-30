@@ -3,6 +3,7 @@ import AppRouter from "./router/AppRouter";
 import CartContextComponent from "./components/context/CartContext";
 import AuthContextComponent from "./components/context/AuthContext";
 import { createTheme, ThemeProvider } from "@mui/material";
+import ShipmentContextComponent from "./components/context/ShipmentContext";
 
 function App() {
   const theme = createTheme({
@@ -34,15 +35,15 @@ function App() {
     },
   });
 
-  
-
   return (
     // theme prodivder helps customize pallete
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <CartContextComponent>
           <AuthContextComponent>
-            <AppRouter />
+            <ShipmentContextComponent>
+              <AppRouter />
+            </ShipmentContextComponent>
           </AuthContextComponent>
         </CartContextComponent>
       </BrowserRouter>

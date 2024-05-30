@@ -1,10 +1,13 @@
 import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ShipmentContext } from "../../../context/ShipmentContext";
 
 const CartButtonsDesktop = ({ data }) => {
 
-  const { total, allCitiesShipmentInfo, onChange, selectedCityShipmentInfo } =
-    data;
+  const { total } = data;
+
+  const {allCitiesShipmentInfo, selectedCityShipmentInfo, onChange} = useContext(ShipmentContext)
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -72,7 +75,12 @@ const CartButtonsDesktop = ({ data }) => {
           }}
         >
           {selectedCityShipmentInfo ? (
-            <strong>TOTAL: ${Intl.NumberFormat().format(total)} </strong>
+            <strong>
+              TOTAL: $
+              {Intl.NumberFormat().format(
+                total + selectedCityShipmentInfo.shipment
+              )}{" "}
+            </strong>
           ) : (
             <strong>TOTAL: $ --------- </strong>
           )}
