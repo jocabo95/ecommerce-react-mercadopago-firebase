@@ -1,9 +1,10 @@
-import axios from "axios";
+import { CartContext } from "../../context/CartContext";
+import { db } from "../../../firebaseConfig";
 import Checkout from "./Checkout";
+
+import axios from "axios";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../../context/CartContext";
-import { AuthContext } from "../../context/AuthContext";
 import { useLocation } from "react-router-dom";
 import {
   collection,
@@ -11,22 +12,24 @@ import {
   serverTimestamp,
   updateDoc,
   doc,
-  getDoc,
 } from "firebase/firestore";
-import { db } from "../../../firebaseConfig";
+import { ShipmentContext } from "../../context/ShipmentContext";
 
 const CheckoutContainer = () => {
   const [preferenceId, setPreferenceId] = useState(null); // variable to store id given by mercadopago
   const [orderId, setOrderId] = useState(null);
-  const [shipmentCost, setShipmentCost] = useState(0);
   const [userData, setUserData] = useState({
-    cp: "",
-    tel: "",
+    nombre: "",
+    apellido: "",
+    telefono: "",
+    correo: ""
   });
 
-  const { user } = useContext(AuthContext);
+  const {selectedCityShipmentInfo}=useContext(ShipmentContext)
   const { cart, clearCart, getTotalPrice } = useContext(CartContext);
   let totalPrice = getTotalPrice();
+
+  const currentDate = new Date()
 
   // manipulates URL query string to get "status" key value. Determines if transaction was succesful
   let location = useLocation();
@@ -76,7 +79,7 @@ const CheckoutContainer = () => {
         "http://localhost:8000/create_preference",
         {
           items: summarizedArr,
-          shipment_cost: shipmentCost,
+          shipment_cost: selectedCityShipmentInfo.shipment,
         }
       );
 
@@ -118,27 +121,16 @@ const CheckoutContainer = () => {
   console.log("ln 121. orderId= ", orderId); //! remove later
   console.log("ln 122. preferenceId= ", preferenceId); //! remove later
 
-  //gets shipment cost from firebase
-  useEffect(() => {
-    let refCollection = collection(db, "shipment");
-    let refdoc = doc(refCollection, "7WMHaShKKD7OV8YUIu8R"); //shipment cost id in fb
-    getDoc(refdoc)
-      .then((res) => {
-        setShipmentCost(res.data().cost);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
   // handles buy request. stores id given by mercadopago. creates order obj in local storage
   const handleBuy = async () => {
     const storeOrder = {
-      cp: userData.cp,
-      telefono: userData.tel,
+      name: userData.nombre,
+      lastName: userData.apellido,
+      phone: userData.telefono,
+      email: userData.correo,
       products: cart,
-      email: user.email,
-      total: totalPrice + Number(shipmentCost),
+      total: totalPrice + selectedCityShipmentInfo.shipment,
+      date: `${currentDate.getDate()}/${currentDate.getMonth()+1}/${currentDate.getFullYear()}`
     };
 
     localStorage.setItem("order", JSON.stringify(storeOrder));

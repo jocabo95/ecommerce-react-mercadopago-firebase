@@ -4,17 +4,47 @@ import OrderSummary from "./checkoutForm/OrderSummary";
 import Form from "./checkoutForm/Form";
 
 const Checkout = ({ data }) => {
-  const {Wallet, preferenceId, orderId} = data;
+  const { Wallet, preferenceId, orderId } = data;
 
   return (
     <div>
       {!orderId ? (
         <Grid container>
           {/* ORDER SUMMARY */}
-          <OrderSummary/>
+          <Grid item xs={12} md={6}>
+            <OrderSummary />
+          </Grid>
 
           {/* FORM */}
-          <Form data={data} />
+          <Grid item container xs={12} md={6}>
+            <Grid
+              item
+              xs={12}
+              
+              sx={{
+                mx: { xs: "1rem", md: "2rem"},
+                mt: { xs: "1rem", md: "3rem"},
+              }}
+            >
+              <Form data={data} />
+            </Grid>
+
+            {/* Mercadopago Button */}
+            {preferenceId && (
+            <Grid
+              item
+              xs={12}
+             
+              sx={{
+                mx: { xs: "1rem", md: "2rem"},
+              }}
+            >
+                <Wallet
+                  initialization={{ preferenceId, redirectMode: "self" }}
+                />
+            </Grid>
+              )}
+          </Grid>
         </Grid>
       ) : (
         <>
@@ -23,10 +53,6 @@ const Checkout = ({ data }) => {
           <Link to="/shop">Seguir comprando</Link>
           <Link to="/orders">mis ordenes</Link>
         </>
-      )}
-
-      {preferenceId && (
-        <Wallet initialization={{ preferenceId, redirectMode: "self" }} />
       )}
     </div>
   );
