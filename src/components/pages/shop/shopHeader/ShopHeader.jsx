@@ -1,12 +1,8 @@
 import "./shopHeader.css";
-import { Box, Typography } from "@mui/material";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
+import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../../firebaseConfig";
-import { Link } from "react-router-dom";
 import PageHeader from "../../../common/pageHeader/PageHeader";
 import NavigationFilters from "../../../common/topNavigationFilters/NavigationFilters";
 

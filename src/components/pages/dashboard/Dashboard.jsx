@@ -3,6 +3,7 @@ import ShipmentCost from "./ShipmentCost";
 import OrdersDashboard from "./OrdersDashboard";
 import ProductsDashboard from "./ProductsDashboard";
 import PageHeader from "../../common/pageHeader/PageHeader";
+import NavigationFilters from "../../common/topNavigationFilters/NavigationFilters";
 
 const Dashboard = ({ data }) => {
   const {
@@ -31,11 +32,24 @@ const Dashboard = ({ data }) => {
 
   const header = {header: "DASHBOARD"}
 
+  const categories = [
+    { category: "Productos" },
+    { category: "Envios" },
+    { category: "Proyectos" },
+    { category: "Revistas" },
+    { category: "OC" },
+  ]
+
+  const navigationCategories = { categories, redirectToUrl: "/dashboard" };
+
+
   return (
     <div>
 
       {/* HEADER */}
       <PageHeader data={header} />
+
+      <NavigationFilters data={navigationCategories}/>
 
       {/* SHIPMENT COST */}
       <ShipmentCost />

@@ -9,7 +9,7 @@ const NavigationFilters = ({data}) => {
 
   return (
     <Paper
-      variant="outlined"
+      variant="text"
       square
       sx={{
         width: "auto",
