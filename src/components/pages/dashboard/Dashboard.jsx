@@ -2,6 +2,7 @@
 import ShipmentCost from "./ShipmentCost";
 import OrdersDashboard from "./OrdersDashboard";
 import ProductsDashboard from "./ProductsDashboard";
+import { Typography } from "@mui/material";
 
 const Dashboard = ({ data }) => {
   const {
@@ -30,6 +31,17 @@ const Dashboard = ({ data }) => {
 
   return (
     <div>
+      <Typography
+        className="page-title"
+        sx={{
+          fontSize: { xs: "1.5rem", sm: "2rem" },
+          fontWeight: "200",
+          letterSpacing: { xs: "0.5rem" },
+          pl: "0rem",
+        }}
+      >
+        DASHBOARD
+      </Typography>
 
       {/* SHIPMENT COST */}
       <ShipmentCost />
@@ -39,8 +51,6 @@ const Dashboard = ({ data }) => {
 
       {/* PRODUCTS CHART */}
       <ProductsDashboard data={productsChartData} />
-      
-      
     </div>
   );
 };

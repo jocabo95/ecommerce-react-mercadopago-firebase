@@ -43,7 +43,7 @@ const DashboardContainer = () => {
       });
   }, [dbChange]);
 
-  // remove prod from dashboard
+  // remove prod from dashboard 
   let removeProd = async (product) => {
     deleteDoc(doc(db, "products", product.id));
 
