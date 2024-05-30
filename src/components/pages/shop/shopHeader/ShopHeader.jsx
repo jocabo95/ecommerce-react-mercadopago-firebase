@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../../firebaseConfig";
 import { Link } from "react-router-dom";
+import PageHeader from "../../../common/pageHeader/PageHeader";
+import NavigationFilters from "../../../common/topNavigationFilters/NavigationFilters";
 
 const ShopHeader = () => {
 
@@ -26,57 +28,17 @@ const ShopHeader = () => {
 
   },[])
 
+  const header= {header: "MOBILIARIO"}
+  const navigationCategories = {categories, redirectToUrl:'/shop'}
+
   return (
     <Box sx={{ px: { xs: "1rem", md: "3rem" } }}>
-      <Typography
-        className="page-title"
-        sx={{
-          fontSize: { xs: "1.5rem", sm: "2rem" },
-          fontWeight: "200",
-          letterSpacing: { xs: "0.5rem" },
-          pl: "0rem",
-        }}
-      >
-        MOBILIARIO
-      </Typography>
+
+      {/* HEADER */}
+      <PageHeader data={header}/>
 
       {/* NAV MENU */}
-      <Paper
-        variant="outlined"
-        square
-        sx={{
-          width: "auto",
-          mb: "1rem",
-        }}
-      >
-        <Grid container sx={{ width: "100%" }}>
-          {categories.map((el) => {
-            return (
-              <Grid
-                key={el.category}
-                item
-                xs={6}
-                sm={3}
-              >
-                <Link to={`/shop/${el.category}`}>
-                  <Button
-                    variant="outlined"
-                    sx={{ width: "100%", borderRadius: "0" }}
-                  >
-                    <Typography
-                      className="category"
-                      variant="body2"
-                      sx={{ fontWeight: "600" }}
-                    >
-                      {el.category}
-                    </Typography>
-                  </Button>
-                </Link>
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Paper>
+      <NavigationFilters data={navigationCategories}/>
 
       
     </Box>

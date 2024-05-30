@@ -1,23 +1,17 @@
 import './magazines.css'
 import { Box, Card, CardContent, Grid, Typography } from "@mui/material"
 import { Link } from "react-router-dom";
+import PageHeader from '../../common/pageHeader/PageHeader';
 
 const Magazines = ({data}) => {
 
   const {publications} = data
+
+  const header = {header: "PUBLICACIONES"}
   return (
     <Box sx={{ mx: { xs: "1rem", md: "3rem" } }}>
-      <Typography
-        className="page-title"
-        sx={{
-          fontSize: { xs: "1.5rem", sm: "2rem" },
-          fontWeight: "200",
-          letterSpacing: { xs: "0.5rem" },
-          pl: "0rem",
-        }}
-      >
-        PUBLICACIONES
-      </Typography>
+      
+      <PageHeader data={header}/>
 
       <Grid container spacing={5} rowSpacing={3} sx={{ mt: "0rem" }}>
         {publications.map((el) => {

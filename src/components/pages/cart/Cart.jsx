@@ -11,6 +11,7 @@ import {
 import CartDesktop from "./desktop/CartDesktop";
 import CartMobile from "./mobile/CartMobile";
 import CartButtonsDesktop from "./desktop/CartButtonsDesktop";
+import PageHeader from "../../common/pageHeader/PageHeader";
 
 const Cart = ({ data }) => {
   const { cart, deleteById, total, selectedCityShipmentInfo } = data;
@@ -20,21 +21,12 @@ const Cart = ({ data }) => {
 
   const theme = useTheme();
   const desktopQuery = useMediaQuery(theme.breakpoints.up("md"));
+  const header = {header: "CARRITO"}
 
   return (
     <div>
       {/* //- header */}
-      <Typography
-        className="page-title"
-        sx={{
-          fontSize: { xs: "1.5rem", sm: "2rem" },
-          fontWeight: "200",
-          letterSpacing: { xs: "0.5rem" },
-          pl: { xs: "1rem", md: "3rem" },
-        }}
-      >
-        CARRITO
-      </Typography>
+      <PageHeader data={header}/>
 
       {/* //- DESKTOP IMG, PRODUCT, PRICE, DELTE ITEM */}
       <Grid container sx={{ px: { xs: "1rem", sm: "3rem" } }}>

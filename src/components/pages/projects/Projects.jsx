@@ -8,23 +8,16 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import PageHeader from "../../common/pageHeader/PageHeader";
 
 const Projects = ({ data }) => {
   const { projects } = data;
 
+  const header = {header: "ESPACIOS BASALTO"}
   return (
     <Box sx={{ mx:{xs:"1rem", md:"3rem"} }}>
-      <Typography
-        className="page-title"
-        sx={{
-          fontSize: { xs: "1.5rem", sm: "2rem" },
-          fontWeight: "200",
-          letterSpacing: { xs: "0.5rem" },
-          pl: "0rem",
-        }}
-      >
-        ESPACIOS BASALTO
-      </Typography>
+      <PageHeader data={header}/>
+
       <Grid container spacing={5} rowSpacing={3} sx={{ mt: "0rem" }}>
         {projects.map((el) => {
           return (
