@@ -93,11 +93,13 @@ const Cart = ({ data }) => {
                   <strong>TOTAL: $ ------</strong>
                 )}
               </Typography>
+
               <Typography>
                 <strong>
                   Subtotal: $ {Intl.NumberFormat().format(total)}{" "}
                 </strong>
               </Typography>
+
               <Typography>
                 {selectedCityShipmentInfo ? (
                   <strong>
@@ -113,7 +115,8 @@ const Cart = ({ data }) => {
                 )}
               </Typography>
             </Box>
-
+            
+            {/* Continue with payment button */}
             <Link to="/checkout" style={{ width: "100%" }}>
               <Button
                 variant="contained"
@@ -125,7 +128,7 @@ const Cart = ({ data }) => {
                   width: "100%",
                 }}
               >
-                Finalizar compra
+                Continuar
               </Button>
             </Link>
           </>
