@@ -8,21 +8,20 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import ProductFormContainer from "./productForm/ProductFormContainer";
+import ProductFormContainer from "../products/productForm/ProductFormContainer";
 
-const ProductsDashboard = ({data}) => {
-    
-    const {
-      products,
-      removeProd,
-      style,
-      handleClose,
-      handleOpen,
-      open,
-      setDbChange,
-      productTobeEdited,
-      setproductTobeEdited,
-    } = data;
+const ProductsDashboard = ({ data }) => {
+  const {
+    products,
+    removeProd,
+    style,
+    handleClose,
+    handleOpen,
+    open,
+    setDbChange,
+    productTobeEdited,
+    setproductTobeEdited,
+  } = data;
 
   return (
     <div>

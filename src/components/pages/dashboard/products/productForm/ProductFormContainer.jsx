@@ -1,6 +1,6 @@
 import ProductForm from "./ProductForm"
 import { useState } from "react";
-import { db, storage, uploadImg } from "../../../../firebaseConfig";
+import { db, storage, uploadImg } from "../../../../../firebaseConfig";
 import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 

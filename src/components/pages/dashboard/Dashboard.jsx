@@ -1,12 +1,11 @@
-
-import ShipmentCost from "./ShipmentCost";
-import OrdersDashboard from "./OrdersDashboard";
-import ProductsDashboard from "./ProductsDashboard";
+import OrdersDashboard from "./orders/OrdersDashboard";
+import ProductsDashboard from "./products/ProductsDashboard";
 import PageHeader from "../../common/pageHeader/PageHeader";
 import NavigationFilters from "../../common/topNavigationFilters/NavigationFilters";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
 import { useEffect, useState } from "react";
+import ShipmentCost from "./shipment/ShipmentCost";
 
 const Dashboard = ({ data }) => {
   const {
@@ -21,17 +20,19 @@ const Dashboard = ({ data }) => {
     setproductTobeEdited,
   } = data;
 
-  const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     let refCategroiesCollection = collection(db, "dashboardCategories");
     getDocs(refCategroiesCollection)
-      .then((res)=>{
-        let categoriesArr = res.docs.map((el)=>{return {...el.data()}})
-        setCategories(categoriesArr)
+      .then((res) => {
+        let categoriesArr = res.docs.map((el) => {
+          return { ...el.data() };
+        });
+        setCategories(categoriesArr);
       })
-      .catch((err)=>console.log(err))
-  }, [])
+      .catch((err) => console.log(err));
+  }, []);
 
   const productsChartData = {
     products,
@@ -45,17 +46,16 @@ const Dashboard = ({ data }) => {
     setproductTobeEdited,
   };
 
-  const header = {header: "DASHBOARD"}
+  const header = { header: "DASHBOARD" };
 
   const navigationCategories = { categories, redirectToUrl: "/dashboard" };
 
   return (
     <div>
-
       {/* HEADER */}
       <PageHeader data={header} />
 
-      <NavigationFilters data={navigationCategories}/>
+      <NavigationFilters data={navigationCategories} />
 
       {/* SHIPMENT COST */}
       <ShipmentCost />

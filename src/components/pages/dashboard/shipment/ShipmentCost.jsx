@@ -1,7 +1,7 @@
 import { Alert, Button, TextField, Typography } from "@mui/material";
 import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "../../../firebaseConfig";
+import { db } from "../../../../firebaseConfig.js";
 
 const ShipmentCost = () => {
   const [currentCost, setCurrentCost] = useState(0);
