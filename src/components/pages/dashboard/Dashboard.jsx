@@ -1,50 +1,14 @@
 import OrdersDashboard from "./orders/OrdersDashboard";
-import ProductsDashboard from "./products/ProductsDashboard";
 import PageHeader from "../../common/pageHeader/PageHeader";
 import NavigationFilters from "../../common/topNavigationFilters/NavigationFilters";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../../firebaseConfig";
-import { useEffect, useState } from "react";
 import ShipmentCost from "./shipment/ShipmentCost";
+import ProductsDashboardContainer from "./products/ProductsDashboardContainer";
 
-const Dashboard = ({ data }) => {
-  const {
-    products,
-    removeProd,
-    style,
-    handleClose,
-    handleOpen,
-    open,
-    setDbChange,
-    productTobeEdited,
-    setproductTobeEdited,
-  } = data;
+const Dashboard = ({data}) => {
 
-  const [categories, setCategories] = useState([]);
+  const {modalStyle, categories} = data;
 
-  useEffect(() => {
-    let refCategroiesCollection = collection(db, "dashboardCategories");
-    getDocs(refCategroiesCollection)
-      .then((res) => {
-        let categoriesArr = res.docs.map((el) => {
-          return { ...el.data() };
-        });
-        setCategories(categoriesArr);
-      })
-      .catch((err) => console.log(err));
-  }, []);
 
-  const productsChartData = {
-    products,
-    removeProd,
-    style,
-    handleClose,
-    handleOpen,
-    open,
-    setDbChange,
-    productTobeEdited,
-    setproductTobeEdited,
-  };
 
   const header = { header: "DASHBOARD" };
 
@@ -64,7 +28,7 @@ const Dashboard = ({ data }) => {
       <OrdersDashboard />
 
       {/* PRODUCTS CHART */}
-      <ProductsDashboard data={productsChartData} />
+      <ProductsDashboardContainer data={modalStyle} />
     </div>
   );
 };

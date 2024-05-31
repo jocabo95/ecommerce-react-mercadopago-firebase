@@ -5,8 +5,7 @@ const NavigationFilters = ({data}) => {
 
   const {categories, redirectToUrl} = data;
 
-  console.log('categories= ', categories);
-
+  
   return (
     <Paper
       variant="text"

@@ -23,6 +23,8 @@ const ProductsDashboard = ({ data }) => {
     setproductTobeEdited,
   } = data;
 
+  
+
   return (
     <div>
       <Button type="button" onClick={() => handleOpen(null)}>

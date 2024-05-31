@@ -1,60 +1,27 @@
 import { useEffect, useState } from "react";
 import Dashboard from "./Dashboard";
-import { db, storage } from "../../../firebaseConfig";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
-import { deleteObject, ref } from "firebase/storage";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../../firebaseConfig";
 
 const DashboardContainer = () => {
-  const [products, setProducts] = useState(); // stores all products from fb
-  const [open, setOpen] = useState(false); // stores modal state
-  const [dbChange, setDbChange] = useState(false); // registers when a change is made to products colection
-  const [productTobeEdited, setproductTobeEdited] = useState(null);
 
-  // function to close modal
-  let handleClose = () => {
-    setOpen(false);
-    setproductTobeEdited(null);
-  };
+  const [categories, setCategories] = useState([]);
 
-  //open modal
-  let handleOpen = (product) => {
-    setproductTobeEdited(product);
-    setOpen(true);
-  };
-
-  // get products from fb to show them in dashboard
+  // get sections (names) that are modifiable from dashboard (products, orders, shipment...)
   useEffect(() => {
-    setDbChange(false);
-
-    let productsCollection = collection(db, "products");
-    getDocs(productsCollection)
+    let refCategroiesCollection = collection(db, "dashboardCategories");
+    getDocs(refCategroiesCollection)
       .then((res) => {
-        const prodArr = res.docs.map((product) => {
-          return {
-            ...product.data(),
-            id: product.id,
-          };
+        let categoriesArr = res.docs.map((el) => {
+          return { ...el.data() };
         });
-
-        setProducts(prodArr);
+        setCategories(categoriesArr);
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [dbChange]);
-
-  // remove prod from dashboard 
-  let removeProd = async (product) => {
-    deleteDoc(doc(db, "products", product.id));
-
-    const imgRef = ref(storage, product.img);
-    await deleteObject(imgRef);
-
-    setDbChange(true);
-  };
+      .catch((err) => console.log(err));
+  }, []);
 
   // modal style (from mui)
-  const style = {
+  const modalStyle = {
     position: "absolute",
     top: "50%",
     left: "50%",
@@ -67,19 +34,11 @@ const DashboardContainer = () => {
   };
 
   const data = {
-    products,
-    removeProd,
-    style,
-    handleClose,
-    handleOpen,
-    open,
-    setOpen,
-    setDbChange,
-    productTobeEdited,
-    setproductTobeEdited,
-  };
+    categories,
+    modalStyle
+  }
 
-  return <Dashboard data={data} />;
+  return <Dashboard data={data}/>;
 };
 
 export default DashboardContainer;
