@@ -59,7 +59,9 @@ const ProductsDashboard = ({ data }) => {
                   />
                 </TableCell>
                 <TableCell align="left">{product.id}</TableCell>
-                <TableCell align="left">{product.unit_price}</TableCell>
+                <TableCell align="left">
+                  ${Intl.NumberFormat().format(product.unit_price)}
+                </TableCell>
                 <TableCell align="left">{product.stock}</TableCell>
                 <TableCell align="left">{product.category}</TableCell>
                 <TableCell align="left">

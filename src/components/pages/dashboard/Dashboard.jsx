@@ -1,8 +1,8 @@
 import OrdersDashboard from "./orders/OrdersDashboard";
 import PageHeader from "../../common/pageHeader/PageHeader";
 import NavigationFilters from "../../common/topNavigationFilters/NavigationFilters";
-import ShipmentCost from "./shipment/ShipmentCost";
 import ProductsDashboardContainer from "./products/ProductsDashboardContainer";
+import ShipmentDashboardContainer from "./shipment/ShipmentDashboardContainer";
 
 const Dashboard = ({data}) => {
 
@@ -22,7 +22,7 @@ const Dashboard = ({data}) => {
       <NavigationFilters data={navigationCategories} />
 
       {/* SHIPMENT COST */}
-      <ShipmentCost />
+      <ShipmentDashboardContainer />
 
       {/* ORDERS CHART */}
       <OrdersDashboard />
