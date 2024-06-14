@@ -1,27 +1,20 @@
-import { Button, CircularProgress, TextField } from "@mui/material";
+import { Box, Button, CircularProgress, TextField } from "@mui/material";
 
-const ProductForm = ({data}) => {
-
-  const {handleSubmit,
-  handleChange,
-  imgFile,
-  setImgFile,
-  progressUpload,
-  uploadDone,
-  handleImgFile,
-  productTobeEdited} = data;
+const ProductForm = ({ data }) => {
+  const {
+    handleSubmit,
+    handleChange,
+    imgFile,
+    setImgFile,
+    progressUpload,
+    uploadDone,
+    handleImgFile,
+    productTobeEdited,
+  } = data;
 
   return (
-    <div>
-      <form
-        style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          gap: "15px",
-        }}
-        onSubmit={handleSubmit}
-      >
+    <Box className="dashboard-form-container">
+      <form className="dashboard-form" onSubmit={handleSubmit}>
         <TextField
           label="producto"
           defaultValue={productTobeEdited?.title}
@@ -78,7 +71,7 @@ const ProductForm = ({data}) => {
           )
         ) : null}
       </form>
-    </div>
+    </Box>
   );
 };
 

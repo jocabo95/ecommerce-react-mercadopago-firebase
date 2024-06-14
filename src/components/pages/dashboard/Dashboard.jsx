@@ -22,7 +22,7 @@ const Dashboard = ({data}) => {
       <NavigationFilters data={navigationCategories} />
 
       {/* SHIPMENT COST */}
-      <ShipmentDashboardContainer />
+      <ShipmentDashboardContainer data={modalStyle} />
 
       {/* ORDERS CHART */}
       <OrdersDashboard />

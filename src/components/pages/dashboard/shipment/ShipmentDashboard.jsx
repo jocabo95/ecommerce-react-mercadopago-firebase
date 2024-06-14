@@ -1,8 +1,12 @@
-import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { db } from "../../../../firebaseConfig";
+import '../dashboards.css'
+import DashboardButton from "../../../common/dashboardButton/DashboardButton";
+import ShipmentFormContainer from "./shipmentForm/ShipmentFormContainer";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import {
+  Box,
   IconButton,
+  Modal,
   Paper,
   Table,
   TableBody,
@@ -10,55 +14,29 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-
 } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 const ShipmentDashboard = ({ data }) => {
-  const [currentCost, setCurrentCost] = useState(0);
-  const [newCost, setNewCost] = useState({});
-  const [checkChange, setCheckChange] = useState(false);
+  const {
+    shipmentData, // brings all cities shipment info from db
+    deleteCity,
+    handleOpen, // opens Modal
+    handleClose, // closes modal
+    open,
+    modalStyle,
+  } = data;
 
-  const { shipmentData } = data;
-
-  // get current shipment cost from firebase
-  useEffect(() => {
-    (async () => {
-      let refDoc = doc(db, "shipment", "7WMHaShKKD7OV8YUIu8R");
-
-      try {
-        let res = await getDoc(refDoc);
-        setCurrentCost(res.data().cost);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
-
-  // capture new shipment cost from textfield & save it
-  let handleChange = (e) => {
-    setNewCost({ cost: e.target.value });
-  };
-
-  // update firebase with new cost
-  let editShipmentCost = async () => {
-    setCheckChange(false);
-
-    try {
-      let refShipmentCost = collection(db, "shipment");
-      updateDoc(doc(refShipmentCost, "7WMHaShKKD7OV8YUIu8R"), newCost).then(
-        () => {
-          setCheckChange(true);
-        }
-      );
-    } catch (error) {
-      console.log(error);
-    }
+  const buttonData = {
+    buttonText: "Agregar Ciudad",
+    handleClick: handleOpen,
   };
 
   return (
     <div>
+      {/* add city*/}
+      <DashboardButton data={buttonData} />
+
+      {/* UI shippment info */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -70,23 +48,23 @@ const ShipmentDashboard = ({ data }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {shipmentData.map((row) => (
+            {shipmentData.map((el) => (
               <TableRow
-                key={row.id}
+                key={el.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell component="th" scope="row">
-                  {row.city}
+                <TableCell component="th" scope="el">
+                  {el.city}
                 </TableCell>
                 <TableCell align="right">
-                  $ {Intl.NumberFormat().format(row.shipment)}
+                  $ {Intl.NumberFormat().format(el.shipment)}
                 </TableCell>
-                <TableCell align="right">{row.deliveryDays}</TableCell>
+                <TableCell align="right">{el.deliveryDays}</TableCell>
                 <TableCell align="right">
-                  <IconButton onClick={() => handleOpen(product)}>
+                  <IconButton onClick={() => handleOpen(el)}>
                     <EditIcon></EditIcon>
                   </IconButton>
-                  <IconButton onClick={() => removeProd(product)}>
+                  <IconButton onClick={() => deleteCity(el)}>
                     <DeleteForeverIcon></DeleteForeverIcon>
                   </IconButton>
                 </TableCell>
@@ -95,6 +73,18 @@ const ShipmentDashboard = ({ data }) => {
           </TableBody>
         </Table>
       </TableContainer>
+
+      {/* MODAL */}
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={modalStyle}>
+          <ShipmentFormContainer data={data}/>
+        </Box>
+      </Modal>
     </div>
   );
 };

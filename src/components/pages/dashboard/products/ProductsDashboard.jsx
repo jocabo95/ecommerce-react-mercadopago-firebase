@@ -1,4 +1,5 @@
-import { Box, Button, IconButton, Modal } from "@mui/material";
+import '../dashboards.css'
+import { Box, IconButton, Modal } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import ProductFormContainer from "../products/productForm/ProductFormContainer";
+import DashboardButton from "../../../common/dashboardButton/DashboardButton";
 
 const ProductsDashboard = ({ data }) => {
   const {
@@ -23,13 +25,15 @@ const ProductsDashboard = ({ data }) => {
     setproductTobeEdited,
   } = data;
 
-  
+  const buttonData = {buttonText: 'Agregar producto', handleClick: handleOpen}
 
   return (
     <div>
-      <Button type="button" onClick={() => handleOpen(null)}>
-        agregar producto
-      </Button>
+
+      {/* add product */}
+      <DashboardButton data={buttonData}/>
+
+      {/* UI products */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
