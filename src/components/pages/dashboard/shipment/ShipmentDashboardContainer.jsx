@@ -14,6 +14,8 @@ const ShipmentDashboardContainer = (data) => {
 
   // Get shipment info from firebase
   useEffect(() => {
+    setDbChange(false)
+
     const shipmentCollection = collection(db, "shipment");
     getDocs(shipmentCollection)
       .then((res) => {
@@ -25,6 +27,8 @@ const ShipmentDashboardContainer = (data) => {
       })
       .catch((err) => console.log(err));
   }, [dbChange]);
+
+  console.log('dbChange= ', dbChange);
 
   // Remove city from db
   let deleteCity = async (city) => {
