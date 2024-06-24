@@ -1,16 +1,23 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 import "../../dashboards.css";
 
 const ShipmentForm = ({data}) => {
-  const { cityToEdit, handleChange, handleSubmit } = data;
+  const { cityToEdit, handleChange, handleSubmit, handleClose } = data;
 
   console.log('cityToEdit= ', cityToEdit);
 
   return (
     <Box className="dashboard-form-container">
-      
+      <Box sx={{ textAlign:"right" }}>
+        <IconButton color="black" onClick={handleClose}>
+          <CloseIcon />
+        </IconButton>
+      </Box>
+
       <form className="dashboard-form">
-        <Typography>Costo de Envío</Typography>
+        <Typography variant="h5">Costo de Envío</Typography>
         <TextField
           label="Ciudad"
           defaultValue={cityToEdit?.city}
@@ -33,7 +40,9 @@ const ShipmentForm = ({data}) => {
           onChange={handleChange}
         />
 
-        <Button type="submit" onClick={handleSubmit}>Finalizar</Button>
+        <Button type="submit" onClick={handleSubmit}>
+          Finalizar
+        </Button>
       </form>
     </Box>
   );

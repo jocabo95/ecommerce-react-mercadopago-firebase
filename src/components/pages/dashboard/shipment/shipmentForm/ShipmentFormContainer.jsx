@@ -64,7 +64,8 @@ const ShipmentFormContainer = ({ data }) => {
   const data1={
     ...data,
     handleChange,
-    handleSubmit
+    handleSubmit,
+    handleClose
   }
 
   return <ShipmentForm data={data1} />;

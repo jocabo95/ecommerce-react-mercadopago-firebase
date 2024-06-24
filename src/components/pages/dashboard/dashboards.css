@@ -7,6 +7,21 @@
   background-color: white;
 }
 
+.dashboard-section-title{
+  margin-top: 2rem; 
+  margin-bottom: 1rem;
+
+  font-size: 1.5rem;
+  font-weight: 300;
+  font-family: Raleway;
+
+  border-bottom: solid thin #d8d8d8;
+}
+
+.table-header{
+  background-color: #f2f2f2;
+}
+
 .dashboard-form-container{
   background-color: white;
   border-radius: 20px;
@@ -22,3 +37,5 @@
   }
 
 }
+
+

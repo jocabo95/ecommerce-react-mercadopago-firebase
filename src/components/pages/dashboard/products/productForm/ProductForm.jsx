@@ -1,4 +1,6 @@
-import { Box, Button, CircularProgress, TextField } from "@mui/material";
+import { Box, Button, CircularProgress, IconButton, TextField, Typography } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import '../../dashboards.css'
 
 const ProductForm = ({ data }) => {
   const {
@@ -10,11 +12,18 @@ const ProductForm = ({ data }) => {
     uploadDone,
     handleImgFile,
     productTobeEdited,
+    handleClose
   } = data;
 
   return (
     <Box className="dashboard-form-container">
+      <Box sx={{ textAlign: "right", mb: "1rem" }}>
+        <IconButton color="black" onClick={handleClose}>
+          <CloseIcon />
+        </IconButton>
+      </Box>
       <form className="dashboard-form" onSubmit={handleSubmit}>
+        <Typography variant="h5">Agregar / editar productos</Typography>
         <TextField
           label="producto"
           defaultValue={productTobeEdited?.title}

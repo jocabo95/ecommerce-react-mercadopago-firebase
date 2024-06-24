@@ -28,23 +28,24 @@ const ProductsDashboard = ({ data }) => {
   const buttonData = {buttonText: 'Agregar producto', handleClick: handleOpen}
 
   return (
-    <div>
+    <Box>
+      <p className="dashboard-section-title">PRODUCTOS</p>
 
       {/* add product */}
-      <DashboardButton data={buttonData}/>
+      <DashboardButton data={buttonData} />
 
       {/* UI products */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
+          <TableHead className="table-header">
             <TableRow>
-              <TableCell>Producto</TableCell>
-              <TableCell align="left">Imagen</TableCell>
-              <TableCell align="left">ID</TableCell>
-              <TableCell align="left">Precio</TableCell>
-              <TableCell align="left">Stock</TableCell>
-              <TableCell align="left">Categoría</TableCell>
-              <TableCell align="left">Acciones</TableCell>
+              <TableCell align="center">Producto</TableCell>
+              <TableCell align="center">Imagen</TableCell>
+              <TableCell align="center">ID</TableCell>
+              <TableCell align="center">Precio</TableCell>
+              <TableCell align="center">Stock</TableCell>
+              <TableCell align="center">Categoría</TableCell>
+              <TableCell align="center">Acciones</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -53,22 +54,22 @@ const ProductsDashboard = ({ data }) => {
                 key={product.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell component="th" scope="row">
+                <TableCell align="left" component="th" scope="row">
                   {product.title}
                 </TableCell>
-                <TableCell align="left">
+                <TableCell align="center">
                   <img
                     src={product.img}
                     style={{ width: "50px", height: "50px" }}
                   />
                 </TableCell>
-                <TableCell align="left">{product.id}</TableCell>
-                <TableCell align="left">
+                <TableCell align="center">{product.id}</TableCell>
+                <TableCell align="center">
                   ${Intl.NumberFormat().format(product.unit_price)}
                 </TableCell>
-                <TableCell align="left">{product.stock}</TableCell>
-                <TableCell align="left">{product.category}</TableCell>
-                <TableCell align="left">
+                <TableCell align="center">{product.stock}</TableCell>
+                <TableCell align="center">{product.category}</TableCell>
+                <TableCell align="center">
                   <IconButton onClick={() => handleOpen(product)}>
                     <EditIcon></EditIcon>
                   </IconButton>
@@ -96,7 +97,7 @@ const ProductsDashboard = ({ data }) => {
           </Box>
         </Modal>
       </TableContainer>
-    </div>
+    </Box>
   );
 };
 

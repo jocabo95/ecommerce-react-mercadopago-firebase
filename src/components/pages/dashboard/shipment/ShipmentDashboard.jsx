@@ -32,19 +32,21 @@ const ShipmentDashboard = ({ data }) => {
   };
 
   return (
-    <div>
+    <Box>
+      <p className="dashboard-section-title">COSTOS DE ENVIO</p>
+
       {/* add city*/}
       <DashboardButton data={buttonData} />
 
       {/* UI shippment info */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
+          <TableHead className="table-header">
             <TableRow>
-              <TableCell>Ciudad</TableCell>
-              <TableCell align="right">Costo envío</TableCell>
-              <TableCell align="right">entrega (dias)</TableCell>
-              <TableCell align="right">Acciones </TableCell>
+              <TableCell align="center">Ciudad</TableCell>
+              <TableCell align="center">Costo envío</TableCell>
+              <TableCell align="center">entrega (dias)</TableCell>
+              <TableCell align="center">Acciones </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -53,14 +55,14 @@ const ShipmentDashboard = ({ data }) => {
                 key={el.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell component="th" scope="el">
+                <TableCell component="th" scope="el" align="center">
                   {el.city}
                 </TableCell>
-                <TableCell align="right">
+                <TableCell align="center">
                   $ {Intl.NumberFormat().format(el.shipment)}
                 </TableCell>
-                <TableCell align="right">{el.deliveryDays}</TableCell>
-                <TableCell align="right">
+                <TableCell align="center">{el.deliveryDays}</TableCell>
+                <TableCell align="center">
                   <IconButton onClick={() => handleOpen(el)}>
                     <EditIcon></EditIcon>
                   </IconButton>
@@ -82,10 +84,10 @@ const ShipmentDashboard = ({ data }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={modalStyle}>
-          <ShipmentFormContainer data={data}/>
+          <ShipmentFormContainer data={data} />
         </Box>
       </Modal>
-    </div>
+    </Box>
   );
 };
 

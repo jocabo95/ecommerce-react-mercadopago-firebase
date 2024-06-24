@@ -28,8 +28,6 @@ const ShipmentDashboardContainer = (data) => {
       .catch((err) => console.log(err));
   }, [dbChange]);
 
-  console.log('dbChange= ', dbChange);
-
   // Remove city from db
   let deleteCity = async (city) => {
     let cityDoc = doc(db, "shipment", city.id);

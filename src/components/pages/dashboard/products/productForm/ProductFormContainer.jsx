@@ -114,7 +114,8 @@ const ProductFormContainer = ({
     progressUpload,
     uploadDone,
     handleImgFile,
-    productTobeEdited
+    productTobeEdited,
+    handleClose
   };
 
   return <ProductForm data={data} />;

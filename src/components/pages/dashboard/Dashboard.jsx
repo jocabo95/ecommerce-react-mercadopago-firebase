@@ -3,6 +3,7 @@ import PageHeader from "../../common/pageHeader/PageHeader";
 import NavigationFilters from "../../common/topNavigationFilters/NavigationFilters";
 import ProductsDashboardContainer from "./products/ProductsDashboardContainer";
 import ShipmentDashboardContainer from "./shipment/ShipmentDashboardContainer";
+import { Box } from "@mui/material";
 
 const Dashboard = ({data}) => {
 
@@ -15,7 +16,7 @@ const Dashboard = ({data}) => {
   const navigationCategories = { categories, redirectToUrl: "/dashboard" };
 
   return (
-    <div>
+    <Box sx={{p:{xs:"1rem", md:"3rem"}}}>
       {/* HEADER */}
       <PageHeader data={header} />
 
@@ -29,7 +30,7 @@ const Dashboard = ({data}) => {
 
       {/* PRODUCTS CHART */}
       <ProductsDashboardContainer data={modalStyle} />
-    </div>
+    </Box>
   );
 };
 
