@@ -4,6 +4,7 @@ import NavigationFilters from "../../common/topNavigationFilters/NavigationFilte
 import ProductsDashboardContainer from "./products/ProductsDashboardContainer";
 import ShipmentDashboardContainer from "./shipment/ShipmentDashboardContainer";
 import { Box } from "@mui/material";
+import MagDashboardContainer from "./magazines/MagDashboardContainer";
 
 const Dashboard = ({data}) => {
 
@@ -25,11 +26,14 @@ const Dashboard = ({data}) => {
       {/* SHIPMENT COST */}
       <ShipmentDashboardContainer data={modalStyle} />
 
-      {/* ORDERS CHART */}
-      <OrdersDashboard />
-
       {/* PRODUCTS CHART */}
       <ProductsDashboardContainer data={modalStyle} />
+
+      {/* MAGAZINES */}
+      <MagDashboardContainer data={modalStyle}/>
+
+      {/* ORDERS CHART */}
+      <OrdersDashboard />
     </Box>
   );
 };

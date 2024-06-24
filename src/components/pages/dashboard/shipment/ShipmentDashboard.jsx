@@ -50,7 +50,7 @@ const ShipmentDashboard = ({ data }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {shipmentData.map((el) => (
+            {shipmentData?.map((el) => (
               <TableRow
                 key={el.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
