@@ -1,8 +1,10 @@
+import MagForm from "./magForm"
 
+const magFormContainer = ({data}) => {
 
-const magFormContainer = () => {
+  
   return (
-    <div>magFormContainer</div>
+    <MagForm data={data}/>
   )
 }
 

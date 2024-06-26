@@ -1,12 +1,11 @@
+import "../../dashboards.css";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import "../../dashboards.css";
 
 const ShipmentForm = ({data}) => {
   const { cityToEdit, handleChange, handleSubmit, handleClose } = data;
 
-  console.log('cityToEdit= ', cityToEdit);
 
   return (
     <Box className="dashboard-form-container">

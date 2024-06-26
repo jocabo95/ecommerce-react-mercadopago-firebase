@@ -1,18 +1,30 @@
 import DashboardButton from "../../../common/dashboardButton/DashboardButton";
 import "../dashboards.css";
-import { Box, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Modal,
+} from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import MagFormContainer from "./magForm/MagFormContainer";
 
-const MagDashboard = ({data}) => {
-
-  const {handleOpen, deleteMag, magsList} = data
+const MagDashboard = ({ data }) => {
+  const { handleOpen, deleteMag, magsList, handleClose, style, open } =
+    data;
 
   const buttonData = {
     buttonText: "Agregar publicación",
     handleClick: handleOpen,
   };
-  console.log('arr ', magsList);
+  console.log("arr ", magsList);
   return (
     <Box>
       <p className="dashboard-section-title">PUBLICACIONES</p>
@@ -20,7 +32,7 @@ const MagDashboard = ({data}) => {
       {/* add city*/}
       <DashboardButton data={buttonData} />
 
-      {/* UI shippment info */}
+      {/* UI mags */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead className="table-header">
@@ -42,23 +54,18 @@ const MagDashboard = ({data}) => {
                   {mag.title}
                 </TableCell>
                 <TableCell align="center">
-                  <img
-                    src={mag.portada}
-                    style={{ width: "100px"}}
-                  />
+                  <img src={mag.portada} style={{ width: "100px" }} />
                 </TableCell>
                 <TableCell align="center">
-                  <Box sx={{display:"flex", flexWrap:"wrap", gap:"0.5rem"}}>
-                    {mag.fotos.map((foto)=>(
-                      <img 
-                        key={foto}
-                        src={foto}
-                        width={"95px"}
-                      />
+                  <Box
+                    sx={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}
+                  >
+                    {mag.fotos.map((foto) => (
+                      <img key={foto} src={foto} width={"95px"} />
                     ))}
                   </Box>
                 </TableCell>
-                
+
                 <TableCell align="center">
                   <IconButton onClick={() => handleOpen(mag)}>
                     <EditIcon></EditIcon>
@@ -71,6 +78,20 @@ const MagDashboard = ({data}) => {
             ))}
           </TableBody>
         </Table>
+
+        {/* MODAL */}
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <MagFormContainer
+              data={data}
+            />
+          </Box>
+        </Modal>
       </TableContainer>
     </Box>
   );
